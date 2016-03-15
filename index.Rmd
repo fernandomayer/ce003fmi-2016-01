@@ -1,28 +1,29 @@
 ---
-title: "CE001 - Bioestatística"
+title: "CE003 - Estatística II"
 output:
   html_document:
     toc: false
 ---
 
-[![Build Status](https://travis-ci.org/fernandomayer/ce001n-2016-01.svg)](https://travis-ci.org/fernandomayer/ce001n-2016-01)
+[![Build Status](https://travis-ci.org/fernandomayer/ce003fmi-2016-01.svg)](https://travis-ci.org/fernandomayer/ce003fmi-2016-01)
 
-<div class="alert alert-danger" role="alert"> **ATENÇÃO!** As aulas serão no
-**Anfieatro 14** do Setor de Ciências Biológicas </div>
+<!-- <div class="alert alert-danger" role="alert"> **ATENÇÃO!** As aulas serão no -->
+<!-- **Anfieatro 14** do Setor de Ciências Biológicas </div> -->
 
 # Detalhes da oferta da disciplina
 
-- **Curso:** Biologia (N)
+- **Curso:** Engenharia de Bioprocessos e Biotecnologia (F), e
+  Matemática Industrial (MI)
 - **Período:** primeiro semestre de 2016
 - **Professor Responsável:** [Fernando de Pol Mayer][], ([LEG][]:
   Laboratório de Estatística e Geoinformação)
 - **Horários e Locais:**
-    - Terça, 18:30 - 20:10h, **Anf. 14** (Setor de Ciências Biológicas)
-    - Quinta, 18:30 - 20:10h, **Anf. 14** (Setor de Ciências Biológicas)
+    - Segunda, 13:30 - 15:10h, **EQ13**
+    - Quarta, 13:30 - 15:10h, **EQ13**
 - **Horários de atendimento do professor:**
     - Terças e quintas, 14:00-18:00 (preferenciais). Outros horários
       podem ser agendados previamente por email.
-- **Monitores de CE-001 do Depto. de Estatística:**
+- **Monitores de CE-003 do Depto. de Estatística:**
     - Local: **LABEST** (Laboratório de Estatística)
     - Horários de atendimento aos alunos: verificar no LABEST
 - **Frequência**: de acordo com as normas da Universidade, mínimo de 75%

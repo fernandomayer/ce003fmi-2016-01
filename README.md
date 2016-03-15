@@ -1,15 +1,16 @@
-# CE001N - 2016-01
+# CE003FMI - 2016-01
 
-[![Build Status](https://travis-ci.org/fernandomayer/ce001n-2016-01.svg)](https://travis-ci.org/fernandomayer/ce001n-2016-01)
+[![Build Status](https://travis-ci.org/fernandomayer/ce003fmi-2016-01.svg)](https://travis-ci.org/fernandomayer/ce003fmi-2016-01)
 
-## CE001 - Bioestatística
+## CE003 - Estatística II
 
-Repositório da disciplina CE001 - Bioestatística, ministrada na UFPR, no
-primeiro semestre de 2016, para o curso de Biologia (noturno).
+Repositório da disciplina CE003 - Estatística II, ministrada na UFPR, no
+primeiro semestre de 2016, para os cursos de Engenharia de Bioprocessos
+e Biotecnologia (F), e Matemática Industrial (MI).
 
 Este repositório contém todo o material de aula e os arquivos
 necessários para gerar a página da disciplina, disponível em:
-http://fernandomayer.github.io/ce001n-2016-01.
+http://fernandomayer.github.io/ce003fmi-2016-01.
 
 O site é todo construído usando apenas o [R Markdown][], por isso, o
 código fonte está nos arquivos `Rmd`. Para gerar o site você precisará
