@@ -231,7 +231,7 @@ require(xtable, quietly = TRUE)
    \item Medidas de diâmetro (mm) de um rolamento industrial.
    \item Número de ações da Petrobrás disponíveis no mercado financeiro
      em 2013.
-   \item Nomes de empresas do Rio Grande com mais de 100 funcionários.
+   \item Nomes de empresas de Curitiba com mais de 100 funcionários.
    \item Número de estudantes que frequentam o RU diariamente
    \item Temperatura das câmaras frias de uma indústria de pescado.
    \item Peso de algas coletadas em um determinado banco submerso.
