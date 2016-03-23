@@ -1,0 +1,1053 @@
+\pdfminorversion=4
+\documentclass[10pt]{beamer}
+%% O comando acima foi necessario porque o PDF nao abria no acrobat do
+%% windows, dava o erro 131. Provavelmente devido as figuras em
+%% PDF. Agora ele gera um PDF versao 1.4, ao inves da versao 1.5
+
+\usetheme[compress]{PaloAlto}
+\usecolortheme{sidebartab} % crane
+
+\usepackage[brazilian]{babel}
+\usepackage[T1]{fontenc}
+\usepackage[utf8]{inputenc}
+\usepackage{graphicx}
+\usepackage{hyperref}
+\usepackage[scaled]{beramono} % truetype: Bistream Vera Sans Mono
+%\usepackage{inconsolata}
+\usepackage{xfrac}
+\usepackage{tikz}
+\usepackage{xcolor}
+
+\setbeamertemplate{footline}[frame number] % mostra o numero dos slides
+\setbeamertemplate{navigation symbols}{} % retira a barra de navegacao
+
+\usepackage{xspace}
+\providecommand{\eg}{\textit{e.g.}\xspace}
+\providecommand{\ie}{\textit{i.e.}\xspace}
+\providecommand{\R}{\textsf{R}\xspace}
+\newcommand{\mb}[1]{\mathbf{#1}}
+\newcommand{\bs}[1]{\boldsymbol{#1}}
+\providecommand{\E}{\text{E}}
+\providecommand{\Var}{\text{Var}}
+\theoremstyle{definition}
+\newtheorem*{mydef}{Definição}
+\newtheorem*{mythm}{Teorema}
+
+\title{Medidas resumo}
+\author[]{Fernando de Pol Mayer}
+\institute[UFPR]{Laboratório de Estatística e Geoinformação (LEG) \\
+  Departamento de Estatística (DEST) \\
+  Universidade Federal do Paraná (UFPR)}
+\date{}
+\logo{\includegraphics[width=1.6cm]{../img/ufpr-logo.png}}
+\titlegraphic{\includegraphics[width=1cm]{../img/CC_by-nc-sa_88x31.png}\\
+  \tiny
+  \href{https://creativecommons.org/licenses/by-nc-sa/4.0/deed.pt_BR}{Este
+    conteúdo está disponível por meio da Licença Creative Commons 4.0
+    (Atribuição/NãoComercial/PartilhaIgual)}}
+
+\AtBeginSection[]
+{
+  \begin{frame}
+    \frametitle{Plano de aula}
+    \tableofcontents[currentsection]
+  \end{frame}
+}
+
+\AtBeginSubsection[]
+{
+  \begin{frame}
+    \frametitle{Plano de aula}
+    \tableofcontents[currentsection,currentsubsection]
+  \end{frame}
+}
+
+\begin{document}
+
+<<setup, include=FALSE, cache=FALSE>>=
+## Opcoes globais
+opts_chunk$set(size = "footnotesize",
+               prompt = FALSE,
+               comment = NA,
+               tidy = FALSE,
+               cache = TRUE,
+               fig.align = "center",
+               fig.width = 8,
+               fig.height = 6,
+               out.width=".8\\textwidth")
+## thm <- knit_theme$get("beamer3")
+## knit_theme$set(thm)
+options(width = 65, digits = 5, continue = "  ")
+## Use pdfcrop=TRUE nos chunks para reduzir a area do PDF
+knit_hooks$set(pdfcrop = hook_pdfcrop)
+@
+
+<<pacotes, echo=FALSE>>=
+require(xtable, quietly = TRUE)
+@
+
+\begin{frame}
+\maketitle
+%\titlepage
+\end{frame}
+
+\begin{frame}{Plano de aula}
+\tableofcontents
+\end{frame}
+
+\section[Introdução]{Introdução}
+
+\begin{frame}{Introdução}
+  Características importantes de qualquer conjunto de dados\\~\\
+  \begin{itemize}
+  \item Centro
+  \item Variação
+  \item Distribuição
+  \item Valores atípicos
+  \end{itemize}
+\end{frame}
+
+\section[Medidas de centro]{Medidas de tendência central}
+
+\begin{frame}{Medidas de centro}
+  \begin{block}{Definição}
+    É um valor no centro, ou meio, do conjunto de dados
+  \end{block}
+  \vspace{1em}
+  Ferramentas para \textbf{resumo} e \textbf{análise} de dados\\~\\
+  \begin{itemize}
+  \item Média
+  \item Mediana
+  \item Moda
+  \end{itemize}
+\end{frame}
+
+\subsection{Moda}
+
+\begin{frame}{Moda}
+  A \textbf{moda} é o valor que ocorre com \textbf{maior frequência} em
+  um conjunto de dados\\~\\
+  Dependendo do conjunto de dados, ele pode ser
+  \begin{itemize}
+  \item \textbf{Sem moda} quando nenhum valor se repete
+  \item \textbf{Unimodal} quando existe apenas um valor repetido com
+    maior frequência
+  \item \textbf{Bimodal} quando existem dois valores com a mesma maior
+    frequência
+  \item \textbf{Multimodal} quando mais de dois valores se repetem com a
+    mesma frequência
+  \end{itemize}
+\end{frame}
+
+\begin{frame}{Moda}
+  Qual é a moda?
+  \begin{center}
+   A) \texttt{2 5 7 9 13 15 22}
+  \end{center}
+  \begin{center}
+   B) \texttt{16 19 19 21 21 21 23 27}
+  \end{center}
+    \begin{center}
+   C) \texttt{2 7 7 13 15 15 22}
+  \end{center}
+\end{frame}
+
+\begin{frame}{Moda}
+  Qual é a moda?
+  \begin{table}[h]
+    \centering
+    \begin{tabular}{|c|c|c|c|c|c|c|c|}
+      \hline
+      ótimo & bom & bom & péssimo & bom & bom & ótimo  \\
+      \hline
+      ótimo & bom & ótimo & bom & ótimo & bom & bom  \\
+      \hline
+      ótimo & bom & péssimo & bom & péssimo & bom & péssimo  \\
+      \hline
+      bom & bom & bom & bom & ótimo & bom & péssimo \\
+      \hline
+      ótimo & ótimo & bom & péssimo & & & \\
+      \hline
+    \end{tabular}
+  \end{table}
+\end{frame}
+
+\begin{frame}{Moda}
+  Vantagens
+  \begin{itemize}
+  \item \textbf{Resistente} à valores extremos
+  \item É a única medida de centro que pode ser usada para dados
+    \textbf{qualitativos}
+  \end{itemize}
+  Desvantagens
+  \begin{itemize}
+  \item É uma medida \textbf{viesada}
+  \end{itemize}
+\end{frame}
+
+\subsection{Mediana}
+
+\begin{frame}{Mediana}
+  A \textbf{mediana} é uma medida de centro que é o \textbf{valor do meio},
+  quando os dados são arranjados de maneira \textbf{ordenada} \\~\\
+  É o valor cuja posição separa o conjunto de dados em duas partes
+  iguais\\~\\
+  Quando as observações são ordenadas em ordem crescente, vamos denotar
+  a menor observação por $x_{(1)}$, a segunda por $x_{(2)}$, e assim por
+  diante, obtendo-se
+  \begin{equation*}
+    x_{(1)} \leq x_{(2)} \leq \, \cdots \, \leq x_{(n-1)} \leq x_{(n)}
+  \end{equation*}
+  Estas observações odenadas são chamadas de \textbf{estatísticas de
+    ordem}.
+  %% Para achar o \textbf{valor mediano}
+  %% \begin{enumerate}
+  %% \item \textbf{Ordene} os valores e calcule a \textbf{posição} do valor
+  %%   da mediana
+  %%   \begin{equation*}
+  %%     \text{Pos Me} = \frac{n+1}{2}
+  %%   \end{equation*}
+  %% \item Se o número de valores for \textbf{ímpar}, a mediana será o
+  %%   valor localizado no meio \textbf{exato} da lista
+  %% \item Se o número de valores for \textbf{par}, a mediana será o valor
+  %%   encontrado pela \textsl{média aritmética} dos dois valores centrais
+  %% \end{enumerate}
+\end{frame}
+
+\begin{frame}{Mediana}
+  Por exemplo, se cinco observações de uma variável forem $x_1 = 8$,
+  $x_2 = 4$, $x_3 = 3$, $x_4 = 8$, $x_5 = 7$, então
+  \begin{equation*}
+    3 \leq 4 \leq 7 \leq 8 \leq 8
+  \end{equation*}
+  E as estatísticas de ordem são: $x_{(1)} = 3$, $x_{(2)} = 4$, $x_{(3)}
+  = 7$, $x_{(4)} = 8$, $x_{(5)} = 8$. \\~\\
+  Nesse exemplo, a mediana ($Md$) é 7, pois é o valor que separa o
+  conjunto de dados em duas partes iguais. \\~\\
+  Mas note que o número de observações é par. Caso fosse ímpar, a
+  mediana seria a média aritmética das duas observações centrais.
+\end{frame}
+
+\begin{frame}{Mediana}
+  De maneira geral, a mediana de uma variável $X$ pode ser definida por:
+
+  \[ Md(X) =
+    \begin{cases}
+      x_{\left(\frac{n+1}{2}\right)} & \quad \text{se } n \text{ ímpar}\\
+                             & \\
+      \frac{x_{\left(\frac{n}{2}\right)} +
+        x_{\left(\frac{n}{2}+1\right)}}{2}  & \quad \text{se } n \text{
+        par}\\
+    \end{cases}
+  \]
+  \vspace{2em}
+  Portanto, no exemplo anterior, se tívessemos
+    \begin{equation*}
+    3 \leq 4 \leq 7 \leq 8 \leq 8 \leq 9
+  \end{equation*}
+  Então
+  \begin{equation*}
+    Md = \frac{x_{(3)} + x_{(4)}}{2} = \frac{7 + 8}{2} = 7,5
+  \end{equation*}
+\end{frame}
+
+\begin{frame}{Mediana}
+  Número ímpar de elementos
+\begin{center}
+    \texttt{2 4 6 7 11}
+  \end{center}
+\end{frame}
+
+\begin{frame}{Mediana}
+  Número par de elementos
+\begin{center}
+    \texttt{2 4 7 9 11 13}
+  \end{center}
+\end{frame}
+
+\begin{frame}{Mediana}
+  Vantagens
+  \begin{itemize}
+  \item Medida \textbf{resistente}
+  \item Não é influenciada pela presença de valores extremos
+  \end{itemize}
+  Desvantagens
+  \begin{itemize}
+  \item É uma medida \textbf{viesada}
+  \end{itemize}
+\end{frame}
+
+
+\subsection{Média}
+
+\begin{frame}{Média}
+  A \textbf{média aritmética} de um conjunto de dados é a medida de
+  tendência central encontrada pela soma de todos os valores, dividida
+  pelo número total de elementos, ou seja,
+  \begin{equation*}
+    \bar{x} = \frac{1}{n} \cdot (x_1 + x_2 + \cdots + x_n) = \frac{1}{n}
+    \sum_{i=1}^{n} x_i
+  \end{equation*}
+  No exemplo anterior, temos então que a média de 3, 4, 7, 8, 8 é
+  \begin{eqnarray*}
+    \bar{x} &=& \frac{1}{5} \cdot (3 + 4 + 7 + 8 + 8) \\
+            &=& \frac{1}{5} \cdot (30) \\
+            &=& 6
+  \end{eqnarray*}
+\end{frame}
+
+\begin{frame}{Média}
+  Considere a nota das provas de 5 alunos em uma sala com 30 alunos
+  \begin{center}
+    \texttt{7,0 3,0 5,5 6,5 8,0}
+  \end{center}
+  \begin{block}{}
+    Note que a média é o \textbf{ponto de equilíbrio de massa} dos dados
+  \end{block}
+\end{frame}
+
+\begin{frame}{Média}
+  Considere o valor dos salários de todos os 6 empregados de uma pequena
+  empresa
+  \begin{center}
+    \texttt{860,00 750,00 980,00 1.200,00 790,00 950,00}
+  \end{center}
+  Calcule a média populacional
+\end{frame}
+
+\begin{frame}{Média}
+  Agora, se tivermos $n$ observações da variável $X$, das quais $f_1$
+  são iguais a $x_1$, $f_2$ são iguais a $x_2$, \ldots, $f_k$ são iguais
+  a $x_k$, então a média pode ser definida por:
+  \begin{equation*}
+    \bar{x} = \frac{1}{n} \cdot (x_1 f_1 + x_2 f_2 + \cdots + x_k f_k) = \frac{1}{n}
+    \sum_{i=1}^{k} x_i f_i
+  \end{equation*}
+  Note que, se as frequências relativas são $fr_i = f_i/n$, então a
+  equação acima também pode ser escrita como
+  \begin{equation*}
+    \bar{x} = x_1 fr_1 + x_2 fr_2 + \cdots + x_k fr_k = \sum_{i=1}^{k} x_i fr_i
+  \end{equation*}
+\end{frame}
+
+\begin{frame}{Média}
+  Como exemplo, considere a tabela de frequência abaixo:
+  \begin{table}[h]
+    \centering
+    \begin{tabular}{ccc}
+      \hline
+      \textbf{Número} & \textbf{$f_i$} & \textbf{$fr_i$} \\
+      \hline
+      0 & 4 & 0,20 \\
+      1 & 5 & 0,25 \\
+      2 & 7 & 0,35 \\
+      3 & 3 & 0,15 \\
+      5 & 1 & 0,05 \\
+      \hline
+      \textbf{Total} & 20 & 1 \\
+      \hline
+    \end{tabular}
+  \end{table}
+  A média é calculada por:
+  \begin{eqnarray*}
+    \bar{x} &=& \frac{1}{20} \cdot (0 \cdot 4 + 1 \cdot 5 + \cdots + 5 \cdot 1)\\
+            &=& \frac{1}{20} \cdot (33)\\
+            &=& 1,65
+  \end{eqnarray*}
+\end{frame}
+
+\begin{frame}{Média}
+  No caso de variáveis contínuas resumidas em tabelas de frequência com
+  intervalos de classe, a média pode ser aproximada, calculando-se o
+  \textbf{ponto médio} de cada classe
+  \begin{equation*}
+    PM = \frac{\lim_{inf} + \lim_{sup}}{2}
+  \end{equation*}
+  e supor que os valores dentro de cada classe sejam iguais ao ponto
+  médio. Nesse caso, ficamos com amesma situação para o caso discreto,
+  onde a média é calculada com pares $(x_i, f_i)$ ou $(x_i, fr_i)$. \\~\\
+
+  Claramente isso é uma aproximação, pois estamos perdendo informação ao
+  assumir que todos os valores de uma classe sejam iguais. Portanto,
+  deverá haver alguma diferença entre esta média aproximada e e média
+  que seria calculada com os valores originais.
+\end{frame}
+
+\begin{frame}{Média}
+  Considere a seguinte tabela de distribuição de frequência:
+    \begin{table}[h]
+    \centering
+    \begin{tabular}{lcc}
+      \hline
+      \textbf{Classe} & \textbf{$f_i$} & \textbf{$fr_i$} \\
+      \hline
+      $[4,8)$ & 10 & 0,278 \\
+      $[8,12)$ & 12 & 0,333 \\
+      $[12,16)$ & 8 & 0,222 \\
+      $[16,20)$ & 5 & 0,139 \\
+      $[20,24)$ & 1 & 0,028 \\
+      \hline
+      \textbf{Total} & 36 & 1 \\
+      \hline
+    \end{tabular}
+  \end{table}
+  Considerando os pontos médios de cada classe, a média é calculada por
+    \begin{eqnarray*}
+    \bar{x} &=& \frac{1}{36} \cdot (6 \cdot 10 + 10 \cdot 12 + \cdots + 22 \cdot 1)\\
+            &=& \frac{1}{36} \cdot (404)\\
+            &=& 11,22
+  \end{eqnarray*}
+\end{frame}
+
+\begin{frame}{Média}
+  Vantagens
+  \begin{itemize}
+  \item Medida \textbf{não viesada}
+  \item A média tende a ser mais \textbf{consistente} do que outras
+    medidas de centro
+  \end{itemize}
+  Desvantagens
+  \begin{itemize}
+  \item Sensível à valores extremos
+  \item Medida não \textbf{resistente}
+  \end{itemize}
+\end{frame}
+
+\begin{frame}{Média, Mediana, e Moda}
+% magalhaes exemplo 4.4
+  Você está procurando um estágio nas empresas A e B. Cada empresa
+  oferece remuneração por 20 horas semanais com as seguintes
+  característica (em salários mínimos)
+  \begin{table}[h]
+    \centering
+    \begin{tabular}{ccc}
+      \hline
+       & A & B \\
+      \hline
+      média & 2,5 & 2,0 \\
+      mediana & 1,7 & 1,9 \\
+      moda & 1,5 & 1,9 \\
+      \hline
+    \end{tabular}
+  \end{table}
+  Qual você escolheria?
+\end{frame}
+
+\begin{frame}{Média e Mediana}
+  Para notar como a média é influenciada pela presença de valores
+  extremos
+  \begin{center}
+    \texttt{5 7 10 13 15} $\quad \Rightarrow \quad $ $\bar{x} = 10$ e Me
+    = 10
+  \end{center}
+    \begin{center}
+    \texttt{5 7 10 13 65} $\quad \Rightarrow \quad $ $\bar{x} = 20$ e Me
+    = 10
+  \end{center}
+  Nos casos onde se deseja comparar bases de dados diferentes,
+  normalmente a mediana é mais indicada, por ser uma medida mais
+  \textbf{robusta}, \textsl{não influenciada por valores extremos}
+\end{frame}
+
+\begin{frame}{Média, Mediana, e Moda}
+  \begin{figure}[h]
+    \centering
+    \includegraphics[width=\textwidth]{../img/medidas-crop}
+  \end{figure}
+\end{frame}
+
+\begin{frame}{Média, Mediana, e Moda}
+  \textbf{Exemplo}: Os dados abaixo se referem ao percentual de
+  cobertura de vegetação em duas áreas de uma floresta.
+  \begin{flushleft}
+    Área A: \texttt{43 47 48 51 51 55 55 57 59}
+  \end{flushleft}
+  \begin{flushleft}
+    Área B: \texttt{20 22 45 46 53 54 56 57}
+  \end{flushleft}
+  \begin{itemize}
+  \item[a)] Calcule a média, a mediana e a moda para a área A. Qual a
+    medida de tendência central melhor representa esse conjunto de
+    dados? Por quê?
+    \item[b)] Calcule a média, a mediana e a moda para a área B. Qual a
+      medida de tendência central melhor representa esse conjunto de
+      dados? Por quê?
+  \end{itemize}
+\end{frame}
+
+
+\section{Medidas de variação}
+
+\begin{frame}{Introdução}
+ O resumo de um conjunto de dados exclusivamente por uma medida de
+ centro, \textbf{esconde} toda a informação sobre a variabilidade do
+ conjunto de observações \\~\\
+ Não é possível analisar um conjunto de dados apenas através de uma
+ medida de tendência central \\~\\
+ Por isso precisamos de medidas que resumam a \textbf{variabilidade} dos
+ dados em relação à um valor central
+\end{frame}
+
+\begin{frame}{Introdução}
+<<echo=FALSE, out.width=".95\\textwidth">>=
+par(mfrow=c(2,1))
+set.seed(2)
+hist(rnorm(1000, 100, 2), main = "N(100, 4)",
+     ylab = "Frequência absoluta", xlab = "x",
+     xlim = c(40, 160)); box()
+abline(v=100, col="red", lwd = 3)
+hist(rnorm(1000, 100, 10), main = "N(100, 100)",
+     ylab = "Frequência absoluta", xlab = "x",
+     xlim = c(40, 160)); box()
+abline(v=100, col="red", lwd = 3)
+@
+\end{frame}
+
+\begin{frame}{Introdução}
+  %% Bussab, pg 37
+  Cinco grupos de alunos se submeteram a um teste, obtendo as seguintes
+  notas
+  \begin{table}[htbp]
+    \centering
+    \begin{tabular}{crr}
+      \hline
+      \textbf{Grupo} & \textbf{Notas} & $\bar{x}$ \\ \hline
+      A & 3, 4, 5, 6, 7 & 5 \\
+      B & 1, 3, 5, 7, 9 & 5\\
+      C & 5, 5, 5, 5, 5 & 5\\
+      D & 3, 5, 5, 7 & 5\\
+      E & 3, 5, 5, 6, 5 & 5\\
+      \hline
+    \end{tabular}
+  \end{table}
+  O que a média diz a respeito das notas quando comparamos os grupos?
+\end{frame}
+
+\begin{frame}{Medidas de variação}
+  \begin{block}{Definição}
+    São medidas estatísticas que caracterizam o quanto um conjunto de
+    dados está disperso em torno de sua tendência central
+  \end{block}
+  \vspace{1em}
+  Ferramentas para \textbf{resumo} e \textbf{análise} de dados\\~\\
+  \begin{itemize}
+  \item Amplitude
+  \item Desvio-médio
+  \item Variância
+  \item Desvio-padrão
+  \item Coeficiente de Variação
+  \end{itemize}
+\end{frame}
+
+\subsection{Amplitude}
+
+\begin{frame}{Amplitude}
+  A \textbf{amplitude} de um conjunto de dados é a diferença entre o
+  maior e o menor valor.
+  \begin{equation*}
+    \text{AMP} = \max - \min
+  \end{equation*}
+  \vspace{1em}
+
+  Como a amplitude usa \textbf{apenas} os valores máximo e mínimo, é
+  muito \textbf{sensível} a valores extremos \\~\\
+\end{frame}
+
+\begin{frame}{Amplitude}
+  Calcule a média e a amplitude do número de acertos em uma prova com 50
+  questões
+  \begin{center}
+    \texttt{31 27 42 35 47 28 7 45 15 20}
+  \end{center}
+  \vspace{1em}
+  Calcule a média e a amplitude para a idade de um grupo de pessoas
+  \begin{center}
+    \texttt{4 3 4 3 4 3 21}
+  \end{center}
+\end{frame}
+
+\begin{frame}{Medidas de variação}
+  Para melhorar a medida de variabilidade, devemos considerar
+  \textbf{todos os dados disponíveis} \\~\\
+  A melhor forma de se fazer isso é considerar o \textbf{desvio} de cada
+  valor em relação à média \\~\\
+  Como queremos um \textbf{resumo} da variabilidade, devemos fazer a
+  soma dos desvios \\~\\
+  Considere as notas do grupo A do exemplo acima ($\bar{x} = 5$)
+    \begin{table}[htbp]
+    \centering
+    \begin{tabular}{cc}
+      \hline
+      \textbf{Grupo A} & $x_i - \bar{x}$ \\ \hline
+      3 & -2 \\
+      4 & -1\\
+      5 & 0\\
+      6 & 1\\
+      7 & 2\\
+      \hline
+      Soma & 0 \\
+      \hline
+    \end{tabular}
+  \end{table}
+\end{frame}
+
+\begin{frame}{Medidas de variação}
+  Como a soma dos desvios é \textbf{sempre} zero, temos duas alternativas
+  \begin{itemize}
+  \item Considerar o total dos desvios absolutos (em módulo)
+    \begin{equation*}
+      \sum_{i=1}^{n} |x_i - \bar{x}|
+    \end{equation*}
+  \item Considerar o total dos quadrados dos desvios
+        \begin{equation*}
+      \sum_{i=1}^{n} (x_i - \bar{x})^2
+    \end{equation*}
+  \end{itemize}
+  O uso destes totais pode causar dificuldades quando comparamos
+  conjuntos de dados de tamanhos diferentes.
+  Desse modo é mais conveniente exprimir estas medidas como
+  \textbf{médias} (dividindo as somas por $n$). Assim teremos:
+  \begin{itemize}
+  \item Desvio médio
+  \item Variância
+  \end{itemize}
+\end{frame}
+
+\subsection{Desvio médio}
+
+\begin{frame}{Desvio médio}
+  O \textbf{desvio médio} é definido como a média aritmética dos desvios
+  em módulo (valor absoluto)
+  \begin{equation*}
+    \text{DM} = \frac{1}{n} \sum_{i=1}^{n} |x_i - \bar{x}|
+  \end{equation*}
+    No exemplo anterior
+    \begin{table}[htbp]
+    \centering
+    \begin{tabular}{ccc}
+      \hline
+      \textbf{Grupo A} & $x_i - \bar{x}$ & $|x_i - \bar{x}|$ \\ \hline
+      3 & -2 & 2 \\
+      4 & -1 & 1\\
+      5 & 0 & 0\\
+      6 & 1 & 1\\
+      7 & 2 & 2\\
+      \hline
+      Soma & 0 & 6\\
+      \hline
+    \end{tabular}
+  \end{table}
+  $\text{DM} = \frac{6}{5} = 1,2$
+\end{frame}
+
+\begin{frame}{Desvio médio}
+  Mas, o desvio médio é baseado em uma operação \textbf{não algébrica}
+  (módulo), o que cria dificuldades em análises posteriores \\~\\
+  Além disso, é uma medida \textbf{viesada} \\~\\
+  Uma alternativa melhor é a \textbf{soma dos quadrados dos desvios}
+\end{frame}
+
+\subsection{Variância}
+
+\begin{frame}{Variância}
+  A \textbf{variância} é definida como a média aritmética da soma dos
+  quadrados dos desvios.\\~\\
+  \textbf{Variância populacional} ($X_1, X_2, \ldots, X_N$)
+  \begin{equation*}
+    \sigma^2 = \frac{1}{N} \sum_{i=1}^{N} (X_i - \mu)^2
+  \end{equation*}
+  \vspace{1em}
+    \textbf{Variância amostral} ($X_1, X_2, \ldots, X_n$)
+  \begin{equation*}
+    s^2 = \frac{1}{n-1} \sum_{i=1}^{n} (X_i - \bar{X})^2
+  \end{equation*}
+\end{frame}
+
+\begin{frame}{Variância}
+  Por que usar $n-1$ no denominador da variância amostral?
+  \begin{itemize}
+  \item Porque há apenas $n-1$ valores \textbf{independentes}
+  \item Dada que temos uma estimativa da média $\bar{x}$, apenas $n-1$
+    valores podem ser associados a qualquer número antes de que o último
+    valor seja determinado
+  \item Pode-se demonstrar que quando dividimos por $n$, a variância
+    amostral é \textbf{viesada}
+  \item Quando dividimos por $n-1$, a variância amostral $s^2$ tende
+    para o verdadeiro valor da variância populacional $\sigma^2$ (é
+    \textbf{não-viesada})
+    %% poderia explorar mais o exercicio 37 do livro do triola
+  \end{itemize}
+\end{frame}
+
+\begin{frame}{Variância}
+      No exemplo anterior
+    \begin{table}[htbp]
+    \centering
+    \begin{tabular}{cccc}
+      \hline
+      \textbf{Grupo A} & $x_i - \bar{x}$ & $|x_i - \bar{x}|$ & $(x_i -
+      \bar{x})^2$ \\ \hline
+      3 & -2 & 2 & 4 \\
+      4 & -1 & 1 & 1\\
+      5 & 0 & 0 & 0\\
+      6 & 1 & 1 & 1\\
+      7 & 2 & 2 & 4\\
+      \hline
+      Soma & 0 & 6 & 10\\
+      \hline
+    \end{tabular}
+  \end{table}
+  $\sigma^2 = \frac{10}{5} = 2$ \\~\\
+  %% Qual a variância para as notas do grupo E?
+  %% \begin{center}
+  %%   \texttt{3 5 5 6 5}
+  %% \end{center}
+\end{frame}
+
+\begin{frame}{Variância}
+  Uma fórmula alternativa da variância pode ser obtida desenvolvendo-se
+  o quadrado no numerador das expressões anteriores \\~\\
+    \textbf{Variância populacional} ($X_1, X_2, \ldots, X_N$)
+  \begin{equation*}
+    \sigma^2 = \frac{1}{N} \left[ \sum_{i=1}^{N} X_{i}^{2} -
+    \frac{(\sum_{i=1}^{N} X_i)^2}{N} \right]
+  \end{equation*}
+  \vspace{1em}
+    \textbf{Variância amostral} ($X_1, X_2, \ldots, X_n$)
+  \begin{equation*}
+    s^2 = \frac{1}{n-1} \left[ \sum_{i=1}^{n} X_{i}^{2} -
+    \frac{(\sum_{i=1}^{n} X_i)^2}{n} \right]
+  \end{equation*}
+\end{frame}
+
+\begin{frame}{Variância}
+  A variância amostral $s^2$ é considerada um estimador \textbf{não viesado}
+  da variância populacional $\sigma^2$ \\~\\
+  É utilizada em diversos métodos estatísticos e caracteriza todas as
+  distribuições de probabilidade \\~\\
+  No entanto, as \textsl{unidades da variância são diferentes das
+    unidades dos dados originais} (são medidas ao quadrado, como notas
+  ao quadrado ou cm$^2$)
+\end{frame}
+
+\subsection{Desvio-padrão}
+
+\begin{frame}{Desvio-padrão}
+  O \textbf{desvio-padrão} é a raiz quadrada da variância\\~\\
+  \textbf{Desvio-padrão populacional} ($X_1, X_2, \ldots, X_N$)
+  \begin{equation*}
+    \sigma = \sqrt{\frac{1}{N} \sum_{i=1}^{N} (X_i - \mu)^2}
+  \end{equation*}
+  \vspace{1em}
+    \textbf{Desvio-padrão amostral} ($X_1, X_2, \ldots, X_n$)
+  \begin{equation*}
+    s = \sqrt{\frac{1}{n-1} \sum_{i=1}^{n} (X_i - \bar{X})^2}
+  \end{equation*}
+\end{frame}
+
+\begin{frame}{Desvio-padrão}
+  \textbf{Propriedades do desvio-padrão} \vspace{1em}
+  \begin{itemize}
+  \item É uma medida de variação de todos os dados em relação à
+    \textbf{média}
+  \item É sempre positivo ou nulo
+    \begin{itemize}
+    \item Valores mais distantes da média tem desvio-padrão maior
+    \item Valores mais próximos da média tem desvio-padrão menor
+    \end{itemize}
+  \item A unidade do desvio-padrão é a mesma dos dados originais (por
+    exemplo notas ou cm)
+  \item A inclusão de valores \textbf{extremos} pode afetar
+    drasticamente o valor do desvio-padrão
+  \end{itemize}
+\end{frame}
+
+\begin{frame}{Desvio-padrão}
+  Calcule o desvio-padrão para as notas de provas de duas turmas (em
+  ambas $\mu=5$)
+  \begin{center}
+    Turma A: \texttt{0 2 4 5 5 6 8 10} \\ \vspace{1em}
+    Turma B: \texttt{4 4,5 5 5 5 5 5,5 6}
+  \end{center}
+  Podemos comparar estas duas medidas? O que podemos concluir?
+\end{frame}
+
+\subsection{Coeficiente de Variação}
+
+\begin{frame}{Coeficiente de Variação}
+  O \textbf{Coeficiente de Variação} (CV) mede a dispersão dos dados em
+  relação à média (medido em \%)\\ \vspace{1em}
+  \textbf{Coeficiente de Variação populacional} ($X_1, X_2, \ldots, X_N$)
+  \begin{equation*}
+    \text{CV} = \frac{\sigma}{\mu} \cdot 100\%
+  \end{equation*}
+  \vspace{1em}
+    \textbf{Coeficiente de variação amostral} ($X_1, X_2, \ldots, X_n$)
+  \begin{equation*}
+    \text{CV} = \frac{s}{\bar{x}} \cdot 100\%
+  \end{equation*}
+  É utilizado para se comparar a variação de um ou mais conjuntos de
+  dados
+\end{frame}
+
+\begin{frame}{Coeficiente de Variação}
+  Qual o Coeficiente de Variação para as turmas do exemplo anterior?
+  \begin{center}
+    Turma A: \texttt{0 2 4 5 5 6 8 10} \\ \vspace{1em}
+    Turma B: \texttt{4 4,5 5 5 5 5 5,5 6}
+  \end{center}
+  O que podemos concluir?
+\end{frame}
+
+\begin{frame}{Coeficiente de Variação}
+  O Coeficiente de Variação é muito útil também para se comparar dados
+  medidos em escalas diferentes. Por exemplo
+  \begin{table}[h]
+    \centering
+    \begin{tabular}{ccc}
+      \hline
+            & Média & Desvio-padrão \\
+            \hline
+            Altura & 174 cm & 7 cm \\
+            Peso & 78 kg & 12 kg \\
+            \hline
+    \end{tabular}
+  \end{table}
+  Sópodemos comparar o desvio-padrão com unidades diferentes através do CV
+  \begin{equation*}
+    \text{CV}_A = \frac{7}{174} \cdot 100\% =  4\%
+    \quad \quad \text{CV}_P = \frac{12}{78} \cdot 100\% = 15,4\%
+  \end{equation*}
+\end{frame}
+
+\section[Medidas de posição]{Medidas de posição relativa}
+
+\subsection{Escores $z$}
+
+\begin{frame}{Escores $z$}
+  Encontra-se um escore $z$ convertendo-se um valor para uma escala
+  padronizada\\~\\
+  \textbf{Escore $z$ populacional}
+  \begin{equation*}
+    z = \frac{x - \mu}{\sigma}
+  \end{equation*}
+    \textbf{Escore $z$ amostral}
+  \begin{equation*}
+    z = \frac{x - \bar{x}}{s}
+  \end{equation*}
+  Essa definição mostra que um escore $z$ é o número de desvios-padrão
+  de distância em relação à média.
+\end{frame}
+
+\begin{frame}{Escores $z$}
+  \textbf{Valores não usuais ou atípicos}\\~\\
+  Valores comuns: $-2 \leq z \leq 2$\\
+  Valores não usuais: $z< -2$ ou $z>2$
+  \begin{figure}[h]
+    \centering
+    \includegraphics[width=.7\textwidth]{../img/empirica}
+  \end{figure}
+\end{frame}
+
+\begin{frame}{Escores $z$}
+  Exemplo: Qual valor é mais extremo?
+  \begin{itemize}
+  \item Uma altura de 193,55 cm
+  \item Um peso de 107,55 kg
+  \end{itemize}
+  Considere que as alturas médias tem 173,58 cm com desvio-padrão de
+  7,67 cm, e os pesos médios tem 78,27 kg com desvio-padrão de 11,94
+  kg.
+\end{frame}
+
+\subsection{Percentis}
+
+\begin{frame}{Percentis}
+  \begin{block}{Definição}
+    Percentis são medidas de localização, denotados por $P_1, P_2,
+    \ldots, P_{99}$ que dividem os dados em 100 grupos, com cerca de 1\%
+    cada grupo
+  \end{block}
+  Por exemplo
+  \begin{itemize}
+  \item O 50$^o$ percentil, $P_{50}$, tem cerca de 50\% dos valores
+    abaixo dele, e 50\% de valores acima dele
+    \begin{itemize}
+    \item Nesse caso, $P_{50}$ = Mediana
+    \end{itemize}
+  \end{itemize}
+\end{frame}
+
+\begin{frame}[fragile]{Percentis}
+  Para determinar um percentil:
+  \begin{itemize}
+  \item Encontre a posição
+    \begin{equation*}
+      \text{Pos} P_i = \frac{i(n+1)}{100}, \quad i=1,\ldots,99
+    \end{equation*}
+  \item Se o valor for fracionário calcule o valor intermediário
+  \end{itemize}
+  Calcule o $P_{30}$ e o $P_{65}$ para os dados abaixo
+  \begin{center}
+    \texttt{15 21 28 25 30 11 17 12 25 20 16 23 12 10}
+  \end{center}
+<<echo=FALSE, eval=FALSE>>=
+quant <- c(15,21,28,25,30,11,17,12,25,20,16,23,12,10)
+sort(quant)
+quantile(quant, probs = c(.3, .65))
+@
+\end{frame}
+
+\subsection{Quartis}
+
+\begin{frame}{Quartis}
+  \begin{block}{Definição}
+    Quartis são medidas de localização, denotadas por $Q_1, Q_2, Q_3$
+    que dividem um conjunto de dados em 4 grupos, com cerca de 25\% dos
+    valores em cada grupo
+  \end{block}
+  \textbf{$Q_1$ (Primeiro quartil)}: Separa os 25\% inferiores dos 75\%
+  superiores dos valores ordenados\\~\\
+  \textbf{$Q_2$ (Segundo quartil)}: O mesmo que a mediana. Separa os
+  50\% valores ordenados inferiores dos 50\% superiores\\~\\
+  \textbf{$Q_3$ (terceiro quartil)}: Separa os 75\% valores ordenados
+  inferiores dos 25\% superiores\\~\\
+\end{frame}
+
+\begin{frame}{Quartis}
+  Para determinar um quartil:
+  \begin{itemize}
+  \item Encontre a posição
+    \begin{equation*}
+      \text{Pos} Q_i = \frac{i(n+1)}{4}, \quad i=1,\ldots,3
+    \end{equation*}
+  \item Se o valor for fracionário calcule o valor intermediário
+  \end{itemize}
+  Calcule os quartis para os dados abaixo
+  \begin{center}
+    \texttt{15 21 28 25 30 11 17 12 25 20 16 23 12 10}
+  \end{center}
+<<eval=FALSE, echo=FALSE>>=
+quantile(quant)
+fivenum(quant)
+@
+\end{frame}
+
+\begin{frame}{Quartis}
+  \textbf{Gráfico de caixa ou resumo dos cinco números}\\~\\
+  \begin{block}{Resumo dos 5 números}
+    O resumo dos cinco números consiste no valor mínimo, primeiro
+    quartil, segundo quartil (mediana), terceiro quartil, e no valor
+    máximo
+  \end{block}
+  \begin{block}{Gráfico de caixa}
+    O gráfico de caixa, ou \textsl{boxplot}, é uma representação gráfica
+    do resumo dos cinco números
+  \end{block}
+\end{frame}
+
+\begin{frame}{Quartis}
+  Para os valores
+  \begin{center}
+    \texttt{15 21 28 25 30 11 17 12 25 20 16 23 12 10}
+  \end{center}
+  o \textbf{gráfico de caixa} correspondente é
+<<echo=FALSE, out.width=".8\\textwidth", pdfcrop=TRUE>>=
+quant <- c(15,21,28,25,30,11,17,12,25,20,16,23,12,10)
+boxplot(quant, range = 0, horizontal = TRUE,
+        ylim = c(0,40))
+@
+\end{frame}
+
+
+\begin{frame}{Quartis}
+  \textbf{Gráfico de caixa ou resumo dos cinco números}\\~\\
+<<echo=FALSE, out.width=".9\\textwidth", pdfcrop=TRUE>>=
+set.seed(123)
+x <- rnorm(1000, 50, 4)
+df <- data.frame(X = c(rnorm(1000, 100, 8), rnorm(1000, 50, 8)),
+                 C = c(rep("A", 1000), rep("B", 1000)))
+par(mfrow=c(1,2))
+boxplot(x, range = 0)
+boxplot(X~C, data = df, range=0)
+@
+\end{frame}
+
+\begin{frame}{Quartis}
+  Exemplo: o tempo de espera, em minutos, para o atendimento em uma
+  central telefônica, para homens e mulheres, foi registrado como abaixo
+  \begin{center}
+    Homens: \texttt{5 2 7 9 3 4 3 1 3 8}\\
+    Mulheres: \texttt{3 5 7 4 5 6 7 6 5 4}
+  \end{center}
+  \begin{itemize}
+  \item Monte o resumo dos cinco números e o gráfico de caixa para
+    homens e mulheres juntos
+  \item Monte o resumo dos cinco números e o gráfico de caixa para
+    homens e mulheres separados
+  \end{itemize}
+
+\end{frame}
+
+\begin{frame}{Quartis}
+<<quartis1, echo=FALSE, pdfcrop=TRUE>>=
+hom <- c(5,2,7,9,3,4,3,1,3,8)
+mul <- c(3,5,7,4,5,6,7,6,5,4)
+boxplot(c(hom,mul), range = 0, horizontal = TRUE,
+        xlab = "Tempo de espera (minutos)", ylim = c(0, 10))
+@
+\end{frame}
+
+\begin{frame}{Quartis}
+<<quartis2, echo=FALSE, pdfcrop=TRUE>>=
+boxplot(data.frame(hom,mul), range = 0,
+        names = c("Homens", "Mulheres"), ylim = c(0, 10),
+        xlab = "Tempo de espera (minutos)",
+        col = c("blue", "pink"))
+par(mfrow = c(1,1))
+@
+\end{frame}
+
+\section{Exercícios}
+
+\begin{frame}[fragile]{Exercícios}
+  Exercícios 2--7, 9--15 do capítulo 3 do livro (pgs. 94--96).
+  \vspace{1em}
+  \begin{itemize}
+  \item[] Pinto, SS; Silva, CS. \textbf{Estatística, Vol I}. Rio Grande:
+    Editora da FURG, 2010. [Cap. 3]
+  \end{itemize}
+\end{frame}
+
+\begin{frame}{Referências}
+  \textbf{Referências Básicas}
+  \begin{itemize}
+  %% \item Magalhães, MN; Lima, ACP. \textbf{Noções de Probabilidade e
+  %%     Estatística}. São Paulo: EDUSP, 2008. [Cap. 1]
+  \item Bussab, WO; Morettin, PA. \textbf{Estatística básica}. São
+    Paulo: Saraiva, 2006. 526 p. [Cap. 3]
+  \item Pinto, SS; Silva, CS. \textbf{Estatística, Vol I}. Rio Grande:
+    Editora da FURG, 2010. [Cap. 3]
+  \end{itemize}
+  \textbf{Referências Complementares}
+  \begin{itemize}
+      \item Triola, MF. \textbf{Introdução à Estatística}. Rio de Janeiro:
+    LTC. 2008. [Cap. 3]
+  %% \item Bussab, WO; Morettin, PA. \textbf{Estatística básica}. São
+  %%   Paulo: Saraiva, 2002. 526 p. [Cap. 2]
+  \end{itemize}
+\end{frame}
+
+<<teste,eval=FALSE,echo=FALSE>>=
+x <- rnorm(100, 5, 1)
+mean(x)
+var(x)
+x <- c(1,3,5,5,7)
+require(MASS)
+margin.table(x)
+fractions(addmargins(prop.table(table(x))))
+fractions(addmargins(prop.table(table(x,x))))
+@
+
+
+\end{document}
