@@ -721,16 +721,17 @@
   \ldots, $f_k$ são iguais a $x_k$, então a variância pode ser definida
   por:
   \begin{equation*}
-    s^2 = \frac{1}{n} \sum_{i=1}^{n} f_i (x_i - \bar{x})^2 =
-    \sum_{i=1}^{n} fr_i (x_i - \bar{x})^2
+    s^2 = \frac{1}{n} \sum_{i=1}^{k} f_i (x_i - \bar{x})^2 =
+    \sum_{i=1}^{k} fr_i (x_i - \bar{x})^2
   \end{equation*}
   Ou, pela fórmula alternativa
   \begin{eqnarray*}
-    s^2 &=& \frac{1}{n} \left[ \sum_{i=1}^{n} x_{i}^{2} \cdot f_i -
-    \frac{(\sum_{i=1}^{n} x_i \cdot f_i)^2}{n} \right] \\
-        &=& \sum_{i=1}^{n} x_{i}^{2} \cdot fr_i -
-    \frac{(\sum_{i=1}^{n} x_i \cdot fr_i)^2}{n}
+    s^2 &=& \frac{1}{n} \left[ \sum_{i=1}^{k} x_{i}^{2} \cdot f_i -
+    \frac{(\sum_{i=1}^{k} x_i \cdot f_i)^2}{n} \right] \\
+        &=& \sum_{i=1}^{k} x_{i}^{2} \cdot fr_i -
+            \left( \sum_{i=1}^{k} x_i \cdot fr_i \right)^2
   \end{eqnarray*}
+  Onde $fr_i = f_i/n$, e $n = \sum_{i=1}^{k} f_i$.
 \end{frame}
 
 \begin{frame}{Variância}
@@ -738,23 +739,24 @@
   1,65$):
   \begin{table}[h]
     \centering
-    \begin{tabular}{cccc}
+    \begin{tabular}{ccccc}
       \hline
-      \textbf{Número} & \textbf{$f_i$} & \textbf{$fr_i$} & \textbf{$x_i - \bar{x}$} \\
+      \textbf{Número} & \textbf{$f_i$} & \textbf{$fr_i$}
+      & \textbf{$x_i - \bar{x}$} & \textbf{$(x_i - \bar{x})^2$} \\
       \hline
-      0 & 4 & 0,20 & -1,65 \\
-      1 & 5 & 0,25 & -0,65 \\
-      2 & 7 & 0,35 & 0,35 \\
-      3 & 3 & 0,15 & 1,35 \\
-      5 & 1 & 0,05 & 3,35 \\
+      0 & 4 & 0,20 & -1,65 & 2,72 \\
+      1 & 5 & 0,25 & -0,65 & 0,42 \\
+      2 & 7 & 0,35 & 0,35 & 0,12 \\
+      3 & 3 & 0,15 & 1,35 & 1,82 \\
+      5 & 1 & 0,05 & 3,35 & 11,22 \\
       \hline
-      \textbf{Total} & 20 & 1 & \\
+      \textbf{Total} & 20 & 1 & & 16,31 \\
       \hline
     \end{tabular}
   \end{table}
   A variância pode ser calculada por:
   \begin{eqnarray*}
-    s^2 &=& \frac{1}{20} \cdot [4 \cdot (-1,65)^2 + 5 \cdot (-0,65)^2 + \cdots + 1 \cdot (3,35)^2]\\
+    s^2 &=& \frac{1}{20} \cdot [4 \cdot 2,72 + 5 \cdot 0,42 + \cdots + 1 \cdot 11,22]\\
             &=& \frac{1}{20} \cdot (30,55)\\
             &=& 1,528
   \end{eqnarray*}
@@ -766,23 +768,25 @@
   Considere a seguinte tabela de distribuição de frequência ($\bar{x} = 11,22$):
     \begin{table}[h]
     \centering
-    \begin{tabular}{lccc}
+    \begin{tabular}{lccccc}
       \hline
-      \textbf{Classe} & \textbf{$f_i$} & \textbf{$fr_i$} & \textbf{$x_i - \bar{x}$} \\
+      \textbf{Classe} & \textbf{PM = $x_i$} & \textbf{$f_i$}
+      & \textbf{$fr_i$} & \textbf{$x_i - \bar{x}$} & \textbf{$(x_i - \bar{x})^2$} \\
       \hline
-      $[4,8)$ & 10 & 0,278 & -5,222 \\
-      $[8,12)$ & 12 & 0,333 & -1,222 \\
-      $[12,16)$ & 8 & 0,222 & 2,778 \\
-      $[16,20)$ & 5 & 0,139 & 6,778 \\
-      $[20,24)$ & 1 & 0,028 & 10, 778 \\
+      $[4,8)$ & 6 & 10 & 0,278 & -5,222 & 27,272 \\
+      $[8,12)$ & 10 & 12 & 0,333 & -1,222 & 1,494 \\
+      $[12,16)$ & 14 & 8 & 0,222 & 2,778 & 7,716 \\
+      $[16,20)$ & 18 & 5 & 0,139 & 6,778 & 45,938 \\
+      $[20,24)$ & 22 & 1 & 0,028 & 10, 778 & 116,160 \\
       \hline
-      \textbf{Total} & 36 & 1 & \\
+      \textbf{Total} & & 36 & 1 & & 198,58 \\
       \hline
     \end{tabular}
   \end{table}
   Considerando os pontos médios de cada classe, a variância pode ser calculada por
     \begin{eqnarray*}
-    \bar{x} &=& \frac{1}{36} \cdot [6 \cdot (-5,222)^2 + 10 \cdot (-1,222)^2 + \cdots + 22 \cdot (10,778)^2]\\
+    \bar{x} &=& \frac{1}{36} \cdot [10 \cdot 27,272 + 12 \cdot 1,494 +
+                \cdots + 1 \cdot 116,160]\\
             &=& \frac{1}{36} \cdot (698,22)\\
             &=& 19,395
   \end{eqnarray*}
@@ -925,172 +929,168 @@
   conjunto de dados.
 \end{frame}
 
-\section[Medidas de posição]{Medidas de posição relativa}
-
-\subsection{Percentis}
-
-\begin{frame}{Percentis}
-  \begin{block}{Definição}
-    Percentis são medidas de posição, denotados por $P_1, P_2,
-    \ldots, P_{99}$ que dividem os dados em 100 grupos, com cerca de 1\%
-    cada grupo
-  \end{block}
-  Por exemplo
-  \begin{itemize}
-  \item O 50$^o$ percentil, $P_{50}$, tem cerca de 50\% dos valores
-    abaixo dele, e 50\% de valores acima dele
-    \begin{itemize}
-    \item Nesse caso, $P_{50}$ = Mediana
-    \end{itemize}
-  \end{itemize}
-\end{frame}
-
-\begin{frame}[fragile]{Percentis}
-  Para determinar um percentil:
-  \begin{itemize}
-  \item Encontre a posição
-    \begin{equation*}
-      \text{Pos} P_i = \frac{i(n+1)}{100}, \quad i=1,\ldots,99
-    \end{equation*}
-  \item Se o valor for fracionário calcule o valor intermediário
-  \end{itemize}
-  Calcule o $P_{30}$ e o $P_{65}$ para os dados abaixo
-  \begin{center}
-    \texttt{15 21 28 25 30 11 17 12 25 20 16 23 12 10}
-  \end{center}
-
-\end{frame}
-
-\subsection{Quartis}
-
-\begin{frame}{Quartis}
-  \begin{block}{Definição}
-    Quartis são medidas de posição, denotadas por $Q_1, Q_2, Q_3$
-    que dividem um conjunto de dados em 4 grupos, com cerca de 25\% dos
-    valores em cada grupo
-  \end{block}
-  \textbf{$Q_1$ (Primeiro quartil)}: Separa os 25\% inferiores dos 75\%
-  superiores dos valores ordenados\\~\\
-  \textbf{$Q_2$ (Segundo quartil)}: O mesmo que a mediana. Separa os
-  50\% valores ordenados inferiores dos 50\% superiores\\~\\
-  \textbf{$Q_3$ (terceiro quartil)}: Separa os 75\% valores ordenados
-  inferiores dos 25\% superiores\\~\\
-\end{frame}
-
-\begin{frame}{Quartis}
-  Para determinar um quartil:
-  \begin{itemize}
-  \item Encontre a posição
-    \begin{equation*}
-      \text{Pos} Q_i = \frac{i(n+1)}{4}, \quad i=1,\ldots,3
-    \end{equation*}
-  \item Se o valor for fracionário calcule o valor intermediário
-  \end{itemize}
-  Calcule os quartis para os dados abaixo
-  \begin{center}
-    \texttt{15 21 28 25 30 11 17 12 25 20 16 23 12 10}
-  \end{center}
-
-\end{frame}
-
-\begin{frame}{Quartis}
-  \textbf{Gráfico de caixa ou resumo dos cinco números}\\~\\
-  \begin{block}{Resumo dos 5 números}
-    O resumo dos cinco números consiste no valor mínimo, primeiro
-    quartil, segundo quartil (mediana), terceiro quartil, e no valor
-    máximo
-  \end{block}
-  \begin{block}{Gráfico de caixa}
-    O gráfico de caixa, ou \textsl{boxplot}, é uma representação gráfica
-    do resumo dos cinco números
-  \end{block}
-\end{frame}
-
-\begin{frame}{Quartis}
-  Para os valores
-  \begin{center}
-    \texttt{15 21 28 25 30 11 17 12 25 20 16 23 12 10}
-  \end{center}
-  o \textbf{gráfico de caixa} correspondente é
-\begin{knitrout}\footnotesize
-\definecolor{shadecolor}{rgb}{0.969, 0.969, 0.969}\color{fgcolor}
-
-{\centering \includegraphics[width=.8\textwidth]{figure/unnamed-chunk-9-1} 
-
-}
 
 
+%% \section[Medidas de posição]{Medidas de posição relativa}
 
-\end{knitrout}
-\end{frame}
+%% \subsection{Percentis}
+
+%% \begin{frame}{Percentis}
+%%   \begin{block}{Definição}
+%%     Percentis são medidas de posição, denotados por $P_1, P_2,
+%%     \ldots, P_{99}$ que dividem os dados em 100 grupos, com cerca de 1\%
+%%     cada grupo
+%%   \end{block}
+%%   Por exemplo
+%%   \begin{itemize}
+%%   \item O 50$^o$ percentil, $P_{50}$, tem cerca de 50\% dos valores
+%%     abaixo dele, e 50\% de valores acima dele
+%%     \begin{itemize}
+%%     \item Nesse caso, $P_{50}$ = Mediana
+%%     \end{itemize}
+%%   \end{itemize}
+%% \end{frame}
+
+%% \begin{frame}[fragile]{Percentis}
+%%   Para determinar um percentil:
+%%   \begin{itemize}
+%%   \item Encontre a posição
+%%     \begin{equation*}
+%%       \text{Pos} P_i = \frac{i(n+1)}{100}, \quad i=1,\ldots,99
+%%     \end{equation*}
+%%   \item Se o valor for fracionário calcule o valor intermediário
+%%   \end{itemize}
+%%   Calcule o $P_{30}$ e o $P_{65}$ para os dados abaixo
+%%   \begin{center}
+%%     \texttt{15 21 28 25 30 11 17 12 25 20 16 23 12 10}
+%%   \end{center}
+%% <<echo=FALSE, eval=FALSE>>=
+%% quant <- c(15,21,28,25,30,11,17,12,25,20,16,23,12,10)
+%% sort(quant)
+%% quantile(quant, probs = c(.3, .65))
+%% @
+%% \end{frame}
+
+%% \subsection{Quartis}
+
+%% \begin{frame}{Quartis}
+%%   \begin{block}{Definição}
+%%     Quartis são medidas de posição, denotadas por $Q_1, Q_2, Q_3$
+%%     que dividem um conjunto de dados em 4 grupos, com cerca de 25\% dos
+%%     valores em cada grupo
+%%   \end{block}
+%%   \textbf{$Q_1$ (Primeiro quartil)}: Separa os 25\% inferiores dos 75\%
+%%   superiores dos valores ordenados\\~\\
+%%   \textbf{$Q_2$ (Segundo quartil)}: O mesmo que a mediana. Separa os
+%%   50\% valores ordenados inferiores dos 50\% superiores\\~\\
+%%   \textbf{$Q_3$ (terceiro quartil)}: Separa os 75\% valores ordenados
+%%   inferiores dos 25\% superiores\\~\\
+%% \end{frame}
+
+%% \begin{frame}{Quartis}
+%%   Para determinar um quartil:
+%%   \begin{itemize}
+%%   \item Encontre a posição
+%%     \begin{equation*}
+%%       \text{Pos} Q_i = \frac{i(n+1)}{4}, \quad i=1,\ldots,3
+%%     \end{equation*}
+%%   \item Se o valor for fracionário calcule o valor intermediário
+%%   \end{itemize}
+%%   Calcule os quartis para os dados abaixo
+%%   \begin{center}
+%%     \texttt{15 21 28 25 30 11 17 12 25 20 16 23 12 10}
+%%   \end{center}
+%% <<eval=FALSE, echo=FALSE>>=
+%% quantile(quant)
+%% fivenum(quant)
+%% @
+%% \end{frame}
+
+%% \begin{frame}{Quartis}
+%%   \textbf{Gráfico de caixa ou resumo dos cinco números}\\~\\
+%%   \begin{block}{Resumo dos 5 números}
+%%     O resumo dos cinco números consiste no valor mínimo, primeiro
+%%     quartil, segundo quartil (mediana), terceiro quartil, e no valor
+%%     máximo
+%%   \end{block}
+%%   \begin{block}{Gráfico de caixa}
+%%     O gráfico de caixa, ou \textsl{boxplot}, é uma representação gráfica
+%%     do resumo dos cinco números
+%%   \end{block}
+%% \end{frame}
+
+%% \begin{frame}{Quartis}
+%%   Para os valores
+%%   \begin{center}
+%%     \texttt{15 21 28 25 30 11 17 12 25 20 16 23 12 10}
+%%   \end{center}
+%%   o \textbf{gráfico de caixa} correspondente é
+%% <<echo=FALSE, out.width=".8\\textwidth", pdfcrop=TRUE>>=
+%% quant <- c(15,21,28,25,30,11,17,12,25,20,16,23,12,10)
+%% boxplot(quant, range = 0, horizontal = TRUE,
+%%         ylim = c(0,40))
+%% @
+%% \end{frame}
 
 
-\begin{frame}{Quartis}
-  \textbf{Gráfico de caixa ou resumo dos cinco números}\\~\\
-\begin{knitrout}\footnotesize
-\definecolor{shadecolor}{rgb}{0.969, 0.969, 0.969}\color{fgcolor}
+%% \begin{frame}{Quartis}
+%%   \textbf{Gráfico de caixa ou resumo dos cinco números}\\~\\
+%% <<echo=FALSE, out.width=".9\\textwidth", pdfcrop=TRUE>>=
+%% set.seed(123)
+%% x <- rnorm(1000, 50, 4)
+%% df <- data.frame(X = c(rnorm(1000, 100, 8), rnorm(1000, 50, 8)),
+%%                  C = c(rep("A", 1000), rep("B", 1000)))
+%% par(mfrow=c(1,2))
+%% boxplot(x, range = 0)
+%% boxplot(X~C, data = df, range=0)
+%% @
+%% \end{frame}
 
-{\centering \includegraphics[width=.9\textwidth]{figure/unnamed-chunk-10-1} 
+%% \begin{frame}{Quartis}
+%%   Exemplo: o tempo de espera, em minutos, para o atendimento em uma
+%%   central telefônica, para homens e mulheres, foi registrado como abaixo
+%%   \begin{center}
+%%     Homens: \texttt{5 2 7 9 3 4 3 1 3 8}\\
+%%     Mulheres: \texttt{3 5 7 4 5 6 7 6 5 4}
+%%   \end{center}
+%%   \begin{itemize}
+%%   \item Monte o resumo dos cinco números e o gráfico de caixa para
+%%     homens e mulheres juntos
+%%   \item Monte o resumo dos cinco números e o gráfico de caixa para
+%%     homens e mulheres separados
+%%   \end{itemize}
 
-}
+%% \end{frame}
 
+%% \begin{frame}{Quartis}
+%% <<quartis1, echo=FALSE, pdfcrop=TRUE>>=
+%% hom <- c(5,2,7,9,3,4,3,1,3,8)
+%% mul <- c(3,5,7,4,5,6,7,6,5,4)
+%% boxplot(c(hom,mul), range = 0, horizontal = TRUE,
+%%         xlab = "Tempo de espera (minutos)", ylim = c(0, 10))
+%% @
+%% \end{frame}
 
+%% \begin{frame}{Quartis}
+%% <<quartis2, echo=FALSE, pdfcrop=TRUE>>=
+%% boxplot(data.frame(hom,mul), range = 0,
+%%         names = c("Homens", "Mulheres"), ylim = c(0, 10),
+%%         xlab = "Tempo de espera (minutos)",
+%%         col = c("blue", "pink"))
+%% par(mfrow = c(1,1))
+%% @
+%% \end{frame}
 
-\end{knitrout}
-\end{frame}
+%% \section{Exercícios}
 
-\begin{frame}{Quartis}
-  Exemplo: o tempo de espera, em minutos, para o atendimento em uma
-  central telefônica, para homens e mulheres, foi registrado como abaixo
-  \begin{center}
-    Homens: \texttt{5 2 7 9 3 4 3 1 3 8}\\
-    Mulheres: \texttt{3 5 7 4 5 6 7 6 5 4}
-  \end{center}
-  \begin{itemize}
-  \item Monte o resumo dos cinco números e o gráfico de caixa para
-    homens e mulheres juntos
-  \item Monte o resumo dos cinco números e o gráfico de caixa para
-    homens e mulheres separados
-  \end{itemize}
-
-\end{frame}
-
-\begin{frame}{Quartis}
-\begin{knitrout}\footnotesize
-\definecolor{shadecolor}{rgb}{0.969, 0.969, 0.969}\color{fgcolor}
-
-{\centering \includegraphics[width=.8\textwidth]{figure/quartis1-1} 
-
-}
-
-
-
-\end{knitrout}
-\end{frame}
-
-\begin{frame}{Quartis}
-\begin{knitrout}\footnotesize
-\definecolor{shadecolor}{rgb}{0.969, 0.969, 0.969}\color{fgcolor}
-
-{\centering \includegraphics[width=.8\textwidth]{figure/quartis2-1} 
-
-}
-
-
-
-\end{knitrout}
-\end{frame}
-
-\section{Exercícios}
-
-\begin{frame}[fragile]{Exercícios}
-  Exercícios 2--7, 9--15 do capítulo 3 do livro (pgs. 94--96).
-  \vspace{1em}
-  \begin{itemize}
-  \item[] Pinto, SS; Silva, CS. \textbf{Estatística, Vol I}. Rio Grande:
-    Editora da FURG, 2010. [Cap. 3]
-  \end{itemize}
-\end{frame}
+%% \begin{frame}[fragile]{Exercícios}
+%%   Exercícios 2--7, 9--15 do capítulo 3 do livro (pgs. 94--96).
+%%   \vspace{1em}
+%%   \begin{itemize}
+%%   \item[] Pinto, SS; Silva, CS. \textbf{Estatística, Vol I}. Rio Grande:
+%%     Editora da FURG, 2010. [Cap. 3]
+%%   \end{itemize}
+%% \end{frame}
 
 \begin{frame}{Referências}
   \begin{itemize}
