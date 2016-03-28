@@ -19,6 +19,11 @@ classe aplicadas.
 - **16/03**: Análise exploratória de dados: variáveis quantitativas
   contínuas. [Material](02_Analise_Exploratoria_de_Dados.html)
 - **21/03**: Sabatina 1
+- **23/03**: Medidas resumo: medidas de tendência central.
+  [Slides](03_Medidas_resumo/03_Medidas_resumo.pdf)
+- **28/03**: Medidas resumo: medidas de variabilidade.
+  [Slides](03_Medidas_resumo/03_Medidas_resumo.pdf)
+
 
 ## Exercícios
 
