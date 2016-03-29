@@ -395,12 +395,12 @@
     PM = \frac{\lim_{inf} + \lim_{sup}}{2}
   \end{equation*}
   e supor que os valores dentro de cada classe sejam iguais ao ponto
-  médio. Nesse caso, ficamos com amesma situação para o caso discreto,
+  médio. Nesse caso, ficamos com a mesma situação para o caso discreto,
   onde a média é calculada com pares $(x_i, f_i)$ ou $(x_i, fr_i)$. \\~\\
 
   Claramente isso é uma aproximação, pois estamos perdendo informação ao
   assumir que todos os valores de uma classe sejam iguais. Portanto,
-  deverá haver alguma diferença entre esta média aproximada e e média
+  deverá haver alguma diferença entre esta média aproximada e a média
   que seria calculada com os valores originais.
 \end{frame}
 
@@ -812,7 +812,8 @@
   \begin{equation*}
     s = \sqrt{s^2}
   \end{equation*}
-  Sendo que $s^2$ é calculada de qualquer uma das formas anteriores.
+  Sendo que $s^2$ é calculada a partir de qualquer uma das formas
+  anteriores.
 \end{frame}
 
 \begin{frame}{Desvio-padrão}
@@ -899,7 +900,7 @@
             \hline
     \end{tabular}
   \end{table}
-  Sópodemos comparar o desvio-padrão com unidades diferentes através do CV
+  Só podemos comparar o desvio-padrão com unidades diferentes através do CV
   \begin{equation*}
     \text{CV}_A = \frac{7}{174} \cdot 100\% =  4\%
     \quad \quad \text{CV}_P = \frac{12}{78} \cdot 100\% = 15,4\%
@@ -931,173 +932,396 @@
 
 
 
-%% \section[Medidas de posição]{Medidas de posição relativa}
+\section[Medidas de posição]{Medidas de posição relativa}
 
-%% \subsection{Percentis}
+\begin{frame}{Medidas de posição relativa}
+  Tanto a média como o desvio-padrão podem não ser medidas adequadas
+  para representar um conjunto de dados, pois: \\~\\
+  \begin{itemize}
+  \item São afetados, de forma exagerada, por valores extremos
+  \item Apenas com estes dois valores não temos ideia da simetria ou
+    assimetria da distribuição dos dados
+  \end{itemize}
+  \vspace{1em}
+  Por isso, outras medidas podem ser consideradas.
+\end{frame}
 
-%% \begin{frame}{Percentis}
-%%   \begin{block}{Definição}
-%%     Percentis são medidas de posição, denotados por $P_1, P_2,
-%%     \ldots, P_{99}$ que dividem os dados em 100 grupos, com cerca de 1\%
-%%     cada grupo
-%%   \end{block}
-%%   Por exemplo
-%%   \begin{itemize}
-%%   \item O 50$^o$ percentil, $P_{50}$, tem cerca de 50\% dos valores
-%%     abaixo dele, e 50\% de valores acima dele
-%%     \begin{itemize}
-%%     \item Nesse caso, $P_{50}$ = Mediana
-%%     \end{itemize}
-%%   \end{itemize}
-%% \end{frame}
+\begin{frame}{Medidas de posição relativa}
+  Vimos que a mediana é um valor que deixa metade dos dados abaixo dela,
+  e metade acima, e é uma medida \textbf{resistente}. \\~\\
+  De modo geral, podemos definir uma medida, chamada \textbf{quantil de
+    ordem $p$} ou \textbf{$p$-quantil}, indicada por $Q(p)$, onde $p$ é uma
+  proporção qualquer, $0 < p <1$, de modo que $100p\%$ das observações
+  sejam menores do que $Q(p)$. Por exemplo: \\~\\
+  \begin{itemize}
+  \item $Q(0,25) = Q_1 = P_{25}$: 1$^o$ quartil = 25$^o$ percentil
+  \item $Q(0,50) = Q_2 = P_{50}$: 2$^o$ quartil = 50$^o$ percentil = Mediana
+  \item $Q(0,75) = Q_3 = P_{75}$: 3$^o$ quartil = 75$^o$ percentil
+  \item $Q(0,40) = P_{40}$: 4$^o$ decil = 40$^o$ percentil
+  \item $Q(0,95) = P_{95}$: 95$^o$ percentil
+  \end{itemize}
+\end{frame}
 
-%% \begin{frame}[fragile]{Percentis}
-%%   Para determinar um percentil:
-%%   \begin{itemize}
-%%   \item Encontre a posição
-%%     \begin{equation*}
-%%       \text{Pos} P_i = \frac{i(n+1)}{100}, \quad i=1,\ldots,99
-%%     \end{equation*}
-%%   \item Se o valor for fracionário calcule o valor intermediário
-%%   \end{itemize}
-%%   Calcule o $P_{30}$ e o $P_{65}$ para os dados abaixo
-%%   \begin{center}
-%%     \texttt{15 21 28 25 30 11 17 12 25 20 16 23 12 10}
-%%   \end{center}
-%% <<echo=FALSE, eval=FALSE>>=
-%% quant <- c(15,21,28,25,30,11,17,12,25,20,16,23,12,10)
-%% sort(quant)
-%% quantile(quant, probs = c(.3, .65))
-%% @
-%% \end{frame}
+\subsection{Percentis}
 
-%% \subsection{Quartis}
+\begin{frame}{Percentis}
+  \begin{block}{Definição}
+    Percentis são medidas de posição, denotados por $P_1, P_2,
+    \ldots, P_{99}$ que dividem os dados em 100 grupos, com cerca de 1\%
+    cada grupo
+  \end{block}
+  Por exemplo
+  \begin{itemize}
+  \item O 50$^o$ percentil, $P_{50}$, tem cerca de 50\% dos valores
+    abaixo dele, e 50\% de valores acima dele
+    \begin{itemize}
+    \item Nesse caso, $P_{50}$ = Mediana
+    \end{itemize}
+  \end{itemize}
+\end{frame}
 
-%% \begin{frame}{Quartis}
-%%   \begin{block}{Definição}
-%%     Quartis são medidas de posição, denotadas por $Q_1, Q_2, Q_3$
-%%     que dividem um conjunto de dados em 4 grupos, com cerca de 25\% dos
-%%     valores em cada grupo
-%%   \end{block}
-%%   \textbf{$Q_1$ (Primeiro quartil)}: Separa os 25\% inferiores dos 75\%
-%%   superiores dos valores ordenados\\~\\
-%%   \textbf{$Q_2$ (Segundo quartil)}: O mesmo que a mediana. Separa os
-%%   50\% valores ordenados inferiores dos 50\% superiores\\~\\
-%%   \textbf{$Q_3$ (terceiro quartil)}: Separa os 75\% valores ordenados
-%%   inferiores dos 25\% superiores\\~\\
-%% \end{frame}
+\begin{frame}[fragile]{Percentis}
+  Para determinar um percentil: \\~\\
+  \begin{itemize}
+  \item Encontre a posição
+    \begin{equation*}
+      \text{Pos} P_i = \frac{i(n+1)}{100}, \quad i=1,\ldots,99
+    \end{equation*}
+  \item Se o valor for fracionário calcule o valor intermediário
+  \end{itemize}
+  \vspace{1em}
+  Calcule o $P_{30}$ e o $P_{65}$ para os dois conjuntos de dados abaixo
+\begin{knitrout}\footnotesize
+\definecolor{shadecolor}{rgb}{0.969, 0.969, 0.969}\color{fgcolor}\begin{kframe}
+\begin{verbatim}
+ [1] 10 11 12 12 15 16 17 20 21 23 25 25 28 30
+\end{verbatim}
+\end{kframe}
+\end{knitrout}
+\begin{knitrout}\footnotesize
+\definecolor{shadecolor}{rgb}{0.969, 0.969, 0.969}\color{fgcolor}\begin{kframe}
+\begin{verbatim}
+ [1] 10 11 12 12 15 16 17 20 21 23 25 25 28 30 59
+\end{verbatim}
+\end{kframe}
+\end{knitrout}
 
-%% \begin{frame}{Quartis}
-%%   Para determinar um quartil:
-%%   \begin{itemize}
-%%   \item Encontre a posição
-%%     \begin{equation*}
-%%       \text{Pos} Q_i = \frac{i(n+1)}{4}, \quad i=1,\ldots,3
-%%     \end{equation*}
-%%   \item Se o valor for fracionário calcule o valor intermediário
-%%   \end{itemize}
-%%   Calcule os quartis para os dados abaixo
-%%   \begin{center}
-%%     \texttt{15 21 28 25 30 11 17 12 25 20 16 23 12 10}
-%%   \end{center}
-%% <<eval=FALSE, echo=FALSE>>=
-%% quantile(quant)
-%% fivenum(quant)
-%% @
-%% \end{frame}
+\end{frame}
 
-%% \begin{frame}{Quartis}
-%%   \textbf{Gráfico de caixa ou resumo dos cinco números}\\~\\
-%%   \begin{block}{Resumo dos 5 números}
-%%     O resumo dos cinco números consiste no valor mínimo, primeiro
-%%     quartil, segundo quartil (mediana), terceiro quartil, e no valor
-%%     máximo
-%%   \end{block}
-%%   \begin{block}{Gráfico de caixa}
-%%     O gráfico de caixa, ou \textsl{boxplot}, é uma representação gráfica
-%%     do resumo dos cinco números
-%%   \end{block}
-%% \end{frame}
+\subsection{Quartis}
 
-%% \begin{frame}{Quartis}
-%%   Para os valores
-%%   \begin{center}
-%%     \texttt{15 21 28 25 30 11 17 12 25 20 16 23 12 10}
-%%   \end{center}
-%%   o \textbf{gráfico de caixa} correspondente é
-%% <<echo=FALSE, out.width=".8\\textwidth", pdfcrop=TRUE>>=
-%% quant <- c(15,21,28,25,30,11,17,12,25,20,16,23,12,10)
-%% boxplot(quant, range = 0, horizontal = TRUE,
-%%         ylim = c(0,40))
-%% @
-%% \end{frame}
+\begin{frame}{Quartis}
+  \begin{block}{Definição}
+    Quartis são medidas de posição, denotadas por $Q_1, Q_2, Q_3$
+    que dividem um conjunto de dados em 4 grupos, com cerca de 25\% dos
+    valores em cada grupo
+  \end{block}
+  \textbf{$Q_1$ (Primeiro quartil)}: Separa os 25\% inferiores dos 75\%
+  superiores dos valores ordenados\\~\\
+  \textbf{$Q_2$ (Segundo quartil)}: O mesmo que a \textbf{mediana}. Separa os
+  50\% valores ordenados inferiores dos 50\% superiores\\~\\
+  \textbf{$Q_3$ (terceiro quartil)}: Separa os 75\% valores ordenados
+  inferiores dos 25\% superiores
+\end{frame}
+
+\begin{frame}[fragile]{Quartis}
+  Para determinar um quartil: \\~\\
+  \begin{itemize}
+  \item Encontre a posição
+    \begin{equation*}
+      \text{Pos} Q_i = \frac{i(n+1)}{4}, \quad i=1,\ldots,3
+    \end{equation*}
+  \item Se o valor for fracionário calcule o valor intermediário
+  \end{itemize}
+  \vspace{1em}
+  Calcule os quartis para os dois conjuntos de dados abaixo
+\begin{knitrout}\footnotesize
+\definecolor{shadecolor}{rgb}{0.969, 0.969, 0.969}\color{fgcolor}\begin{kframe}
+\begin{verbatim}
+ [1] 10 11 12 12 15 16 17 20 21 23 25 25 28 30
+\end{verbatim}
+\end{kframe}
+\end{knitrout}
+\begin{knitrout}\footnotesize
+\definecolor{shadecolor}{rgb}{0.969, 0.969, 0.969}\color{fgcolor}\begin{kframe}
+\begin{verbatim}
+ [1] 10 11 12 12 15 16 17 20 21 23 25 25 28 30 59
+\end{verbatim}
+\end{kframe}
+\end{knitrout}
+
+\end{frame}
+
+\begin{frame}{Quartis}
+  Os quartis são medidas são medidas de posição \textbf{resistentes} de
+  uma distribuição. \\~\\
+  Uma medida de variação alternativa ao desvio-padrão é a
+  \textbf{distância interquartil}, que é a diferença entre o 3$^o$ e o
+  1$^o$ quartis, ou seja,
+  \begin{equation*}
+    d_Q = Q_3 - Q_1
+  \end{equation*}
+  Com isso, sabemos que 50\% das observações se encontram entre
+  $Q_1$ e $Q_3$, e a medida $d_Q$ mede a amplitude desses valores.
+\end{frame}
+
+\subsubsection[Resumo dos 5 números]{Resumo dos cinco números}
+
+\begin{frame}{Resumo dos cinco números}
+  Os cinco valores: \\~\\
+  \begin{itemize}
+  \item $x_{(1)}$: mínimo
+  \item $Q_1$: 1$^o$ quartil
+  \item $Q_2$: 2$^o$ quartil
+  \item $Q_3$: 3$^o$ quartil
+  \item $x_{(n)}$: máximo
+  \end{itemize}
+  \vspace{1em}
+  compõem o chamado \textbf{resumo dos cinco números}, e são importantes
+  para se ter uma boa ideia da assimetria da distribuição dos dados.
+    \begin{block}{Resumo dos 5 números}
+    O resumo dos cinco números consiste no valor mínimo, primeiro
+    quartil, segundo quartil (mediana), terceiro quartil, e no valor
+    máximo
+  \end{block}
+\end{frame}
+
+\begin{frame}{Resumo dos cinco números}
+  Para uma distribuição simétrica ou aproximadamente simétrica,
+  deveríamos esperar que: \\~\\
+  \begin{itemize}
+  \item[a)] $Q_2 - x_{(1)} \approx x_{(n)} - Q_2$
+  \item[b)] $Q_2 - Q_1 \approx Q_3 - Q_2$
+  \item[c)] $Q_1 - x_{(1)} \approx x_{(n)} - Q_3$
+  \item[d)] Distâncias entre mediana e $Q_1$, $Q_3$ menores do que
+    distâncias entre os extremos e $Q_1$, $Q_3$
+  \end{itemize}
+  \vspace{1em}
+  A diferença $Q_2 - x_{(1)}$ é chamada \textbf{dispersão inferior}, e
+  $x_{(n)} - Q_2$ é a \textbf{dispersão superior}. \\~\\
+  A condição a nos diz que as duas dispersões devem ser aproximadamente
+  iguais para uma distribuição aproximadamente simétrica.
+\end{frame}
+
+\begin{frame}[fragile]{Resumo dos cinco números}
+  Para os valores
+\begin{knitrout}\footnotesize
+\definecolor{shadecolor}{rgb}{0.969, 0.969, 0.969}\color{fgcolor}\begin{kframe}
+\begin{verbatim}
+ [1] 10 11 12 12 15 16 17 20 21 23 25 25 28 30
+\end{verbatim}
+\end{kframe}
+\end{knitrout}
+o resumo dos cinco números é
+\begin{knitrout}\footnotesize
+\definecolor{shadecolor}{rgb}{0.969, 0.969, 0.969}\color{fgcolor}\begin{kframe}
+\begin{verbatim}
+x(1)   Q1   Q2   Q3 x(n) 
+10.0 12.0 18.5 25.0 30.0 
+\end{verbatim}
+\end{kframe}
+\end{knitrout}
+E para os valores
+\begin{knitrout}\footnotesize
+\definecolor{shadecolor}{rgb}{0.969, 0.969, 0.969}\color{fgcolor}\begin{kframe}
+\begin{verbatim}
+ [1] 10 11 12 12 15 16 17 20 21 23 25 25 28 30 59
+\end{verbatim}
+\end{kframe}
+\end{knitrout}
+o resumo dos cinco números é
+\begin{knitrout}\footnotesize
+\definecolor{shadecolor}{rgb}{0.969, 0.969, 0.969}\color{fgcolor}\begin{kframe}
+\begin{verbatim}
+x(1)   Q1   Q2   Q3 x(n) 
+10.0 13.5 20.0 25.0 59.0 
+\end{verbatim}
+\end{kframe}
+\end{knitrout}
+Usando os critérios apresentados acima, verifique a simetria dos dois
+conjuntos de dados.
+\end{frame}
+
+\subsubsection{Box plots}
+
+\begin{frame}{Box plots}
+  O box plot ou \textbf{gráfico de caixa}, é uma representação gráfica
+  do resumo dos cinco números. \\~\\
+  Para construir um box plot:
+  \begin{enumerate}
+  \item Faça um retângulo (a caixa) com os quartis e a mediana
+  \item Calcule os \textbf{limites superior e inferior}
+    \begin{equation*}
+      LS = Q_3 + 1,5 \cdot d_Q \quad \text{e} \quad LI = Q_1 - 1,5 \cdot d_Q
+    \end{equation*}
+    \item A partir de $Q_3$, faça uma linha para cima até o ponto mais
+      remoto \textit{que não exceda} $LS$
+    \item A partir de $Q_1$, faça uma linha para baixo até o ponto mais
+      remoto \textit{que não seja menor} do que $LI$
+  \end{enumerate}
+\end{frame}
+
+\begin{frame}{Box plots}
+  Os valores compreendidos entre estes dois limites são chamados de
+  \textbf{valores adjacentes}. \\~\\
+  As observações que estiverem acima de $LS$ ou abaixo de $LI$ são
+  representadas por pontos, e chamadas de \textbf{pontos exteriores}
+  (que podem ou não serem considerados \textit{outliers} ou
+  \textit{valores atípicos}). \\~\\
+  O box plot da uma ideia da \textbf{posição}, \textbf{dispersão},
+  \textbf{assimetria}, \textbf{caudas}, e dados discrepantes. \\~\\
+  A justificativa para usar $1,5$ no cálculo de $LS$ e $LI$ é que $99,3\%$
+  da distribuição está entre estes dois extremos. Ou seja, para uma
+  distribuição simétrica (normal), os pontos exteriores constituirão
+  cerca de $0,7\%$ da distribuição.
+\end{frame}
+
+\begin{frame}[fragile]{Box plots}
+Para os valores
+\begin{knitrout}\footnotesize
+\definecolor{shadecolor}{rgb}{0.969, 0.969, 0.969}\color{fgcolor}\begin{kframe}
+\begin{verbatim}
+ [1] 10 11 12 12 15 16 17 20 21 23 25 25 28 30
+\end{verbatim}
+\end{kframe}
+\end{knitrout}
+Com resumo dos cinco números dado por
+\begin{knitrout}\footnotesize
+\definecolor{shadecolor}{rgb}{0.969, 0.969, 0.969}\color{fgcolor}\begin{kframe}
+\begin{verbatim}
+x(1)   Q1   Q2   Q3 x(n) 
+10.0 12.0 18.5 25.0 30.0 
+\end{verbatim}
+\end{kframe}
+\end{knitrout}
+O box plot corresepondente é \\~\\
+\begin{knitrout}\footnotesize
+\definecolor{shadecolor}{rgb}{0.969, 0.969, 0.969}\color{fgcolor}
+
+{\centering \includegraphics[width=.6\textwidth]{figure/unnamed-chunk-20-1} 
+
+}
 
 
-%% \begin{frame}{Quartis}
-%%   \textbf{Gráfico de caixa ou resumo dos cinco números}\\~\\
-%% <<echo=FALSE, out.width=".9\\textwidth", pdfcrop=TRUE>>=
-%% set.seed(123)
-%% x <- rnorm(1000, 50, 4)
-%% df <- data.frame(X = c(rnorm(1000, 100, 8), rnorm(1000, 50, 8)),
-%%                  C = c(rep("A", 1000), rep("B", 1000)))
-%% par(mfrow=c(1,2))
-%% boxplot(x, range = 0)
-%% boxplot(X~C, data = df, range=0)
-%% @
-%% \end{frame}
 
-%% \begin{frame}{Quartis}
-%%   Exemplo: o tempo de espera, em minutos, para o atendimento em uma
-%%   central telefônica, para homens e mulheres, foi registrado como abaixo
-%%   \begin{center}
-%%     Homens: \texttt{5 2 7 9 3 4 3 1 3 8}\\
-%%     Mulheres: \texttt{3 5 7 4 5 6 7 6 5 4}
-%%   \end{center}
-%%   \begin{itemize}
-%%   \item Monte o resumo dos cinco números e o gráfico de caixa para
-%%     homens e mulheres juntos
-%%   \item Monte o resumo dos cinco números e o gráfico de caixa para
-%%     homens e mulheres separados
-%%   \end{itemize}
+\end{knitrout}
+\end{frame}
 
-%% \end{frame}
+\begin{frame}[fragile]{Box plots}
+Para os valores
+\begin{knitrout}\footnotesize
+\definecolor{shadecolor}{rgb}{0.969, 0.969, 0.969}\color{fgcolor}\begin{kframe}
+\begin{verbatim}
+ [1] 10 11 12 12 15 16 17 20 21 23 25 25 28 30 59
+\end{verbatim}
+\end{kframe}
+\end{knitrout}
+\begin{knitrout}\footnotesize
+\definecolor{shadecolor}{rgb}{0.969, 0.969, 0.969}\color{fgcolor}\begin{kframe}
+\begin{verbatim}
+x(1)   Q1   Q2   Q3 x(n) 
+10.0 13.5 20.0 25.0 59.0 
+\end{verbatim}
+\end{kframe}
+\end{knitrout}
+O box plot corresepondente é \\~\\
+\begin{knitrout}\footnotesize
+\definecolor{shadecolor}{rgb}{0.969, 0.969, 0.969}\color{fgcolor}
 
-%% \begin{frame}{Quartis}
-%% <<quartis1, echo=FALSE, pdfcrop=TRUE>>=
-%% hom <- c(5,2,7,9,3,4,3,1,3,8)
-%% mul <- c(3,5,7,4,5,6,7,6,5,4)
-%% boxplot(c(hom,mul), range = 0, horizontal = TRUE,
-%%         xlab = "Tempo de espera (minutos)", ylim = c(0, 10))
-%% @
-%% \end{frame}
+{\centering \includegraphics[width=.6\textwidth]{figure/unnamed-chunk-23-1} 
 
-%% \begin{frame}{Quartis}
-%% <<quartis2, echo=FALSE, pdfcrop=TRUE>>=
-%% boxplot(data.frame(hom,mul), range = 0,
-%%         names = c("Homens", "Mulheres"), ylim = c(0, 10),
-%%         xlab = "Tempo de espera (minutos)",
-%%         col = c("blue", "pink"))
-%% par(mfrow = c(1,1))
-%% @
-%% \end{frame}
+}
 
-%% \section{Exercícios}
 
-%% \begin{frame}[fragile]{Exercícios}
-%%   Exercícios 2--7, 9--15 do capítulo 3 do livro (pgs. 94--96).
-%%   \vspace{1em}
-%%   \begin{itemize}
-%%   \item[] Pinto, SS; Silva, CS. \textbf{Estatística, Vol I}. Rio Grande:
-%%     Editora da FURG, 2010. [Cap. 3]
-%%   \end{itemize}
-%% \end{frame}
+
+\end{knitrout}
+\end{frame}
+
+\subsection{Exercícios}
+
+\begin{frame}{Exercícios}
+  Exemplo: o tempo de espera, em minutos, para o atendimento em uma
+  central telefônica, para homens e mulheres, foi registrado e está
+  disponível abaixo
+  \begin{center}
+    Homens: \texttt{5 2 7 9 3 4 3 1 3 8}\\
+    Mulheres: \texttt{3 5 7 4 5 6 7 6 5 4}
+  \end{center}
+  \begin{itemize}
+  \item[a)] Monte o resumo dos cinco números e o box plot para
+    homens e mulheres \textbf{juntos}. Use algum critério para comentar
+    sobre a simetria da distribuição.
+  \item[b)] Monte o resumo dos cinco números e o gráfico de caixa para
+    homens e mulheres \textbf{separados} (mas em um mesmo gráfico). Use
+    algum critério para comentar sobre a simetria de cada distribuição.
+  \end{itemize}
+
+\end{frame}
+
+\begin{frame}[fragile]{Exercícios}
+Item a) \\~\\
+Resumo dos cinco números
+\begin{knitrout}\footnotesize
+\definecolor{shadecolor}{rgb}{0.969, 0.969, 0.969}\color{fgcolor}\begin{kframe}
+\begin{verbatim}
+x(1)   Q1   Q2   Q3 x(n) 
+ 1.0  3.0  5.0  6.5  9.0 
+\end{verbatim}
+\end{kframe}
+\end{knitrout}
+Box plot
+\begin{knitrout}\footnotesize
+\definecolor{shadecolor}{rgb}{0.969, 0.969, 0.969}\color{fgcolor}
+
+{\centering \includegraphics[width=.6\textwidth]{figure/unnamed-chunk-25-1} 
+
+}
+
+
+
+\end{knitrout}
+\end{frame}
+
+\begin{frame}[fragile]{Exercícios}
+Item b) \\~\\
+Resumo dos cinco números
+\begin{knitrout}\footnotesize
+\definecolor{shadecolor}{rgb}{0.969, 0.969, 0.969}\color{fgcolor}\begin{kframe}
+\begin{alltt}
+\hlcom{## Homens}
+\end{alltt}
+\begin{verbatim}
+x(1)   Q1   Q2   Q3 x(n) 
+ 1.0  3.0  3.5  7.0  9.0 
+\end{verbatim}
+\begin{alltt}
+\hlcom{## Mulheres}
+\end{alltt}
+\begin{verbatim}
+x(1)   Q1   Q2   Q3 x(n) 
+   3    4    5    6    7 
+\end{verbatim}
+\end{kframe}
+\end{knitrout}
+Box plot
+\begin{knitrout}\footnotesize
+\definecolor{shadecolor}{rgb}{0.969, 0.969, 0.969}\color{fgcolor}
+
+{\centering \includegraphics[width=.5\textwidth]{figure/unnamed-chunk-27-1} 
+
+}
+
+
+
+\end{knitrout}
+\end{frame}
 
 \begin{frame}{Referências}
   \begin{itemize}
-  \item Magalhães, MN; Lima, ACP. \textbf{Noções de Probabilidade e
-    Estatística}. São Paulo: EDUSP, 2008. [Cap. 1]
   \item Bussab, WO; Morettin, PA. \textbf{Estatística básica}. São
     Paulo: Saraiva, 2006. 526 p. [Cap. 3]
+  \item Magalhães, MN; Lima, ACP. \textbf{Noções de Probabilidade e
+    Estatística}. São Paulo: EDUSP, 2008. [Cap. 1]
   \end{itemize}
 \end{frame}
 
