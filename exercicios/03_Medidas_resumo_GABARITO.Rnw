@@ -342,6 +342,12 @@ boxplot(data.frame(port, mat), ylim = c(0,40))
 \hrule
 \vspace{0.3cm}
 
+\clearpage
+
+\vspace{0.3cm}
+\hrule
+\vspace{0.3cm}
+
 \begin{compactenum}[5.] % magalhaes, pg 31
 \item Deseja-se comparar três técnicas cirúrgicas para a extração do
   dente siso. Cada uma das técnicas foi aplicada a 30 pacientes, e os
@@ -506,9 +512,10 @@ plot(h, freq = FALSE, main = "",
 @
 \item Qual a porcentagem das observações compreendidas entre $\bar{x} -
   2s$ e $\bar{x} + 2s$, \textit{aproximadamente}?
-<<echo=FALSE>>=
-## Cobertura
+<<echo=c(1,3,11,12)>>=
+## xbarra - 2s
 mex16 - 2*sex16
+## xbarra + 2s
 mex16 + 2*sex16
 ## Usando as frequências acumuladas, podemos ter ideia do percentual de
 ## valores entre estes dois extremos
@@ -516,6 +523,8 @@ Fi <- cumsum(fi)
 Fri <- Fi/n
 ## data.frame(ex16, "Fi" = Fi, "Fri" = Fri)
 ## Portanto, entre a 2 e a 7 classe, estão compreendidos
+## Percentual aproximado de observações nesse intervalo (use as
+## frequências acumuladas relativas e o ponto médio das classes)
 Fri[7] - Fri[2]
 @
 \item Calcule a mediana
@@ -554,7 +563,7 @@ pm <- (li + ls)/2
 (vex20 <- sum(pm^2 * fri) - sum(pm * fri)^2)
 ## Desvio-padrão
 (sex20 <- sqrt(vex20))
-## Mediana
+## Mediana (pela frequência acumulada relativa)
 3
 @
 \item Se for concedido um aumento de 100\% para todos os 120
@@ -565,10 +574,10 @@ pm <- (li + ls)/2
 pm2 <- 2 * pm
 ## Média ---------------------------------------------------------------
 (mex202 <- sum(pm2 * fri))
-## A média é multiplicada por 2
+## Sim, a média é multiplicada por 2
 ## Variância -----------------------------------------------------------
 (vex202 <- sum(pm2^2 * fri) - sum(pm2 * fri)^2)
-## A variância é multiplicada por 4
+## Sim, a variância é multiplicada por 4
 @
 \item Se for concedido um abono de dois salários mínimos para todos os
   120 funcionários, haverá alteração na média? E na mediana? E na
@@ -578,16 +587,22 @@ pm2 <- 2 * pm
 pm3 <- pm + 2
 ## Média ---------------------------------------------------------------
 (mex203 <- sum(pm3 * fri))
-## A média aumenta em duas unidades
+## Sim, a média aumenta em duas unidades
 ## Mediana -------------------------------------------------------------
 pm3[2]
-## A mediana aumenta em duas unidades
+## Sim, a mediana aumenta em duas unidades
 ## Variância -----------------------------------------------------------
 (vex203 <- sum(pm3^2 * fri) - sum(pm3 * fri)^2)
-## A variância não se altera
+## Não, a variância não se altera
 @
 \end{compactenum}
 \end{compactenum}
+
+\vspace{0.3cm}
+\hrule
+\vspace{0.3cm}
+
+\clearpage
 
 \vspace{0.3cm}
 \hrule
@@ -642,6 +657,10 @@ z[z < -2 | z > 2]
 ex38[z < -2 | z > 2]
 @
 \item Interprete o significado de $Z$.
+<<>>=
+## Z é uma variável padronizada, que mede o número de desvios-padrões
+## que cada observação se afasta da média.
+@
 \end{compactenum}
 \end{compactenum}
 
