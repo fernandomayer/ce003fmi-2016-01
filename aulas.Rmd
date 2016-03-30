@@ -23,13 +23,16 @@ classe aplicadas.
   [Slides](03_Medidas_resumo/03_Medidas_resumo.pdf)
 - **28/03**: Medidas resumo: medidas de variabilidade.
   [Slides](03_Medidas_resumo/03_Medidas_resumo.pdf)
-
+- **30/03**: Medidas resumo: medidas de posição relativa.
+  [Slides](03_Medidas_resumo/03_Medidas_resumo.pdf)
+- **04/04**: Sabatina 2
 
 ## Exercícios
 
 - [Lista 1][]: amostragem e análise exploratória de dados. [Gabarito 1][].
-
+- [Lista 2][]: Medidas resumo.
 
 
 [Lista 1]: exercicios/01_Amostragem_e_Exploratoria.pdf
 [Gabarito 1]: exercicios/01_Amostragem_e_Exploratoria_GABARITO.pdf
+[Lista 2]: exercicios/03_Medidas_resumo.pdf
