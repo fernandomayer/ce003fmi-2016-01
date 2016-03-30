@@ -30,9 +30,10 @@ classe aplicadas.
 ## Exercícios
 
 - [Lista 1][]: amostragem e análise exploratória de dados. [Gabarito 1][].
-- [Lista 2][]: Medidas resumo.
+- [Lista 2][]: Medidas resumo. [Gabarito 2][]
 
 
 [Lista 1]: exercicios/01_Amostragem_e_Exploratoria.pdf
 [Gabarito 1]: exercicios/01_Amostragem_e_Exploratoria_GABARITO.pdf
 [Lista 2]: exercicios/03_Medidas_resumo.pdf
+[Gabarito 2]: exercicios/03_Medidas_resumo_GABARITO.pdf
