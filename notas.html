@@ -11,7 +11,7 @@
 
 
 
-<title>Histórico das aulas do curso</title>
+<title>Notas</title>
 
 <script src="libs/jquery-1.11.3/jquery.min.js"></script>
 <meta name="viewport" content="width=device-width, initial-scale=1" />
@@ -241,33 +241,202 @@ $(document).ready(function () {
 </ul>
 </div>
 
-<h1 class="title">Histórico das aulas do curso</h1>
+<h1 class="title">Notas</h1>
 
 </div>
 
 
-<p>Abaixo o histórico de atividades realizadas em classe e atividades extra classe aplicadas.</p>
-<ul>
-<li><strong>07/03</strong>: Apresentação da disciplina (em função da troca de professores)</li>
-<li><strong>09/03</strong>: Conceitos de amostragem. <a href="01_introducao_e_amostragem/01_Introducao_a_Estatistica_e_amostragem.pdf">Slides</a></li>
-<li><strong>14/03</strong>: Classificação de variáveis. Análise exploratória de dados. <a href="02_Analise_Exploratoria_de_Dados.html">Material</a></li>
-<li><strong>16/03</strong>: Análise exploratória de dados: variáveis quantitativas contínuas. <a href="02_Analise_Exploratoria_de_Dados.html">Material</a></li>
-<li><strong>21/03</strong>: Sabatina 1</li>
-<li><strong>23/03</strong>: Medidas resumo: medidas de tendência central. <a href="03_Medidas_resumo/03_Medidas_resumo.pdf">Slides</a></li>
-<li><strong>28/03</strong>: Medidas resumo: medidas de variabilidade. <a href="03_Medidas_resumo/03_Medidas_resumo.pdf">Slides</a></li>
-<li><strong>30/03</strong>: Medidas resumo: medidas de posição relativa. <a href="03_Medidas_resumo/03_Medidas_resumo.pdf">Slides</a></li>
-<li><strong>04/04</strong>: Sabatina 2</li>
-</ul>
-<div id="exercicios" class="section level2">
-<h2>Exercícios</h2>
-<ul>
-<li><a href="exercicios/01_Amostragem_e_Exploratoria.pdf">Lista 1</a>: amostragem e análise exploratória de dados. <a href="exercicios/01_Amostragem_e_Exploratoria_GABARITO.pdf">Gabarito 1</a>.</li>
-<li><a href="exercicios/03_Medidas_resumo.pdf">Lista 2</a>: Medidas resumo. <a href="exercicios/03_Medidas_resumo_GABARITO.pdf">Gabarito 2</a></li>
-</ul>
+<div id="histograma-e-box-plot-geral-por-enquanto-apenas-s1" class="section level2">
+<h2>Histograma e box plot geral (por enquanto apenas S1)</h2>
+<pre class="r"><code>## Grafico geral das medias
+breaks &lt;- 0:10
+## table(cut(notas$S1, breaks = breaks,
+##           right = FALSE, include.lowest = TRUE))
+hist(notas$S1, breaks = breaks, right = FALSE, include.lowest = TRUE,
+     main = &quot;Notas gerais&quot;, xlab = &quot;Notas&quot;, ylab = &quot;Frequência absoluta&quot;)
+boxplot(notas$S1, horizontal = TRUE, ylim = c(0, 10),
+        col = &quot;lightgray&quot;, add = TRUE)</code></pre>
+<p><img src="figures/unnamed-chunk-2-1.png" title="" alt="" width="640" style="display: block; margin: auto;" /></p>
 </div>
-<div id="notas" class="section level2">
-<h2>Notas</h2>
-<p>As notas estão disponíveis <a href="notas.html">nesta página</a>.</p>
+<div id="box-plot-da-s1" class="section level2">
+<h2>Box plot da S1</h2>
+<pre class="r"><code>## Boxplots comparando as notas entre sabatinas
+boxplot(notas$S1, ylim = c(0, 10), names = &quot;S1&quot;, ylab = &quot;Notas&quot;)</code></pre>
+<p><img src="figures/unnamed-chunk-3-1.png" title="" alt="" width="640" style="display: block; margin: auto;" /></p>
+</div>
+<div id="notas-individuais" class="section level2">
+<h2>Notas indivíduais</h2>
+<pre class="r"><code>kable(notas, align = c(&quot;c&quot;, &quot;c&quot;))</code></pre>
+<table>
+<thead>
+<tr class="header">
+<th align="center">Matricula</th>
+<th align="center">S1</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="center">20124646</td>
+<td align="center">6.0</td>
+</tr>
+<tr class="even">
+<td align="center">20124652</td>
+<td align="center">NA</td>
+</tr>
+<tr class="odd">
+<td align="center">20136720</td>
+<td align="center">9.5</td>
+</tr>
+<tr class="even">
+<td align="center">20149073</td>
+<td align="center">8.0</td>
+</tr>
+<tr class="odd">
+<td align="center">20149110</td>
+<td align="center">7.3</td>
+</tr>
+<tr class="even">
+<td align="center">20149145</td>
+<td align="center">7.5</td>
+</tr>
+<tr class="odd">
+<td align="center">20150149</td>
+<td align="center">4.5</td>
+</tr>
+<tr class="even">
+<td align="center">20150417</td>
+<td align="center">9.0</td>
+</tr>
+<tr class="odd">
+<td align="center">20150452</td>
+<td align="center">8.7</td>
+</tr>
+<tr class="even">
+<td align="center">20150470</td>
+<td align="center">8.5</td>
+</tr>
+<tr class="odd">
+<td align="center">20150836</td>
+<td align="center">9.0</td>
+</tr>
+<tr class="even">
+<td align="center">20150978</td>
+<td align="center">9.8</td>
+</tr>
+<tr class="odd">
+<td align="center">20151292</td>
+<td align="center">9.5</td>
+</tr>
+<tr class="even">
+<td align="center">20151516</td>
+<td align="center">9.0</td>
+</tr>
+<tr class="odd">
+<td align="center">20152147</td>
+<td align="center">7.5</td>
+</tr>
+<tr class="even">
+<td align="center">20152591</td>
+<td align="center">9.0</td>
+</tr>
+<tr class="odd">
+<td align="center">20152736</td>
+<td align="center">NA</td>
+</tr>
+<tr class="even">
+<td align="center">20152967</td>
+<td align="center">NA</td>
+</tr>
+<tr class="odd">
+<td align="center">20152988</td>
+<td align="center">8.5</td>
+</tr>
+<tr class="even">
+<td align="center">20153016</td>
+<td align="center">9.8</td>
+</tr>
+<tr class="odd">
+<td align="center">20153599</td>
+<td align="center">9.5</td>
+</tr>
+<tr class="even">
+<td align="center">20153646</td>
+<td align="center">10.0</td>
+</tr>
+<tr class="odd">
+<td align="center">20154101</td>
+<td align="center">9.7</td>
+</tr>
+<tr class="even">
+<td align="center">20154112</td>
+<td align="center">8.5</td>
+</tr>
+<tr class="odd">
+<td align="center">20154179</td>
+<td align="center">9.5</td>
+</tr>
+<tr class="even">
+<td align="center">20154443</td>
+<td align="center">10.0</td>
+</tr>
+<tr class="odd">
+<td align="center">20154966</td>
+<td align="center">10.0</td>
+</tr>
+<tr class="even">
+<td align="center">20155156</td>
+<td align="center">6.0</td>
+</tr>
+<tr class="odd">
+<td align="center">20155208</td>
+<td align="center">9.0</td>
+</tr>
+<tr class="even">
+<td align="center">20156753</td>
+<td align="center">9.8</td>
+</tr>
+<tr class="odd">
+<td align="center">20157092</td>
+<td align="center">9.0</td>
+</tr>
+<tr class="even">
+<td align="center">20157880</td>
+<td align="center">9.5</td>
+</tr>
+<tr class="odd">
+<td align="center">20158399</td>
+<td align="center">9.0</td>
+</tr>
+<tr class="even">
+<td align="center">20159053</td>
+<td align="center">9.0</td>
+</tr>
+<tr class="odd">
+<td align="center">20159109</td>
+<td align="center">9.5</td>
+</tr>
+<tr class="even">
+<td align="center">20159160</td>
+<td align="center">9.0</td>
+</tr>
+<tr class="odd">
+<td align="center">20159633</td>
+<td align="center">9.0</td>
+</tr>
+<tr class="even">
+<td align="center">20159711</td>
+<td align="center">9.3</td>
+</tr>
+<tr class="odd">
+<td align="center">20159781</td>
+<td align="center">8.0</td>
+</tr>
+<tr class="even">
+<td align="center">20159917</td>
+<td align="center">9.0</td>
+</tr>
+</tbody>
+</table>
 </div>
 
 <center>
