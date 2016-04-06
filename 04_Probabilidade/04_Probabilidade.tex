@@ -142,7 +142,7 @@
   \vspace{1em}
   \begin{flushright}
     --- Pierre Simon Laplace\\
-    \textbf{Ensaio Filosófico Sobre as Probabilidades (1902)}
+    \textbf{Ensaio Filosófico Sobre as Probabilidades (1812)}
   \end{flushright}
 \end{frame}
 
@@ -152,7 +152,7 @@ desenvolve e pesquisa \textbf{modelos} que podem ser utilizados para
 estudar \textbf{experimentos ou fenômenos aleatórios} \\~\\
 A \textbf{Inferência Estatística} é totalmente fundamentada na
 \textbf{Teoria das Probabilidades} \\~\\
-O modelo utilizado para estudar um fenômeno aleatório pode variar em
+O \textbf{modelo} utilizado para estudar um fenômeno aleatório pode variar em
 complexidade, mas todos eles possuem ingredientes básicos comuns.
 \end{frame}
 
@@ -262,6 +262,31 @@ Um experimento, que ao ser realizado sob as mesmas condições não
     \end{description}
   \end{block}
   \normalsize
+\end{frame}
+
+\begin{frame}{Exemplos}
+\begin{small}
+  \textbf{Exemplo 1}: Considere um experimento em que você seleciona
+  uma peça plástica moldada, e mede sua espessura.
+  \begin{enumerate}
+  \item Qual o espaço amostral?
+  \item Se é sabido que as peças só podem variar entre 10 e 11 mm de
+    espessura, qual o espaço amostral?
+  \item Se o objetivo da análise for considerar apenas o fato de uma
+    peça ter espessura baixa, média ou alta, qual o espaço amostral?
+  \item Se o objetivo for considerar o fato de uma peça obedecer ou não
+    às especificações, qual o espaço amostral?
+  \end{enumerate}
+  \textbf{Exemplo 2}: Duas peças plásticas são selecionadas e medidas.
+  \begin{enumerate}
+  \item Se o objetivo é verificar se cada peça obedece ou não às
+    especificações, qual o espaço amostral?
+  \item Se o objetivo for somente o número de peças não conformes na
+    amostra, qual o espaço amostral?
+  \item Considere que a espessura é medida até que se encontre a
+    primeira peça fora das especificações. Qual o espaço amostral?
+  \end{enumerate}
+\end{small}
 \end{frame}
 
 \begin{frame}{Operações com eventos}
@@ -387,6 +412,17 @@ Um experimento, que ao ser realizado sob as mesmas condições não
     \end{itemize}
   \end{itemize}
 \end{frame}
+
+\begin{frame}[fragile]{Exemplo}
+  Sendo $A$ e $B$ dois eventos em um mesmo espaço amostral, ``traduza''
+  para a linguagem da Teoria dos Conjuntos as seguintes situações: \\~\\
+  \begin{itemize}
+  \item[a)] Pelo menos um dos eventos ocorre
+  \item[b)] O evento $A$ ocorre, mas $B$ não
+  \item[c)] Nenhum deles ocorre
+  \end{itemize}
+\end{frame}
+
 
 \section{Probabilidade}
 
@@ -675,38 +711,31 @@ Um experimento, que ao ser realizado sob as mesmas condições não
   \begin{itemize}
   \item[i)] $P(\Omega) = 1$; $P(\varnothing) = 0$
   \item[ii)] $0 \leq P(A) \leq 1$ %, \quad \forall A \subset \Omega$
-  %% \item[iii)] $P(\bigcup_{i=1}^{n} A_i) = \sum_{i=1}^{n} P(A_i) \quad\quad
-  %%   \text{quando}\quad A_i \cap A_j = \varnothing \,, \forall\, i \neq j$
+  \item[iii)] $P(A \cup B) = P(A) + P(B) \quad\quad
+    \text{se, e seomente se}\quad A \cap B = \varnothing$
   \end{itemize}
+  \vspace{1em}
+  Os axiomas asseguram que as probabilidades podem ser interpretadas
+  como \textbf{frequências relativas}.
 \end{frame}
 
-\begin{frame}[fragile]{Exemplos}
-  Para cada um dos casos abaixo, escreva o espaço amostral $\Omega$ e
-  conte seus elementos
-  \begin{itemize}
-  \item[a)] Uma urna contém 5 bolas brancas e 5 bolas azuis. Duas bolas
-    são selecionadas ao acaso, \textbf{com reposição}, e as cores são
-    anotadas.
-  \item[b)] Dois dados são lançados simultaneamente, e estamos
-    interessados na soma das faces observadas.
-  \item[c)] Em uma cidade, famílias com 3 crianças são selecionadas ao
-    acaso, anotando-se o sexo de cada uma delas, de acordo com a idade.
-  \end{itemize}
-\end{frame}
-
-\begin{frame}[fragile]{Exemplos}
-  Sendo $A$ e $B$ dois eventos em um mesmo espaço amostral, ``traduza''
-  para a linguagem da Teoria dos Conjuntos as seguintes situações:
-  \begin{itemize}
-  \item[a)] Pelo menos um dos eventos ocorre
-  \item[b)] O evento $A$ ocorre, mas $B$ não
-  \item[c)] Nenhum deles ocorre
-  \end{itemize}
-\end{frame}
+% \begin{frame}[fragile]{Exemplos}
+%   Para cada um dos casos abaixo, escreva o espaço amostral $\Omega$ e
+%   conte seus elementos \\~\\
+%   \begin{itemize}
+%   \item[a)] Uma urna contém 5 bolas brancas e 5 bolas azuis. Duas bolas
+%     são selecionadas ao acaso, \textbf{com reposição}, e as cores são
+%     anotadas.
+%   \item[b)] Dois dados são lançados simultaneamente, e estamos
+%     interessados na soma das faces observadas.
+%   \item[c)] Em uma cidade, famílias com 3 crianças são selecionadas ao
+%     acaso, anotando-se o sexo de cada uma delas, de acordo com a idade.
+%   \end{itemize}
+% \end{frame}
 
 \begin{frame}[fragile]{Exemplos}
   Lançam-se 3 moedas. Determine o espaço amostral. Para cada um dos
-  eventos abaixo, descreva os conjuntos e determine as probabilidades:
+  eventos abaixo, descreva os conjuntos e determine as probabilidades: \\~\\
   \begin{itemize}
   \item[a)] Faces iguais
   \item[b)] Cara na 1$^a$ moeda
