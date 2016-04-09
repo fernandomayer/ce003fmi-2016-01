@@ -134,7 +134,7 @@ source("~/GitHub/Rutilities/freq.tab.R")
   Estatística II --- CE003 \\
   Prof. Fernando de Pol Mayer --- Departamento de Estatística --- DEST \\
   Exercícios: probabilidade \\
-  Nome: GABARITO  \hfill GRR: \hspace{2cm}
+  Nome:   \hfill GRR: \hspace{2cm}
 \end{minipage}\hfill
 \begin{minipage}[c]{.15\textwidth}
 \flushright
