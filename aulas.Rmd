@@ -26,6 +26,15 @@ classe aplicadas.
 - **30/03**: Medidas resumo: medidas de posição relativa.
   [Slides](03_Medidas_resumo/03_Medidas_resumo.pdf)
 - **04/04**: Sabatina 2
+- **06/04**: Probabilidade: experimentos, eventos e conjuntos.
+  [Slides](04_Probabilidade/04_Probabilidade.pdf)
+- **11/04**: Probabilidade: definição clássica e frequentista. Regra da
+  adição. Probabilidade condicional.
+  [Slides](04_Probabilidade/04_Probabilidade.pdf)
+- **13/04**: Sem aula
+- **18/04**: Probabilidade: regra da multiplicação e independência entre
+  eventos. [Slides](04_Probabilidade/04_Probabilidade.pdf)
+- **20/04**: Sabatina 3
 
 ## Exercícios
 
