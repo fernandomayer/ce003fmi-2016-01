@@ -17,6 +17,8 @@
 \usepackage{xfrac}
 \usepackage{tikz}
 \usepackage{xcolor}
+\usepackage{multirow}
+\usepackage{multicol}
 
 \setbeamertemplate{footline}[frame number] % mostra o numero dos slides
 \setbeamertemplate{navigation symbols}{} % retira a barra de navegacao
@@ -410,7 +412,7 @@ Um experimento, que ao ser realizado sob as mesmas condições não
 \begin{frame}{Definições de probabilidade}
   \textbf{Definição Clássica}\\~\\
   Consideramos um espaço amostral $\Omega$ com $n(\Omega)$ eventos simples,
-  supondo que sejam igualmente prováveis. Seja $A$ um evento de
+  supondo que sejam \textbf{igualmente prováveis}. Seja $A$ um evento de
   $\Omega$, composto de $n(A)$ eventos simples. A probabilidade de $A$,
   $P(A)$ será
   \begin{equation*}
@@ -600,6 +602,7 @@ sum(x == 4)/length(x)
 
   As probabilidades calculadas a partir de frequências relativas, são
   \textbf{estimativas} da verdadeira probabilidade
+  \vspace{1em}
   \begin{block}{Lei dos Grandes Números}
     A Lei dos Grandes Números nos diz que as estimativas dadas pelas
     frequências relativas tendem a ficar melhores com mais observações.
@@ -1000,6 +1003,32 @@ $C$ = face 4, dado que ocorreu face par = $\{4\}$, $n(C) = 1
   homem, dado que é da turma B?
 \end{frame}
 
+\begin{frame}{Exemplo}
+  A tabela abaixo fornece um exemplo de 400 itens classificados por
+  falhas ($F$ = com falha, $F^c$ = sem falha) na superfície e como
+  defeituosos ($D$ = defeituoso, $D^c$ = não defeituoso).
+  \begin{table}[!h]
+    \centering
+    \begin{tabular}{lcc}
+      \hline
+      \multirow{2}{*}{\textbf{Defeituoso}}
+      & \multicolumn{2}{l}{\textbf{Falhas}} \\
+      \cline{2-3}
+                & $F$         & $F^c$       \\
+      \hline
+      $D$      & 10           & 18           \\
+      $D^c$     & 30           & 342           \\
+      \hline
+    \end{tabular}
+  \end{table}
+  Calcule:
+  \begin{itemize}
+  \item $P(D)$
+  \item $P(D|F)$
+  \item $P(D|F^c)$
+  \end{itemize}
+\end{frame}
+
 \subsection{Regra da multiplicação}
 
 \begin{frame}[fragile]{Regra da multiplicação}
@@ -1071,6 +1100,22 @@ $C$ = face 4, dado que ocorreu face par = $\{4\}$, $n(C) = 1
 %% a). Este ultimo mostra que a probabilidade nao muda quando tem
 %% reposicao e portanto os eventos sao independentes. Ja da o gancho
 %% para o proximo topico...
+
+\begin{frame}{Exemplo}
+  \begin{enumerate}
+  \item Num lote de 12 peças, 4 são defeituosas. Três peças são
+    retiradas aleatoriamente, uma após a outra, sem reposição. Encontre
+    a probabilidade de todas essas três peças serem não-defeituosas.
+  \item Qual a probabilidade de se obter dois ases em seguida, quando se
+    extraem duas cartas de um baralho comum de 52 cartas, se:
+    \begin{enumerate}
+    \item A primeira carta extraída não é reposta antes da extração da
+      segunda carta.
+    \item A primeira carta é reposta no baralho antes da extração da
+      segunda carta.
+    \end{enumerate}
+  \end{enumerate}
+\end{frame}
 
 \subsection{Independência de eventos}
 
@@ -1181,6 +1226,33 @@ $C$ = face 4, dado que ocorreu face par = $\{4\}$, $n(C) = 1
   \end{enumerate}
 \end{frame}
 
+\begin{frame}{Exemplo}
+  A tabela abaixo fornece um exemplo de 400 itens classificados por
+  falhas ($F$ = com falha, $F^c$ = sem falha) na superfície e como
+  defeituosos ($D$ = defeituoso, $D^c$ = não defeituoso).
+  \begin{table}[!h]
+    \centering
+    \begin{tabular}{lcc}
+      \hline
+      \multirow{2}{*}{\textbf{Defeituoso}}
+      & \multicolumn{2}{l}{\textbf{Falhas}} \\
+      \cline{2-3}
+                & $F$         & $F^c$       \\
+      \hline
+      $D$      & 2           & 18           \\
+      $D^c$     & 38           & 342           \\
+      \hline
+    \end{tabular}
+  \end{table}
+  Calcule:
+  \begin{itemize}
+  \item $P(D)$
+  \item $P(D|F)$
+  \item Compare estes resultados com aqueles do slide 51, e verifique,
+    em cada caso, se os eventos $D$ e $F$ são independentes.
+  \end{itemize}
+\end{frame}
+
 % \subsection{Exercícios}
 
 % \begin{frame}[fragile]{Exercícios}
@@ -1198,9 +1270,9 @@ $C$ = face 4, dado que ocorreu face par = $\{4\}$, $n(C) = 1
 \begin{frame}{Referências}
   \begin{itemize}
   \item Bussab, WO; Morettin, PA. \textbf{Estatística básica}. São
-    Paulo: Saraiva, 2006. [Cap. 3]
+    Paulo: Saraiva, 2006. [Cap. 5]
   \item Magalhães, MN; Lima, ACP. \textbf{Noções de Probabilidade e
-      Estatística}. São Paulo: EDUSP, 2008. [Cap. 5]
+      Estatística}. São Paulo: EDUSP, 2008. [Cap. 2]
   \item Montgomery, DC; Runger, GC. \textbf{Estatística aplicada e
       probabilidade para engenheiros}. Rio de Janeiro: LTC Editora,
     2012. [Cap. 2]
