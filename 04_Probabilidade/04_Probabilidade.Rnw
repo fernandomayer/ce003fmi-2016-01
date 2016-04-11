@@ -710,6 +710,7 @@ sum(x == 4)/length(x)
 
 \begin{frame}[fragile]{Regra da adição}
   Não é difícil ver que estamos somando alguns indivíduos 2 vezes, pois:
+  \\~\\
   \begin{itemize}
   \item Ao considerarmos apenas estudantes do sexo feminino, temos
     estudantes da turma A bem como da turma B
@@ -912,7 +913,7 @@ sum(x == 4)/length(x)
 
 \begin{frame}{Probabilidade condicional}
  Para entender a ideia de probabilidade condicional, considere o
- seguinte exemplo:
+ seguinte exemplo: \\~\\
  \begin{itemize}
  \item Um dado foi lançado, qual é a probabilidade de ter ocorrido face
    4?
@@ -968,7 +969,7 @@ $C$ = face 4, dado que ocorreu face par = $\{4\}$, $n(C) = 1
 
 \begin{frame}{Probabilidade condicional}
   Dessa forma, temos duas maneiras de calcular a probabilidade
-  condicional $P(A|B)$
+  condicional $P(A|B)$: \\~\\
   \begin{enumerate}
   \item Diretamente, pela consideração da probabilidade de $A$ em
     relação ao espaço amostral reduzido $B$
@@ -1103,7 +1104,7 @@ $C$ = face 4, dado que ocorreu face par = $\{4\}$, $n(C) = 1
 
 \begin{frame}{Independência de eventos}
   Dessa forma, podemos verificar se dois eventos são independentes de
-  duas formas
+  duas formas: \\~\\
   \begin{enumerate}
   \item Pela definição intuitiva
     \begin{align*}
@@ -1180,33 +1181,29 @@ $C$ = face 4, dado que ocorreu face par = $\{4\}$, $n(C) = 1
   \end{enumerate}
 \end{frame}
 
-\subsection{Exercícios}
+% \subsection{Exercícios}
 
-\begin{frame}[fragile]{Exercícios}
-  Exercícios 1--20, do capítulo 5 do livro (pgs. 135--141).
-  \vspace{1em}
-  \begin{itemize}
-  \item[] Pinto, SS; Silva, CS. \textbf{Estatística, Vol I}. Rio Grande:
-    Editora da FURG, 2010. [Cap. 5]
-  \end{itemize}
-\end{frame}
+% \begin{frame}[fragile]{Exercícios}
+%   Exercícios 1--20, do capítulo 5 do livro (pgs. 135--141).
+%   \vspace{1em}
+%   \begin{itemize}
+%   \item[] Pinto, SS; Silva, CS. \textbf{Estatística, Vol I}. Rio Grande:
+%     Editora da FURG, 2010. [Cap. 5]
+%   \end{itemize}
+% \end{frame}
+
+\section{Referências}
+
 
 \begin{frame}{Referências}
-  \textbf{Referências Básicas}
   \begin{itemize}
+  \item Bussab, WO; Morettin, PA. \textbf{Estatística básica}. São
+    Paulo: Saraiva, 2006. [Cap. 3]
   \item Magalhães, MN; Lima, ACP. \textbf{Noções de Probabilidade e
-      Estatística}. São Paulo: EDUSP, 2008. [Cap. 2]
-  \item Pinto, SS; Silva, CS. \textbf{Estatística, Vol I}. Rio Grande:
-    Editora da FURG, 2010. [Cap. 5]
-  \end{itemize}
-  \textbf{Referências Complementares}
-  \begin{itemize}
-  \item Kazmier, LJ. \textbf{Estatística Aplicada à Administração e
-      Economia}. Porto Alegre: Bookman. 2006. [Cap. 5]
-  %% \item Triola, MF. \textbf{Introdução à Estatística}. Rio de Janeiro:
-  %%   LTC. 2008. [Cap. 3]
-  %% \item Bussab, WO; Morettin, PA. \textbf{Estatística básica}. São
-  %%   Paulo: Saraiva, 2002. 526 p. [Cap. 2]
+      Estatística}. São Paulo: EDUSP, 2008. [Cap. 5]
+  \item Montgomery, DC; Runger, GC. \textbf{Estatística aplicada e
+      probabilidade para engenheiros}. Rio de Janeiro: LTC Editora,
+    2012. [Cap. 2]
   \end{itemize}
 \end{frame}
 
