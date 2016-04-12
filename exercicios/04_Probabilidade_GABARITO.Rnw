@@ -153,7 +153,7 @@ source("~/GitHub/Rutilities/freq.tab.R")
   \item Uma moeda é lançada duas vezes e observam-se as faces obtidas.
   \item Um dado é lançado duas vezes e a ocorrência de face par ou ímpar
     é observada.
-  \item Uma urna contém 10 bolas azuis e 10 vernelhas. Três bolas são
+  \item Uma urna contém 10 bolas azuis e 10 vermelhas. Três bolas são
     selecionadas ao acaso, com reposição, e as cores são anotadas.
   \item Dois dados são lançados simultaneamente e estamos interessados
     na soma das faces observadas.
@@ -171,7 +171,7 @@ source("~/GitHub/Rutilities/freq.tab.R")
     selecionado, e anota-se o número de fichas selecionadas.
   \item Uma moeda é lançada consecutivamente até o aparecimento da
     primeira cara e anota-se o número de lançamentos.
-  \item De um grupo de 5 pessoas ${A, B, C, D, E}$, soteiam-se duas, uma
+  \item De um grupo de 5 pessoas $\{A, B, C, D, E\}$, soteiam-se duas, uma
     após a outra, com reposição, e anota-se a configuração obtida.
   \item Mesmo enunciado anterior, mas sem reposição.
   \item Mesmo enunciado anterior, mas as duas selecionadas
@@ -266,6 +266,12 @@ source("~/GitHub/Rutilities/freq.tab.R")
 \hrule
 \vspace{0.3cm}
 
+\clearpage
+
+\vspace{0.3cm}
+\hrule
+\vspace{0.3cm}
+
 % Bussab, pg 113, cap. 5
 \item Considere o lançamento de dois dados. Considere os eventos $A$ =
   ``soma dos números obtidos igual a 9'', e $B$ = ``número no primeiro
@@ -320,10 +326,42 @@ source("~/GitHub/Rutilities/freq.tab.R")
 \hrule
 \vspace{0.3cm}
 
+% Montgomery, pg. 26, cap 2
+\item Se $P(A) = 0,3$, $P(B) = 0,2$, e $P(A \cap B) = 0,1$. Determine as
+  probabilidades: \\
+    \begin{inparaenum}
+    \item $P(A^c)$ \,
+    \item $P(A \cup B)$ \,
+    \item $P(A^c \cap B)$ \,
+    \item $P(A \cap B^c)$ \,
+    \item $P([A \cup B]^c)$ \,
+    \item $P(A^c \cup B)$
+    \end{inparaenum}
+
+\vspace{0.3cm}
+\hrule
+\vspace{0.3cm}
+
+% Montgomery, pg. 27, cap 2
+\item Se $A$, $B$, e $C$ forem eventos mutuamente exclusivos, com $P(A)
+  = 0,2$, $P(B) = 0,3$, e $P(C) = 0,4$. Determine as
+  probabilidades: \\
+    \begin{inparaenum}
+    \item $P(A \cup B \cup C)$ \,
+    \item $P(A \cap B \cap C)$ \,
+    \item $P(A \cap B)$ \,
+    \item $P([A \cup B] \cap C)$ \,
+    \item $P(A^c \cap B^c \cap C^c)$
+    \end{inparaenum}
+
+\vspace{0.3cm}
+\hrule
+\vspace{0.3cm}
+
 % Montgomery, pg 19, cap 2
-\item Discos de plático de policarbonato, provenientes de um fornecedor,
-  são analisados com relação à resistência a arranhões e a choque. Os
-  resultados de 100 discos estão resumidos a seguir:
+\item Discos de plástico de policarbonato, provenientes de um fornecedor,
+  são analisados com relação à resistência a arranhões e a choques. Os
+  resultados de uma amostra de 100 discos estão resumidos a seguir:
   \begin{table}[!h]
     \centering
     \begin{tabular}{lcc}
@@ -351,7 +389,9 @@ source("~/GitHub/Rutilities/freq.tab.R")
     \item $P(A^{c})$ \,
     \item $P(A \cap B)$ \,
     \item $P(A \cup B)$ \,
-    \item $P(A^{c} \cup B)$
+    \item $P(A^{c} \cup B)$ \,
+    \item $P(A|B)$ \,
+    \item $P(B|A)$
     \end{inparaenum}
   \item Se um disco for selecionado ao acaso, qual será a probabilidade
     de sua resistência a arranhões ser alta e de sua resistência a
@@ -360,7 +400,174 @@ source("~/GitHub/Rutilities/freq.tab.R")
     de sua resistência a arranhões ser alta ou de sua resistência a
     choque ser alta?
   \item Os eventos $A$ e $B$ são mutuamente exclusivos?
+  \item Os eventos $A$ e $B$ são independentes?
   \end{compactenum}
+
+\vspace{0.3cm}
+\hrule
+\vspace{0.3cm}
+
+% magalhaes pg 41
+\item Sejam $A$ e $B$ dois eventos em um espaço amostral, tais que $P(A)
+  = 0,2$, $P(B) = p$, $P(A \cup B) = 0,5$, e $P(A \cap B) =
+  0,1$. Determine o valor de $p$.
+
+\vspace{0.3cm}
+\hrule
+\vspace{0.3cm}
+
+\clearpage
+
+\vspace{0.3cm}
+\hrule
+\vspace{0.3cm}
+
+% Montgomery, pg 31, cap 2
+\item Um lote de 100 chips semicondutores contém 20 defeituosos. Dois
+  deles são selecionados ao acaso, sem reposição.
+  \begin{compactenum}
+  \item Qual é a probabilidade de que o primeiro chip selecionado seja
+    defeituoso?
+  \item Qual é a probabilidade de que o segundo chip selecionado seja
+    defeituoso, dado que o primeiro deles foi defeituoso?
+  \item Qual é a probabilidade de que ambos sejam defeituosos?
+  \item Como a resposta do item (b) mudaria se os chips selecionados
+    fossem repostos antes da próxima seleção?
+  \end{compactenum}
+
+\vspace{0.3cm}
+\hrule
+\vspace{0.3cm}
+
+% Montgomery, pg 21, cap 2
+\item A tabela abaixo resume 204 reações endotérmicas envolvendo
+  bicarbonato de sódio.
+  \begin{table}[!h]
+    \centering
+    \begin{tabular}{ccc}
+      \hline
+      \multirow{2}{*}{\textbf{Condições finais de temperatura}}
+      & \multicolumn{2}{c}{\textbf{Calor absorvido}} \\
+      \cline{2-3}
+                & Abaixo do valor alvo         & Acima do valor alvo \\
+      \hline
+      266 K      & 12           & 40           \\
+      271 K      & 44           & 16           \\
+      274 K      & 56           & 36           \\
+      \hline
+    \end{tabular}
+  \end{table}
+
+  Seja $A$ o evento em que a temperatura final de uma reação seja 271 K
+  ou menos. Seja $B$ o evento em que o calor absorvido esteja acima do
+  valor alvo. Com isso:
+  \begin{compactenum}
+  \item Determine o número de reações em cada um dos seguintes eventos: \\
+    \begin{inparaenum}
+    \item $A \cap B$ \,
+    \item $A^c$ \,
+    \item $A \cup B$ \,
+    \item $A \cup B^c$ \,
+    \item $A^c \cap B^C$
+    \end{inparaenum}
+  \item Determine as  seguintes probabilidades: \\
+    \begin{inparaenum}
+    \item $P(A \cap B)$ \,
+    \item $P(A^c)$ \,
+    \item $P(A \cup B)$ \,
+    \item $P(A \cup B^c)$ \,
+    \item $P(A^c \cap B^c)$ \,
+    \item $P(A^c \cup B^c)$ \,
+    \item $P(A|B)$ \,
+    \item $P(A^c|B)$ \,
+    \item $P(A|B^c)$ \,
+    \item $P(B|A)$
+    \end{inparaenum}
+  \item Os eventos $A$ e $B$ são independentes?
+  \end{compactenum}
+
+\vspace{0.3cm}
+\hrule
+\vspace{0.3cm}
+
+% Montgomery pg 33, cap 2
+\item Suponha que $P(A|B) = 0,4$ e $P(B) = 0,5$. Determine o seguinte: \\
+  \begin{inparaenum}
+  \item $P(A \cap B)$ \,
+  \item $P(A^c \cap B)$
+  \end{inparaenum}
+
+\vspace{0.3cm}
+\hrule
+\vspace{0.3cm}
+
+% Montgomery pg 33, cap 2
+\item Suponha que $P(A|B) = 0,2$, $P(A|B^c) = 0,3$ e $P(B) = 0,8$. Qual
+  é $P(A)$? (Dica: escreva $A$ como a união de dois eventos disjuntos).
+
+\vspace{0.3cm}
+\hrule
+\vspace{0.3cm}
+
+
+% Montgomery, pg 21, cap 2
+\item Um artigo na revista \textit{The Journal of Data Science},
+  forneceu a seguinte tabela de falhas em poços, para grupos de
+  diferentes formações geológicas em Baltimore (EUA):
+  \begin{table}[!h]
+    \centering
+    \begin{tabular}{lcc}
+      \hline
+      \multirow{2}{*}{\textbf{Grupo com formação geológica}}
+      & \multicolumn{2}{c}{\textbf{Poços}} \\
+      \cline{2-3}
+                & Falha      & Total  \\
+      \hline
+      Gnaise     & 170           & 1685           \\
+      Granito    & 2           & 28           \\
+      Mina Loch de xisto    & 443           & 3733   \\
+      Máfico & 14 & 363 \\
+      Mármore & 29 & 309 \\
+      Mina Prettyboy de xisto & 60 & 1403 \\
+      Outros xistos & 46 & 933 \\
+      Serpentina & 3 & 39 \\
+      \hline
+    \end{tabular}
+  \end{table}
+
+  Seja $A$ o evento em que a formação geológica tenha mais de 1000 poços
+  e $B$ o evento em que o poço tenha falhado. Com isso:
+  \begin{compactenum}
+  \item Determine o número de poços dos seguintes eventos: \\
+    \begin{inparaenum}
+    \item $A \cap B$ \,
+    \item $A^c$ \,
+    \item $A \cup B$ \,
+    \item $A \cup B^c$ \,
+    \item $A^c \cap B^C$
+    \end{inparaenum}
+  \item Determine as seguintes probabilidades: \\
+    \begin{inparaenum}
+    \item $P(A \cap B)$ \,
+    \item $P(A^c)$ \,
+    \item $P(A \cup B)$ \,
+    \item $P(A \cup B^c)$ \,
+    \item $P(A^c \cap B^c)$ \,
+    \item $P(A^c \cup B^c)$ \,
+    \item $P(A|B)$
+    \end{inparaenum}
+  \item Qual a probabilidade de uma falha, dado que existem mais de 1000
+    falhas em uma formação geológica?
+  \item Qual a probabilidade de uma falha, dado que existem menos de 500
+    falhas em uma formação geológica?
+  \item Os eventos $A$ e $B$ são independentes?
+  \end{compactenum}
+
+\vspace{0.3cm}
+\hrule
+\vspace{0.3cm}
+
+\clearpage
 
 \vspace{0.3cm}
 \hrule
@@ -385,6 +592,23 @@ source("~/GitHub/Rutilities/freq.tab.R")
 \hrule
 \vspace{0.3cm}
 
+% Montgomery, pg 33, cap 2
+\item Falhas no coração são por causa tanto de ocorrências naturais
+  (87\%) como por fatores externos (13\%). Fatores externos estão
+  relacionados a substâncias induzidas (73\%) ou a objetos estranhos
+  (27\%). Ocorrências naturais são causadas por bloqueio arterial
+  (56\%), doenças (27\%) e infecção (17\%).
+  \begin{compactenum}
+  \item Determine a probabilidade de uma falha ser causada por
+    substância induzida.
+  \item Determine a probabilidade de uma falha ser causada por doença ou
+    infecção.
+  \end{compactenum}
+
+\vspace{0.3cm}
+\hrule
+\vspace{0.3cm}
+
 % Montgomery, pg 20, cap 2
 \item Uma amostra de dois itens é selecionada sem reposição a partir de
   uma batelada. Descreva o espaço amostral (ordenado) para cada uma das
@@ -399,6 +623,41 @@ source("~/GitHub/Rutilities/freq.tab.R")
 \vspace{0.3cm}
 \hrule
 \vspace{0.3cm}
+
+% Montgomery, pg 22, cap 2
+\item Cada um dos cinco resultados possíveis de um experimento aleatório
+  é igualmente provável. O espeço amostral é $\Omega = \{a, b, c, d,
+  e\}$. Seja $A$ o evento $\{a, b\}$ e $B$ o evento $\{c, d, e\}$.
+  Determine: \\
+  \begin{inparaenum}
+  \item $P(A)$ \,
+  \item $P(B)$ \,
+  \item $P(A^c)$ \,
+  \item $P(A \cup B)$ \,
+  \item $P(A \cap B)$
+  \end{inparaenum}
+
+\vspace{0.3cm}
+\hrule
+\vspace{0.3cm}
+
+% Montgomery, pg 22, cap 2
+\item O espaço amostral de um experimento aleatório é $\Omega = \{a, b, c, d,
+  e\}$, com probabilidades 0,1; 0,1; 0,2; 0,4; 0,2, respectivamente.
+  Seja $A$ o evento $\{a, b, c\}$ e $B$ o evento $\{c, d, e\}$.
+  Determine: \\
+  \begin{inparaenum}
+  \item $P(A)$ \,
+  \item $P(B)$ \,
+  \item $P(A^c)$ \,
+  \item $P(A \cup B)$ \,
+  \item $P(A \cap B)$
+  \end{inparaenum}
+
+\vspace{0.3cm}
+\hrule
+\vspace{0.3cm}
+
 
 % Montgomery, pg 20, cap 2
 \item Uma amostra de duas placas de circuito impresso é selecionada sem
@@ -415,6 +674,37 @@ source("~/GitHub/Rutilities/freq.tab.R")
 \hrule
 \vspace{0.3cm}
 
+% Montgomery, pg. 24, cap. 2
+\item Em uma titulação ácido-base, uma base ou um ácido é gradualmente
+  adicionada(o) ao outro até que eles sejam completamente neutralizados.
+  Uma vez que ácidos e bases são geralmente incolores, o pH é medido
+  para monitorar a reação. Suponha que o ponto de equivalência seja
+  alcançado depois que aproximadamente 100 ml de uma solução de NaOH
+  tenham sido adicionados (o suficiente para reagir com todo o ácido
+  acético presente), porém essa quantidade pode variar de 95 ml a 104
+  ml. Suponha que volumes sejam medidos em ml em uma escala discreta, e
+  descreva o espaço amostral.
+  \begin{compactenum}
+  \item Qual é a probabilidade de que a equivalência seja indicada em
+    100 ml?
+  \item Qual é a probabilidade de que a equivalência seja indicada em
+    menos do que 100 ml?
+  \item Qual é a probabilidade de que a equivalência seja indicada entre
+    98 ml e 102 ml (inclusive)?
+  \item Considere que dois técnicos conduzam a titulação de forma
+    independente.
+    \begin{compactenum}
+    \item Qual é a probabilidade de ambos os técnicos obterem
+      equivalência em 100 ml?
+    \item Qual é a probabilidade de ambos os técnicos obterem
+      equivalência entre 98 e 104 ml (inclusive)?
+    \end{compactenum}
+  \end{compactenum}
+
+\vspace{0.3cm}
+\hrule
+\vspace{0.3cm}
+
 % Ross pg 71
 \item Uma loja aceita cartões de crédito American Express ou Visa. Um
   total de 24\% de seus consumidores possui um cartão American Express,
@@ -425,10 +715,37 @@ source("~/GitHub/Rutilities/freq.tab.R")
 \hrule
 \vspace{0.3cm}
 
-% magalhaes pg 41
-\item Sejam $A$ e $B$ dois eventos em um espaço amostral, tais que $P(A)
-  = 0,2$, $P(B) = p$, $P(A \cup B) = 0,5$, e $P(A \cap B) =
-  0,1$. Determine o valor de $p$.
+\clearpage
+
+\vspace{0.3cm}
+\hrule
+\vspace{0.3cm}
+
+% Montgomery, pg. 24, cap. 2
+\item Em uma bateria de NiCd,  uma célula completamente cerregada é
+  composta de Hidróxido de Níquel. Níquel é um elemento que tem
+  múltiplos estados de oxidação, sendo geralmente encontrado nos
+  seguintes estados:
+  \begin{table}[!h]
+    \centering
+    \begin{tabular}{cc}
+      \hline
+      \textbf{Carga de níquel}
+      & \textbf{Proporções encontradas} \\
+      \hline
+      0 & 0,17 \\
+      +2 & 0,35 \\
+      +3 & 0,33 \\
+      +4 & 0,15 \\
+      \hline
+    \end{tabular}
+  \end{table}
+  \begin{compactenum}
+  \item Qual é a probabilidade de uma célula ter no mínimo uma das
+    opções de níquel carregado positivamente?
+  \item Qual é a probabilidade de uma célula não ser composta de uma
+    carga positiva de níquel maior do que +3?
+  \end{compactenum}
 
 \vspace{0.3cm}
 \hrule
@@ -502,7 +819,7 @@ source("~/GitHub/Rutilities/freq.tab.R")
 
 % kazmier, pg 77
 \item De 100 pessoas que solicitaram emprego de programador de
-  computadores, durante o ano passado, em uma grande empresa, 40
+  computadores durante um ano em uma grande empresa, 40
   possuíam experiência anterior ($E$), e 30 possuíam certificado
   profissional ($C$). Vinte dos candidatos possuíam tanto experiência
   anterior como certificado profissional e foram incluídos nas contagens
@@ -510,7 +827,7 @@ source("~/GitHub/Rutilities/freq.tab.R")
   \begin{compactenum}
   \item Elaborar um diagrama de Venn para representar estes eventos.
   \item Qual a probabilidade de que um candidato escolhido ao acaso
-    tenha experiência ou certificado (ou ambos)?
+    tenha experiência ou certificado?
   \item Qual a probabilidade de que um candidato escolhido ao acaso
     tenha experiência ou certificado, mas não ambos?
   \item Determinar a probabilidade condicional de que um candidato
@@ -518,6 +835,12 @@ source("~/GitHub/Rutilities/freq.tab.R")
     experiência anterior.
   \item Verificar se os eventos $E$ e $C$ são independentes.
   \end{compactenum}
+
+\vspace{0.3cm}
+\hrule
+\vspace{0.3cm}
+
+\clearpage
 
 \vspace{0.3cm}
 \hrule
@@ -532,6 +855,121 @@ source("~/GitHub/Rutilities/freq.tab.R")
 \vspace{0.3cm}
 \hrule
 \vspace{0.3cm}
+
+% Montgomery, pg 31, cap 2
+\item Um artigo na revista \textit{The Canadian Entomologist} estudou a
+  vida da praga da alfafa a partir dos ovos até a vida adulta. A tabela
+  seguinte mostra o número de larvas que sobreviveram em cada estágio do
+  desenvolvimento.
+  \begin{table}[!h]
+    \centering
+    \begin{tabular}{lp{2cm}p{2cm}lll}
+      Ovos & Fase precoce da larva & Fase madura da larva & Pré-pupa
+      & Pupa & Adultos \\
+      \hline
+      421 & 412 & 306 & 45 & 35 & 31 \\
+    \end{tabular}
+  \end{table}
+  \begin{compactenum}
+  \item Qual é a probabilidade de um ovo sobreviver até a vida adulta?
+  \item Qual é a probabilidade de sobrevivência até a vida adulta, dada
+    a sobrevivência para a fase madura da larva?
+  \item Que estágio tem a menor probabilidade de sobrevivência para o
+    próximo estágio?
+  \end{compactenum}
+
+\vspace{0.3cm}
+\hrule
+\vspace{0.3cm}
+
+% Montgomery, pg 36, cap 2
+\item Se $P(A|B) = 0,4$, $P(B) = 0,8$, $P(A) = 0,5$, os eventos $A$ e
+  $B$ são independentes?
+
+\vspace{0.3cm}
+\hrule
+\vspace{0.3cm}
+
+% Montgomery, pg 36, cap 2
+\item Se $P(A|B) = 0,3$, $P(B) = 0,8$, $P(A) = 0,3$, o evento $B$ e o
+  evento complementar de $A$ são independentes?
+
+\vspace{0.3cm}
+\hrule
+\vspace{0.3cm}
+
+% Montgomery, pg 36, cap 2
+\item Se $P(A) = 0,2$, $P(B) = 0,2$, e $A$ e $B$ são mutuamente
+  excludentes, eles são independentes?
+
+\vspace{0.3cm}
+\hrule
+\vspace{0.3cm}
+
+% Montgomery, pg 36, cap 2
+\item Matriz redundante de discos independentes (RAID -
+  \textit{Redundant Array of Independent Disks}) é uma tecnologia que
+  usa discos rígidos múltiplos para aumentar a velocidade de
+  transferência de dados e fornecer cópia de segurança instantânea de
+  dados. Suponha que a probabilidade de qualquer disco rígido falhar em
+  um dia seja 0,001, e que as falhas do disco sejam independentes.
+  \begin{compactenum}
+  \item Suponha que você implemente um esquema de RAID 0, que usa dois
+    discos rígidos, cada um contendo uma imagem do outro, como um
+    espelho. Qual é a probabilidade de perda de dados? Considere que a
+    perda de dados ocorrerá se ambos os discos falharem dentro do mesmo
+    dia.
+  \item Suponha que você implemente um esquema de RAID 1, que divide os
+    dados em dois discos rígidos. Qual é a probabilidade de perda de
+    dados? Considere que a perda de dados ocorrerá se no mínimo um disco
+    falhar dentro do mesmo dia. (Dica: escreva o evento ``no mínimo um
+    disco falhar'' como o seu complementar).
+  \end{compactenum}
+
+\vspace{0.3cm}
+\hrule
+\vspace{0.3cm}
+
+% Montgomery, pg 44, cap 2
+\item Cabelos vermelhos naturais consistem em dois genes. Pessoas com
+  cabelo vermelho natural têm dois genes dominantes, dois genes
+  recessivos, ou um dominante e um recessivo. Um grupo de 1000 pessoas
+  foi categorizado como segue:
+  \begin{table}[!h]
+    \centering
+    \begin{tabular}{lccc}
+      \hline
+      \multirow{2}{*}{\textbf{Gene 1}}
+      & \multicolumn{3}{c}{\textbf{Gene 2}} \\
+      \cline{2-4}
+                & Dominante      & Recessivo & Outro  \\
+      \hline
+      Dominante     & 5           & 25 & 30           \\
+      Recessivo    & 7           & 63 & 35           \\
+      Outro    & 20           & 15 & 800   \\
+      \hline
+    \end{tabular}
+  \end{table}
+
+  Seja $A$ o evento em que uma pessoa tem um gene dominante de cabelo
+  vermelho, e seja $B$ o evento em que uma pessoa tem um gene recessivo
+  de cabelo vermelho. Se uma pessoa desse grupo for selecionada ao acso,
+  calcule o seguinte:
+  \begin{compactenum}
+  \item $P(A)$
+  \item $P(A \cap B)$
+  \item $P(A \cup B)$
+  \item $P(A^c \cap B)$
+  \item $P(A|B)$
+  \item Considerando que para uma pessoa ter cabelo vermelho são
+    necessários dois genes dominates, qual a probabilidade de que a
+    pessoa selecionada tenha cabelo vermelho?
+  \end{compactenum}
+
+\vspace{0.3cm}
+\hrule
+\vspace{0.3cm}
+
 
 \end{compactenum}
 
