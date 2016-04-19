@@ -134,7 +134,7 @@ source("~/GitHub/Rutilities/freq.tab.R")
   Estatística II --- CE003 \\
   Prof. Fernando de Pol Mayer --- Departamento de Estatística --- DEST \\
   Exercícios: probabilidade \\
-  Nome:   \hfill GRR: \hspace{2cm}
+  Nome: GABARITO   \hfill GRR: \hspace{2cm}
 \end{minipage}\hfill
 \begin{minipage}[c]{.15\textwidth}
 \flushright
@@ -150,32 +150,29 @@ source("~/GitHub/Rutilities/freq.tab.R")
 \item Para cada um dos eventos abaixo, escreva o espaço amostral
   correspondente e conte seus elementos:
   \begin{compactenum}
-  \item Uma moeda é lançada duas vezes e observam-se as faces obtidas.
-  \item Um dado é lançado duas vezes e a ocorrência de face par ou ímpar
-    é observada.
-  \item Uma urna contém 10 bolas azuis e 10 vermelhas. Três bolas são
-    selecionadas ao acaso, com reposição, e as cores são anotadas.
-  \item Dois dados são lançados simultaneamente e estamos interessados
-    na soma das faces observadas.
-  \item Em uma cidade famílias com 3 crianças são selecionadas ao acaso,
-    anotando-se o sexo de cada uma, de acordo com a idade.
-  \item Uma máquina produz 20 peças por hora, escolhe-se um instante
-    qualquer e observa-se o número de defeituosas na próxima hora.
-  \item Uma moeda é lançada consecutivamente até o aparecimento da
-    primeira cara.
+  \item $\Omega = \{CC, CR, RC, RR\} \quad n(\Omega) = 4$
+  \item $\Omega = \{PP, PI, IP, II\} \quad n(\Omega) = 4$
+  \item $\Omega = \{AA, AV, VA, VV\} \quad n(\Omega) = 4$
+  \item $\Omega = \{2, 3, 4, \ldots, 12\} \quad n(\Omega) = 11$
+  \item $\Omega = \{MMM, MMF, MFM, FMM, FFM, FMF, MFF, FFF\} \quad
+  n(\Omega) = 8$
+  \item $\Omega = \{\omega : 0 \leq \omega \leq 20 \} \quad n(\Omega) =
+  21$
+  \item $\Omega = \{C, RC, RRC, RRRC, RRRRC, \ldots\} \quad n(\Omega) =
+    \infty$
     % A partir daqui: Bussab, pg 108, cap 5
-  \item Mede-se a duração de lâmpadas, deixando-as acesas até que se
-    queimem.
-  \item Um fichário com 10 nomes contém 3 nomes de mulheres.
-    Seleciona-se ficha após ficha, até o último nome de mulher ser
-    selecionado, e anota-se o número de fichas selecionadas.
-  \item Uma moeda é lançada consecutivamente até o aparecimento da
-    primeira cara e anota-se o número de lançamentos.
-  \item De um grupo de 5 pessoas $\{A, B, C, D, E\}$, soteiam-se duas, uma
-    após a outra, com reposição, e anota-se a configuração obtida.
-  \item Mesmo enunciado anterior, mas sem reposição.
-  \item Mesmo enunciado anterior, mas as duas selecionadas
-    simultaneamente.
+  \item $\Omega = \{\omega : \omega > 0 \} = \mathbb{R}^{+} \quad
+    n(\Omega) = \infty$
+  \item $\Omega = \{3, 4, 5, \ldots, 10\} \quad n(\Omega) = 8$
+  \item $\Omega = \{1, 2, 3, \ldots\} \quad n(\Omega) = \infty$
+  \item $\Omega = \{AA, AB, AC, AD, AE, BA, BB, BC, BD, BE, CA, CB, CC,
+    CD, CE, DA, DB, DC, DD, DE, \\ EA, EB, EC, ED, EE\} \quad n(\Omega) =
+    25$
+  \item $\Omega = \{AB, AC, AD, AE, BA, BC, BD, BE, CA, CB,
+    CD, CE, DA, DB, DC, DE, EA, EB, EC, ED\} \quad n(\Omega) =
+    20$
+  \item $\Omega = \{AB, AC, AD, AE, BC, BD, BE,
+    CD, CE, DE\} \quad n(\Omega) = 10$
   \end{compactenum}
 
 \vspace{0.3cm}
@@ -183,22 +180,17 @@ source("~/GitHub/Rutilities/freq.tab.R")
 \vspace{0.3cm}
 
 % Bussab, pg 107, cap. 5
-\item Uma urna contém duas bolas brancas e três bolas vermelhas.
-  Retira-se uma bola ao acaso da urna. Se for branca lança-se uma moeda.
-  Se for vermelha, ela é devolvida à urna e retira-se outra. Dê um
-  espaço amostral para o experimento.
+\item $\Omega = \{BC, BR, VB, VV\}$
 
 \vspace{0.3cm}
 \hrule
 \vspace{0.3cm}
 
 % Ross, pg 71
-\item Uma caixa contém 3 bolas de gude: 1 vermelha, 1 azul e 1
-  branca. Considere um experimento que consiste em retirar duas bolas de
-  gude desta caixa. Descreva o espaço amostral quando:
+\item
   \begin{compactenum}
-  \item houver reposição da primeira bola retirada da caixa
-  \item não houver reposição da primeira bola retirada da caixa
+  \item $\Omega = \{VV, VA, VB, AA, AV, AB, BB, BA, BV\}$
+  \item $\Omega = \{VA, VB, AV, AB, BA, BV\}$
   \end{compactenum}
 
 \vspace{0.3cm}
@@ -206,61 +198,45 @@ source("~/GitHub/Rutilities/freq.tab.R")
 \vspace{0.3cm}
 
 % Montgomery, pg 19, cap 2
-\item Uma balança digital é usada para fornecer pesos em gramas. Seja
-  $A$ o evento em que um peso excede 11 gramas. Seja $B$ o evento em que
-  um peso é menor que ou igual a 15 gramas, e seja $C$ o evento em que
-  um peso é maior ou igual a 8 gramas e menor que 12 gramas. Descreva os
-  seguintes eventos: \\
-  \begin{inparaenum}
-  \item $\Omega$ \,
-  \item $A \cup B$ \,
-  \item $A \cap B$ \,
-  \item $A^{c}$ \,
-  \item $A \cup B \cup C$ \,
-  \item $(A \cup C)^{c}$ \,
-  \item $A \cap B \cap C$ \,
-  \item $B^{c} \cap C$ \,
-  \item $A \cup (B \cap C)$
-  \end{inparaenum}
+\item
+  \begin{compactenum}
+  \item $\Omega = \{x : x > 0\}$ \,
+  \item $A \cup B = \{x : x > 11 \}$ \,
+  \item $A \cap B = \{x : 11 < x \leq 15\}$ \,
+  \item $A^{c} = \{x : x \leq 11 \}$ \,
+  \item $A \cup B \cup C = \{x : x \geq 8\}$ \,
+  \item $(A \cup C)^{c} = \{x : x < 8\}$ \,
+  \item $A \cap B \cap C = \varnothing$ \,
+  \item $B^{c} \cap C = \varnothing$ \,
+  \item $A \cup (B \cap C) = \{x : x \geq 8\}$
+  \end{compactenum}
 
 \vspace{0.3cm}
 \hrule
 \vspace{0.3cm}
 
 % Montgomery, pg 19, cap 2
-\item Na fotossíntese, a qualidade da luz se refere aos comprimentos de
-  onda de luz que são importantes. O comprimento de onda de uma amostra
-  de radiações fotossinteticamente ativas (RFA) é medido em nanômetro. A
-  faixa do vermelho é 675-700 nm, e a faixa do azul é 450-500 nm. Seja
-  $A$ o evento em que RFA ocorre na faixa do vermelho, e $B$ o evento em
-  que RFA ocorre na faixa do azul. Descreva o espaço amostral e indique
-  cada um dos seguintes eventos: \\
-  \begin{inparaenum}
-  \item $A$ \,
-  \item $B$ \,
-  \item $A \cap B$ \,
-  \item $A \cup B$
-  \end{inparaenum}
+\item $\Omega = \{\omega : \omega \geq 0\}$
+  \begin{compactenum}
+  \item $A = \{\omega : 675 \leq \omega \leq 700 \}$
+  \item $B = \{\omega : 450 \leq \omega \leq 500 \}$ \,
+  \item $A \cap B = \varnothing$ \,
+  \item $A \cup B = \{\omega : 450 \leq \omega \leq 500 \cup 675 \leq
+    \omega \leq 700\}$
+  \end{compactenum}
 
 \vspace{0.3cm}
 \hrule
 \vspace{0.3cm}
 
 % Montgomery, pg 19, cap 2
-\item Em replicação controlada, células são replicadas em um período de
-  dois dias. DNA recém-sintetizado não pode ser replicado novamente até
-  que a mtose seja completa. Dois mecanismos de controle foram
-  identificados: um positivo e um negativo. Suponha que uma replicação
-  seja observada em três células. Seja $A$ o evento em que todas as
-  células são identificadas como positivas, e $B$ o evento em que todas
-  as células são negativas. Descreva o espaço amostral e indique cada um
-  dos seguintes eventos: \\
-  \begin{inparaenum}
-  \item $A$ \,
-  \item $B$ \,
-  \item $A \cap B$ \,
-  \item $A \cup B$
-  \end{inparaenum}
+\item $\Omega = \{PPP, PPN, PNP, NPP, PNN, NPN, NNP, NNN\}$
+  \begin{compactenum}
+  \item $A = \{PPP\}$
+  \item $B = \{NNN\}$
+  \item $A \cap B = \varnothing$ \,
+  \item $A \cup B = \{PPP, NNN\}$
+  \end{compactenum}
 
 \vspace{0.3cm}
 \hrule
@@ -287,55 +263,49 @@ source("~/GitHub/Rutilities/freq.tab.R")
 \vspace{0.3cm}
 
 % Bussab, pg 126, cap. 5
-\item Suponhamos que 10000 bilhetes sejam vendidos em uma loteria e 5000
-  em outra, cada uma tendo apenas um ganhador. Um homem tem 100 bilhetes
-  de cada. Qual a probabilidade de que:
-  \begin{compactenum}
-  \item Ele ganhe exatamente um prêmio?
-  \item Ele ganhe alguma coisa?
-  \end{compactenum}
+\item
+  \begin{inparaenum}
+  \item $0,0296$
+  \item $0,0298$
+  \end{inparaenum}
 
 \vspace{0.3cm}
 \hrule
 \vspace{0.3cm}
 
 % Bussab, pg 126, cap. 5
-\item Um grupo de 12 homens e 8 mulheres concorre a três prêmios através
-  de um sorteio, sem reposição de seus nomes. Qual a probabilidade de:
-  \begin{compactenum}
-  \item Nenhum homem ser sorteado?
-  \item Um prêmio ser ganho por homem?
-  \item Dois homens serem premiados?
-  \end{compactenum}
+\item
+  \begin{inparaenum}
+  \item 0,049
+  \item 0,463
+  \item 0,295
+  \end{inparaenum}
 
 \vspace{0.3cm}
 \hrule
 \vspace{0.3cm}
 
 % Ross pg 71
-\item Suponha que $A$ e $B$ sejam eventos mutuamente exclusivos (ou
-  disjuntos) para os quais $P(A) = 0,3$ e $P(B) = 0,5$. Qual é a
-  probabilidade de que:
-  \begin{compactenum}
-  \item $A$ ou $B$ ocorra?
-  \item $A$ ocorra mas $B$ não ocorra?
-  \item $A$ e $B$ ocorram?
-  \end{compactenum}
+\item
+  \begin{inparaenum}
+  \item $0,8$
+  \item $0,3$
+  \item $0$
+  \end{inparaenum}
 
 \vspace{0.3cm}
 \hrule
 \vspace{0.3cm}
 
 % Montgomery, pg. 26, cap 2
-\item Se $P(A) = 0,3$, $P(B) = 0,2$, e $P(A \cap B) = 0,1$. Determine as
-  probabilidades: \\
+\item
     \begin{inparaenum}
-    \item $P(A^c)$ \,
-    \item $P(A \cup B)$ \,
-    \item $P(A^c \cap B)$ \,
-    \item $P(A \cap B^c)$ \,
-    \item $P([A \cup B]^c)$ \,
-    \item $P(A^c \cup B)$
+    \item $0,3$
+    \item $0,4$
+    \item $0,1$
+    \item $0,2$
+    \item $0,6$
+    \item $0,8$
     \end{inparaenum}
 
 \vspace{0.3cm}
@@ -343,15 +313,13 @@ source("~/GitHub/Rutilities/freq.tab.R")
 \vspace{0.3cm}
 
 % Montgomery, pg. 27, cap 2
-\item Se $A$, $B$, e $C$ forem eventos mutuamente exclusivos, com $P(A)
-  = 0,2$, $P(B) = 0,3$, e $P(C) = 0,4$. Determine as
-  probabilidades: \\
+\item
     \begin{inparaenum}
-    \item $P(A \cup B \cup C)$ \,
-    \item $P(A \cap B \cap C)$ \,
-    \item $P(A \cap B)$ \,
-    \item $P([A \cup B] \cap C)$ \,
-    \item $P(A^c \cap B^c \cap C^c)$
+    \item $0,9$
+    \item $0$
+    \item $0$
+    \item $0$
+    \item $0,1$
     \end{inparaenum}
 
 \vspace{0.3cm}
@@ -380,16 +348,16 @@ source("~/GitHub/Rutilities/freq.tab.R")
   Seja $A$ o evento em que um disco tem alta resistência a choque e $B$
   o evento em que um disco tem alta resistência a arranhões. Com isso:
   \begin{compactenum}
-  \item Determine o número de discos em $A \cap B$, $A^{c}$, e $A \cup B$.
+  \item $A \cap B = 70$, $A^{c} = 14$, e $A \cup B = 95$.
   \item Se um disco for selecionado aleatoriamente, determine as
     seguintes probabilidades: \\
     \begin{inparaenum}
-    \item $P(A)$ \,
-    \item $P(B)$ \,
-    \item $P(A^{c})$ \,
-    \item $P(A \cap B)$ \,
-    \item $P(A \cup B)$ \,
-    \item $P(A^{c} \cup B)$ \,
+    \item $0,86$ \,
+    \item $0,79$ \,
+    \item $0,14$ \,
+    \item $0,7$ \,
+    \item $0,95$ \,
+    \item $0,84$ \,
     \item $P(A|B)$ \,
     \item $P(B|A)$
     \end{inparaenum}
@@ -408,9 +376,7 @@ source("~/GitHub/Rutilities/freq.tab.R")
 \vspace{0.3cm}
 
 % magalhaes pg 41
-\item Sejam $A$ e $B$ dois eventos em um espaço amostral, tais que $P(A)
-  = 0,2$, $P(B) = p$, $P(A \cup B) = 0,5$, e $P(A \cap B) =
-  0,1$. Determine o valor de $p$.
+\item $0,4$
 
 \vspace{0.3cm}
 \hrule
@@ -706,10 +672,7 @@ source("~/GitHub/Rutilities/freq.tab.R")
 \vspace{0.3cm}
 
 % Ross pg 71
-\item Uma loja aceita cartões de crédito American Express ou Visa. Um
-  total de 24\% de seus consumidores possui um cartão American Express,
-  61\% possuem Visa, e 11\% possuem ambos. Que percentual desses
-  consumidores possui um cartão aceito pelo estabelecimento?
+\item $0,74$
 
 \vspace{0.3cm}
 \hrule
@@ -752,23 +715,30 @@ source("~/GitHub/Rutilities/freq.tab.R")
 \vspace{0.3cm}
 
 % Magalhaes, pg 41
-\item Uma Universidade tem 10000 alunos, dos quais 4000 são considerados
-  esportistas. Temos ainda que 500 alunos são do curso de Economia, 700
-  são de Administração, 100 são esportistas e da Economia, e 200 são
-  esportistas e da Administração. (Os restantes dos alunos que não se
-  encaixam em nenhum curso podem ser colocados na categoria
-  ``outros''). Monte a tabela de contingência, e calcule as
-  probabilidades de um aluno selecionado ao acaso:
+\item Tabela de contingência
+  \begin{table}[h]
+    \centering
+    \begin{tabular}{lcccc}
+      \hline
+      & \textbf{Economia} (E) & \textbf{Administração} (A) & \textbf{Outros} (O) &
+      \textbf{Total} \\
+      \hline
+      \textbf{Esportista} (Es) & 100 & 200 & 3700 & 4000 \\
+      \textbf{Não esportista} (Es$^c$) & 400 & 500 & 5100 & 6000 \\
+      \hline
+      \textbf{Total} & 500 & 700 & 8800 & 10000 \\
+      \hline
+    \end{tabular}
+  \end{table}
   \begin{compactenum}
-  \item Ser esportista
-  \item Ser esportista e aluno da Administração
-  \item Não ser da Economia nem da Administração
-  \item Não ser esportista, e ser de outros cursos
-  \item Ser esportista, dado que faz Economia
-  \item Fazer Administração, dado que não é esportista
-  \item Não ser esportista, dado que não faz nem Economia, nem
-    Administração
-  \item Fazer outros cursos, dado que é esportista
+  \item 4000/10000 = 2/5
+  \item 200/10000 = 1/50
+  \item 8800/10000 = 22/25
+  \item 5100/10000 = 51/100
+  \item 100/500 = 1/5
+  \item 500/6000 = 1/12
+  \item 5100/8800 = 51/88
+  \item 3700/4000 = 37/40
   \end{compactenum}
 
 \vspace{0.3cm}
@@ -776,16 +746,12 @@ source("~/GitHub/Rutilities/freq.tab.R")
 \vspace{0.3cm}
 
 % Kazmier, pg 78
-\item Suponhamos que um um aluno estime que sua probabilidade de receber um
-  conceito final ``A'' em Estatística é 0,6, e a probabilidade de um
-  ``B'' é de 0,4 (ele não considera receber menos do que isso!). Com isso:
+\item
   \begin{compactenum}
-  \item Os eventos ``receber A'' e ``receber B'' são mutuamente
-    exclusivos? Por que?
-  \item Determine a probabilidade condicional de que obtenha um ``B'',
-    dado que de fato tenha recebido um ``A''.
-  \item Verifique se os eventos ``receber A'' e ``receber B'' são
-    independentes.
+  \item Sim, porque não é possível receber conceito A e B ao mesmo
+    tempo.
+  \item 0
+  \item $P(A \cap B) = 0 \neq 0,24 = P(A) \cdot P(B)$. São dependentes.
   \end{compactenum}
 
 \vspace{0.3cm}
@@ -793,48 +759,37 @@ source("~/GitHub/Rutilities/freq.tab.R")
 \vspace{0.3cm}
 
 % morettin, pg 23
-\item Sejam $A$ e $B$ eventos tais que $P(A) = 0,2$, $P(B) = p$, $P(A
-  \cup B) = 0,6$. Calcular o valor de $p$ considerando $A$ e $B$
-  \begin{compactenum}
-  \item mutuamente exclusivos
-  \item independentes
-  \end{compactenum}
+\item
+  \begin{inparaenum}
+  \item $0,4$
+  \item $0,5$
+  \end{inparaenum}
 
 \vspace{0.3cm}
 \hrule
 \vspace{0.3cm}
 
 % morettin, pg 40
-\item Uma urna contém 10 bolas verdes e 6 azuis. Tiram-se duas bolas ao
-  acaso, sem reposição. Qual a probabilidade de que as duas bolas:
-  \begin{compactenum}
-  \item sejam verdes?
-  \item sejam da mesma cor?
-  \item sejam de cores diferentes?
-  \end{compactenum}
+\item
+  \begin{inparaenum}
+  \item $3/8$
+  \item $1/2$
+  \item $1/2$
+  \end{inparaenum}
 
 \vspace{0.3cm}
 \hrule
 \vspace{0.3cm}
 
 % kazmier, pg 77
-\item De 100 pessoas que solicitaram emprego de programador de
-  computadores durante um ano em uma grande empresa, 40
-  possuíam experiência anterior ($E$), e 30 possuíam certificado
-  profissional ($C$). Vinte dos candidatos possuíam tanto experiência
-  anterior como certificado profissional e foram incluídos nas contagens
-  dos dois grupos.
-  \begin{compactenum}
-  \item Elaborar um diagrama de Venn para representar estes eventos.
-  \item Qual a probabilidade de que um candidato escolhido ao acaso
-    tenha experiência ou certificado?
-  \item Qual a probabilidade de que um candidato escolhido ao acaso
-    tenha experiência ou certificado, mas não ambos?
-  \item Determinar a probabilidade condicional de que um candidato
-    escolhido ao acaso tenha um certificado, dado que ele tenha alguma
-    experiência anterior.
-  \item Verificar se os eventos $E$ e $C$ são independentes.
-  \end{compactenum}
+\item
+  \begin{inparaenum}
+  \item
+  \item $0,5$
+  \item $0,3$
+  \item $0,5$
+  \item $P(C|E) = 0,5 \neq 0,3 = P(C)$. São dependentes.
+  \end{inparaenum}
 
 \vspace{0.3cm}
 \hrule
@@ -847,10 +802,7 @@ source("~/GitHub/Rutilities/freq.tab.R")
 \vspace{0.3cm}
 
 % kazmier, pg 78
-\item Em geral, a probabilidade de que um possível cliente faça uma
-  compra quando procurado por um vendedor é de 0,4. Se um vendedor
-  seleciona do arquivo, aleatoriamente, três clientes, e faz contato com
-  os mesmos, qual a probabilidade de que os três façam compras?
+\item $0,064$
 
 \vspace{0.3cm}
 \hrule
