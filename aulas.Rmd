@@ -40,7 +40,7 @@ classe aplicadas.
 
 - [Lista 1][]: amostragem e análise exploratória de dados. [Gabarito 1][].
 - [Lista 2][]: Medidas resumo. [Gabarito 2][]
-- [Lista 3][]: Probabilidade.
+- [Lista 3][]: Probabilidade. [Gabarito 3][]
 
 ## Notas
 
@@ -53,3 +53,4 @@ As notas estão disponíveis [nesta página](notas.html).
 [Lista 2]: exercicios/03_Medidas_resumo.pdf
 [Gabarito 2]: exercicios/03_Medidas_resumo_GABARITO.pdf
 [Lista 3]: exercicios/04_Probabilidade.pdf
+[Gabarito 3]: exercicios/04_Probabilidade_GABARITO.pdf
