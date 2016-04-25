@@ -281,12 +281,15 @@ Estas distribuições também são chamadas de \textbf{modelos
 \end{frame}
 
 \begin{frame}[fragile=singleslide]{Variáveis aleatórias discretas}
-  A \textbf{função de probabilidade} (fp) atribui probabilidades a cada
-  um dos possíveis valores assumidos pela variável
+  A \textbf{função de probabilidade} (fp) da VA discreta $X$, que assume
+  os valores $x_1, x_2, \ldots, x_n, \ldots$, é a função que atribui
+  probabilidades a cada um dos possíveis valores: $\{[x_i, p(x_i)], i =
+  1, 2, \ldots\}$, ou seja,
   \begin{equation*}
-    P[X = x_i] = p(x_i), \quad i = 1, 2, \ldots
+    P[X = x_i] = p(x_i) = p_i, \quad i = 1, 2, \ldots
   \end{equation*}
-  com as seguintes propriedades
+  com as seguintes propriedades:
+  \vspace{1em}
   \begin{itemize}
   \item[i)] A probabilidade de cada valor deve estar entre 0 e 1
     \begin{equation*}
@@ -385,7 +388,7 @@ Lançamento de duas moedas. $X$ = número de resultados cara (C)
   = x_i$, por sua respectiva probabilidade $P[X = x_i]$, e somando os
   produtos resultantes
   \begin{equation*}
-    \E(X) = \sum_{i = 1}^{\infty} x_i \cdot P[X = x_i]
+    \E(X) = \sum_{i = 1}^{n} x_i \cdot P[X = x_i]
   \end{equation*}
   A esperança é o valor médio que \textbf{esperaríamos} se o experimento
   continuasse sendo repetido várias vezes.
@@ -459,7 +462,7 @@ Lançamento de duas moedas. $X$ = número de resultados cara (C)
   dos valores de uma variável aleatória em relação à sua média ou
   esperança $\E(X)$.  A forma geral para o cálculo é
   \begin{equation*}
-    \Var(X) = \sum_{i=1}^{\infty} [x_i - \E(X)]^2 \cdot P[X=x_i]
+    \Var(X) = \sum_{i=1}^{n} [x_i - \E(X)]^2 \cdot P[X=x_i]
   \end{equation*}
   No entanto, uma foma mais fácil operacionalmente pode ser deduzida a
   partir da primeira, e temos
@@ -468,7 +471,7 @@ Lançamento de duas moedas. $X$ = número de resultados cara (C)
   \end{equation*}
   onde
   \begin{equation*}
-    \E(X^2) = \sum_{i = 1}^{\infty} x_{i}^{2} \cdot P[X = x_i]
+    \E(X^2) = \sum_{i = 1}^{n} x_{i}^{2} \cdot P[X = x_i]
   \end{equation*}
 \end{frame}
 
@@ -545,9 +548,16 @@ Lançamento de duas moedas. $X$ = número de resultados cara (C)
 \end{frame}
 
 \begin{frame}[fragile]{Esperança e variância}
-  \textbf{Propriedades de esperança e variância} \\
-  \vspace{2em}
-  A esperança e a variância possuem as seguintes propriedades: \\~\\
+  \textbf{Propriedades de esperança e variância} \\~\\
+  Dada a VA discreta $X$ e a respectiva função de probabilidade $P[X =
+  x_i]$, a esperança da função $h(X)$ é dada por
+  \begin{equation*}
+    \E[h(X)] = \sum_{i = 1}^{n} h(x_{i}) \cdot P[X = x_i]
+  \end{equation*}
+  \vspace{1em}
+
+  Com isso, pode ser demonstrado que a esperança e a variância possuem
+  as seguintes propriedades:
   \begin{equation*}
     \E(aX + b) = a\E(X) + b
   \end{equation*}
@@ -557,23 +567,22 @@ Lançamento de duas moedas. $X$ = número de resultados cara (C)
   \end{equation*}
   \vspace{1em}
   Sendo $a$ e $b$ constantes.
-
 \end{frame}
 
-\subsubsection{Exercícios}
+% \subsubsection{Exercícios}
 
 %%======================================================================
 %% Exercício do Bussab, inicio do capitulo 6
 %%======================================================================
 
-\begin{frame}[fragile]{Exercícios}
-  Exercícios 1, 2, 3, 4 do capítulo 6 do livro (pgs. 154--155).
-  \vspace{1em}
-  \begin{itemize}
-  \item[] Pinto, SS; Silva, CS. \textbf{Estatística, Vol I}. Rio Grande:
-    Editora da FURG, 2010. [Cap. 6]
-  \end{itemize}
-\end{frame}
+% \begin{frame}[fragile]{Exercícios}
+%   Exercícios 1, 2, 3, 4 do capítulo 6 do livro (pgs. 154--155).
+%   \vspace{1em}
+%   \begin{itemize}
+%   \item[] Pinto, SS; Silva, CS. \textbf{Estatística, Vol I}. Rio Grande:
+%     Editora da FURG, 2010. [Cap. 6]
+%   \end{itemize}
+% \end{frame}
 
 \subsection[Distribuições Discretas]{Distribuições discretas de
   probabilidade}
@@ -762,21 +771,21 @@ Temos que
   esperado de indivíduos imunizados, e o desvio padrão.
 \end{frame}
 
-\subsubsection{Exercícios}
+% \subsubsection{Exercícios}
 
 %%======================================================================
 %% Exercícios do Morettin, LG - cap 4, pgs 109--113
 %%======================================================================
 
-\begin{frame}[fragile]{Exercícios}
-  Exercícios distribuição binomial: 1, 4, 7, 8, do capítulo 7 do
-  livro (pgs. 167--169).
-  \vspace{1em}
-  \begin{itemize}
-  \item[] Pinto, SS; Silva, CS. \textbf{Estatística, Vol I}. Rio Grande:
-    Editora da FURG, 2010. [Cap. 7]
-  \end{itemize}
-\end{frame}
+% \begin{frame}[fragile]{Exercícios}
+%   Exercícios distribuição binomial: 1, 4, 7, 8, do capítulo 7 do
+%   livro (pgs. 167--169).
+%   \vspace{1em}
+%   \begin{itemize}
+%   \item[] Pinto, SS; Silva, CS. \textbf{Estatística, Vol I}. Rio Grande:
+%     Editora da FURG, 2010. [Cap. 7]
+%   \end{itemize}
+% \end{frame}
 
 %% \begin{frame}[fragile=singleslide]{Modelo Binomial}
 %% \textbf{Exemplo:} Considere o lançamento de uma moeda honesta ($p =
@@ -960,21 +969,21 @@ Temos que
 %% @
 %% \end{frame}
 
-\subsubsection{Exercícios}
+% \subsubsection{Exercícios}
 
 %%======================================================================
 %% Exercícios do Morettin, LG - cap 4, pgs 109--113
 %%======================================================================
 
-\begin{frame}[fragile]{Exercícios}
-  Exercícios distribuição Poisson: 2, 5, 6, 9, 10, do capítulo 7 do
-  livro (pgs. 167--169).
-  \vspace{1em}
-  \begin{itemize}
-  \item[] Pinto, SS; Silva, CS. \textbf{Estatística, Vol I}. Rio Grande:
-    Editora da FURG, 2010. [Cap. 7]
-  \end{itemize}
-\end{frame}
+% \begin{frame}[fragile]{Exercícios}
+%   Exercícios distribuição Poisson: 2, 5, 6, 9, 10, do capítulo 7 do
+%   livro (pgs. 167--169).
+%   \vspace{1em}
+%   \begin{itemize}
+%   \item[] Pinto, SS; Silva, CS. \textbf{Estatística, Vol I}. Rio Grande:
+%     Editora da FURG, 2010. [Cap. 7]
+%   \end{itemize}
+% \end{frame}
 
 \section[V.A.s Contínuas]{Variáveis aleatórias contínuas}
 
@@ -1264,36 +1273,28 @@ Temos que
   \end{itemize}
 \end{frame}
 
-\subsubsection{Exercícios}
+% \subsubsection{Exercícios}
 
-\begin{frame}[fragile]{Exercícios}
-  Exercícios 1--6, 9, 11 do capítulo 8 do livro (pgs. 184--187).
-  \vspace{1em}
-  \begin{itemize}
-  \item[] Pinto, SS; Silva, CS. \textbf{Estatística, Vol I}. Rio Grande:
-    Editora da FURG, 2010. [Cap. 8]
-  \end{itemize}
-\end{frame}
+% \begin{frame}[fragile]{Exercícios}
+%   Exercícios 1--6, 9, 11 do capítulo 8 do livro (pgs. 184--187).
+%   \vspace{1em}
+%   \begin{itemize}
+%   \item[] Pinto, SS; Silva, CS. \textbf{Estatística, Vol I}. Rio Grande:
+%     Editora da FURG, 2010. [Cap. 8]
+%   \end{itemize}
+% \end{frame}
 
 \section{Referências}
 
 \begin{frame}{Referências}
-  \textbf{Referências Básicas}
-  \begin{itemize}
-  \item Magalhães, MN; Lima, ACP. \textbf{Noções de Probabilidade e
-      Estatística}. São Paulo: EDUSP, 2008. [Cap. 3, 6]
-  \item Pinto, SS; Silva, CS. \textbf{Estatística, Vol I}. Rio Grande:
-    Editora da FURG, 2010. [Cap. 6, 7, 8]
-  \end{itemize}
-  \textbf{Referências Complementares}
   \begin{itemize}
   \item Bussab, WO; Morettin, PA. \textbf{Estatística básica}. São
-    Paulo: Saraiva, 2002. 526 p. [Cap. 6, 7]
-  \item Kazmier, LJ. \textbf{Estatística Aplicada à Administração e
-      Economia}. Porto Alegre: Bookman. 2006. [Cap. 6]
-  %% \item Triola, MF. \textbf{Introdução à Estatística}. Rio de Janeiro:
-  %%   LTC. 2008. [Cap. 3]
-
+    Paulo: Saraiva, 2006. [Cap. 6]
+  \item Magalhães, MN; Lima, ACP. \textbf{Noções de Probabilidade e
+      Estatística}. São Paulo: EDUSP, 2008. [Cap. 3]
+  \item Montgomery, DC; Runger, GC. \textbf{Estatística aplicada e
+      probabilidade para engenheiros}. Rio de Janeiro: LTC Editora,
+    2012. [Cap. 3]
   \end{itemize}
 \end{frame}
 
