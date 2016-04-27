@@ -431,9 +431,10 @@ Lançamento de duas moedas. $X$ = número de resultados cara (C)
   A variância, como já vimos, dá o grau de dispersão
   dos valores de uma variável aleatória em relação à sua média ou
   esperança $\E(X)$.  A forma geral para o cálculo é
-  \begin{equation*}
-    \Var(X) = \sum_{i=1}^{n} [x_i - \E(X)]^2 \cdot P[X=x_i]
-  \end{equation*}
+  \begin{align*}
+    \Var(X) &= \E[(X - \E(X))^2] \\
+            &= \sum_{i=1}^{n} (x_i - \E(X))^2 \cdot P[X=x_i]
+  \end{align*}
   No entanto, uma foma mais fácil operacionalmente pode ser deduzida a
   partir da primeira, e temos
   \begin{equation*}
@@ -719,15 +720,16 @@ plot(0:10, dbinom(x = 0:10, size = 10, prob = .9), type = "h",
 \end{frame}
 
 \begin{frame}[fragile]{Modelo binomial}
-  \textbf{Exemplo:} Numa empresa, 40\% dos contratos são pagos em
-  dia. Qual a probabilidade de que, entre 12 contratos, três ou menos
-  sejam pagos em dia?
-\end{frame}
-
-\begin{frame}[fragile]{Modelo binomial}
-  \textbf{Exemplo:} Numa criação de coelhos, 40\% são machos. Qual a
-  probabilidade de que nasçam pelo menos 2 coelhos machos num dia em que
-  nasceram 20 coelhos?
+  \textbf{Exemplos}
+  \vspace{1em}
+  \begin{enumerate}
+  \item Numa empresa, 40\% dos contratos são pagos em dia. Qual a
+    probabilidade de que, entre 12 contratos, três ou menos sejam pagos
+    em dia?
+  \item Numa criação de coelhos, 40\% são machos. Qual a probabilidade
+    de que nasçam pelo menos 2 coelhos machos num dia em que nasceram 20
+    coelhos?
+  \end{enumerate}
 \end{frame}
 
 \begin{frame}[fragile]{Modelo binomial}
