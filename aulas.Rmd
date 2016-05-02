@@ -35,6 +35,9 @@ classe aplicadas.
 - **18/04**: Probabilidade: regra da multiplicação e independência entre
   eventos. [Slides](04_Probabilidade/04_Probabilidade.pdf)
 - **20/04**: Sabatina 3
+- **25/04**: Variáveis aleatórias: definições e exemplos.
+- **27/04**: Variáveis aleatórias: definições e propriedades de
+  esperança e variância. Modelo Bernoulli.
 
 ## Exercícios
 
