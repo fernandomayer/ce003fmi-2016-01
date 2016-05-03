@@ -3,7 +3,6 @@ title: "CE003 - Estatística II"
 output:
   html_document:
     toc: false
-    toc_float: false
 ---
 
 [![Build Status](https://travis-ci.org/fernandomayer/ce003fmi-2016-01.svg)](https://travis-ci.org/fernandomayer/ce003fmi-2016-01)
