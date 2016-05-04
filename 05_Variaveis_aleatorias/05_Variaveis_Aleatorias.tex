@@ -813,7 +813,7 @@ Temos que
 
 \begin{frame}[fragile]{Modelo Poisson}
   \textbf{Definição:} Seja um experimento realizado nas seguintes
-  condições:
+  condições: \\~\\
   \begin{itemize}
   \item[i)] As ocorrências são independentes
   \item[ii)] As ocorrências são aleatórias
@@ -821,22 +821,79 @@ Temos que
     evento \textbf{ao longo de algum intervalo} (de tempo ou espaço)
   \end{itemize}
   \vspace{1em}
-  Denominamos esse experimento de \textbf{processo de Poisson}. \\~\\
+  % Denominamos esse experimento de \textbf{processo de Poisson}. \\~\\
   Vamos associar a V.A. $X$ o número de ocorrências em um
   intervalo. Portanto $X$ poderá assumir os valores $0, 1, \ldots,$ (sem
   limite superior).
 \end{frame}
 
 \begin{frame}[fragile]{Modelo Poisson}
-  A distribuição de Poisson é utilizada para descrever
-  a probabilidade do \textbf{número de ocorrências} em um \textbf{intervalo
-  contínuo} (de tempo ou espaço). \\~\\
-  No caso da distribuição binomial, a variável de interesse era o número
-  de sucessos em um \textbf{intervalo discreto} ($n$ ensaios de
-  Bernoulli). \\~\\
-  A unidade de medida (tempo ou espaço) é uma variável contínua, mas a
-  \textsf{variável aleatória}, o \textbf{número de ocorrências}, é
-  discreta.
+  Considere então agora que o fenômeno de interesse é observado em um
+  intervalo \textbf{contínuo} (tempo, espaço, \ldots), de tamanho $t$.
+  \\~\\
+  O número de eventos que ocorrem no intervalo fixo $[0,t)$ é uma
+  variável aleatória $X$ (``número de sucessos''). \\~\\
+  Podemos então inicialmente tentar aproximar esses eventos à um ensaio
+  de Bernoulli, criando $n$ subintervalos muito pequenos, de forma que
+  este processo satisfaça as seguintes condições:
+\end{frame}
+
+\begin{frame}[fragile]{Modelo Poisson}
+  \begin{enumerate}
+  \item[i)] Em um período de tempo muito curto, somente 1 ou 0 eventos
+    podem ocorrer (dois ou mais eventos são impossíveis)
+  \item[ii)] O valor esperado de sucessos, $np$, é constante para
+    qualquer tamanho de intervalo. Chamaremos essa constante de $\lambda
+    = np$. Dessa forma, a probabilidade de sucesso de um evento será $p
+    = \lambda/n$.
+  \item[iii)] Cada subintervalo é um ensaio de Bernoulli independente.
+  \end{enumerate}
+  \vspace{1em}
+  Um experimento que satisfaça estas condições é chamado de
+  \textbf{processo de Poisson}.
+\end{frame}
+
+\begin{frame}[fragile]{Modelo Poisson}
+  Note que se estas condições forem satisfeitas, se continuarmos
+  aumentando o número de subintervalos ($n$), então a probabilidade $p$
+  deverá diminuir para que $\lambda = np$ permaneça constante. \\~\\
+  Dessa forma, estamos interessados em determinar a distribuição da VA
+  $X ~ \sim \text{bin}(n, p = \lambda/n)$ no limite quando $n \to
+  \infty$ e $p \to 0$, ou seja,
+  \begin{align*}
+    P[X = x] &= \lim_{n \to \infty} \binom{n}{x} p^x (1-p)^{n-x} \\
+     &= \lim_{n \to \infty} \frac{n!}{x!(n-x)!} \left( \frac{\lambda}{n} \right)^x
+       \left( 1 - \frac{\lambda}{n}  \right)^{n-x}
+  \end{align*}
+\end{frame}
+
+\begin{frame}[fragile]{Modelo Poisson}
+  Dessa forma, pode-se mostrar que
+  \begin{align*}
+    P[X = x] &= \lim_{n \to \infty} \frac{n!}{x!(n-x)!}
+               \left( \frac{\lambda}{n} \right)^x
+               \left( 1 - \frac{\lambda}{n}  \right)^{n-x} \\
+             &\cong \frac{e^{-\lambda} \lambda^x}{x!}
+  \end{align*}
+  Que é chamado \textbf{modelo de Poisson} com parâmetro $\lambda$, e
+  \begin{equation*}
+  \E(X) = \lambda = \Var(X)
+\end{equation*}
+\end{frame}
+
+\begin{frame}[fragile]{Modelo Poisson}
+  Nesse caso, $\lambda$ é o número esperado de sucessos em uma unidade
+  de tempo específica. \\~\\
+  Frequentemente estamos interessados no valor esperado ou na
+  probabilidade em um intervalo contínuo $t$ qualquer. Nesse caso, a
+  esperança e a variância serão
+  \begin{align*}
+    \E(X) &= \lambda t = \mu \\
+    \Var(X) &= \lambda t
+  \end{align*}
+  \vspace{1em}
+
+  Portanto, o modelo Poisson mais geral pode ser definido como a seguir:
 \end{frame}
 
 \begin{frame}[fragile]{Modelo Poisson}
@@ -860,18 +917,31 @@ Temos que
 \end{frame}
 
 \begin{frame}[fragile]{Modelo Poisson}
-  \small
-  A distribuição de Poisson também pode ser pensada como uma aproximação
-  para a distribuição binomial, quando o número de ensaios de Bernoulli
-  for muito grande ($n \rightarrow \infty$) e a probabilidade de sucesso
-  for muito pequena ($p \rightarrow 0$), ou seja,
-  \begin{align*}
-    P[X=x] &= \lim_{n \rightarrow \infty} \binom{n}{x} p^x (1-p)^{n-x} \\
-           &\cong \frac{e^{-\mu} \mu^x}{x!} \quad \text{com} \quad \mu
-           = np
-  \end{align*}
-  No entanto, a distribuição de Poisson difere da distribuição binomial
-  em dois aspectos fundamentais:
+  A distribuição de Poisson é utilizada para descrever
+  a probabilidade do \textbf{número de ocorrências} em um \textbf{intervalo
+  contínuo} (de tempo ou espaço). \\~\\
+  No caso da distribuição binomial, a variável de interesse era o número
+  de sucessos em um \textbf{intervalo discreto} ($n$ ensaios de
+  Bernoulli). \\~\\
+  A unidade de medida (tempo ou espaço) é uma variável contínua, mas a
+  \textsf{variável aleatória}, o \textbf{número de ocorrências}, é
+  discreta.
+\end{frame}
+
+
+\begin{frame}[fragile]{Modelo Poisson}
+  % \small
+  % A distribuição de Poisson também pode ser pensada como uma aproximação
+  % para a distribuição binomial, quando o número de ensaios de Bernoulli
+  % for muito grande ($n \rightarrow \infty$) e a probabilidade de sucesso
+  % for muito pequena ($p \rightarrow 0$), ou seja,
+  % \begin{align*}
+  %   P[X=x] &= \lim_{n \rightarrow \infty} \binom{n}{x} p^x (1-p)^{n-x} \\
+  %          &\cong \frac{e^{-\mu} \mu^x}{x!} \quad \text{com} \quad \mu
+  %          = np
+  % \end{align*}
+  A distribuição de Poisson difere da distribuição binomial
+  em dois aspectos fundamentais: \\~\\
   \begin{enumerate}
   \item A distribuição binomial é afetada pelo tamanho $n$ da amostra, e
     pela probabilidade $p$ de sucesso. A distribuição de Poisson é
