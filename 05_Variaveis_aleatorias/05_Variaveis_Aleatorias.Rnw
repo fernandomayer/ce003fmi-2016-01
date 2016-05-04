@@ -40,7 +40,8 @@
 \newtheorem*{mydef}{Definição}
 \newtheorem*{mythm}{Teorema}
 
-\title{Variáveis Aleatórias}
+\title[Variáveis Aleatórias e Distr. de Probabilidade]{Variáveis
+  Aleatórias e Distribuições de Probabilidade}
 \author[]{Fernando de Pol Mayer}
 \institute[UFPR]{Laboratório de Estatística e Geoinformação (LEG) \\
   Departamento de Estatística (DEST) \\
@@ -1186,7 +1187,7 @@ par(mfrow=c(1,1))
   \begin{equation*}
     Z = \frac{X - \mu}{\sigma} \sim \text{N}(0,1)
   \end{equation*}
-  que é o ecore $Z$ (número de desvios-padrões da média $\mu$). A
+  que é o escore $Z$ (número de desvios-padrões da média $\mu$). A
   vantagem é que podemos fazer uma única tabela com as integrais
   aproximadas de $Z$, ao invés de uma tabela para cada par
   $(\mu,\sigma^2)$.
@@ -1241,14 +1242,14 @@ mtext("Z", side = 1, line = 8, cex = 1.2)
 \end{frame}
 
 \begin{frame}[fragile]{Modelo normal}
-  \textbf{Exemplo:} Suponha que a média populacional do coeficiente de
-  inteligência (QI) seja 100, com desvio-padrão 15. Qual a probabilidade
-  de selecionarmos uma pessoa ao acaso, e ela ter QI entre 90 e 115?
-\end{frame}
-
-\begin{frame}[fragile]{Modelo normal}
-  \textbf{Exemplo:} Seja $X \sim \N(30, 16)$. Qual a probabilidade de
-  obtermos um valor maior ou igual a 38?
+  \textbf{Exemplos} \\~\\
+  \begin{enumerate}
+  \item Suponha que a média populacional do coeficiente de inteligência
+    (QI) seja 100, com desvio-padrão 15. Qual a probabilidade de
+    selecionarmos uma pessoa ao acaso, e ela ter QI entre 90 e 115?
+  \item Seja $X \sim \N(30, 16)$. Qual a probabilidade de obtermos um
+    valor maior ou igual a 38?
+  \end{enumerate}
 \end{frame}
 
 \begin{frame}[fragile]{Modelo normal}
