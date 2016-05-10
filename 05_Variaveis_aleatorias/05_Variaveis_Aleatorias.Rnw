@@ -1129,6 +1129,46 @@ lines(density(x))
 %%   \end{equation*}
 %% \end{frame}
 
+\begin{frame}[fragile]{Variáveis aleatórias contínuas}
+  \textbf{Observações:} \\~\\
+  \begin{enumerate}
+  \item $P[X=x] = 0$, portanto:
+    \begin{equation*}
+    P[a \leq X \leq b] = P[a < X \leq b] =
+    P[a \leq X < b] = P[a < X < b]
+  \end{equation*}
+  \item Qualquer função $f(\cdot)$ que seja não negativa e cuja área
+    total sob a curva seja igual à unidade caracterizará uma VA
+    contínua.
+  \item $f(x)$ \emph{não} representa a probabilidade de ocorrência de
+    algum evento, A área sobb  curva entre dois pontos é que fornecerá a
+    probabilidade.
+  \end{enumerate}
+\end{frame}
+
+\begin{frame}[fragile]{Exemplo}
+  Seja a função:
+  \[
+    f(x)=
+    \begin{cases}
+      1,5 x^2, & \text{se } -1 \leq x \leq 1 \\
+      0,              & \text{caso contrário}
+    \end{cases}
+  \]
+  \begin{enumerate}
+  \item Verifique se essa função é uma fdp.
+  \item Calcule:
+    \begin{enumerate}
+    \item $P[X > 0]$
+    \item $P[X > 0,5]$
+    \item $P[-0,5 \leq X \leq 0,5]$
+    \item $P[X < -2]$
+    \item $P[X < 0,5]$
+    \item $P[X < 0 \cup X > 0,5]$
+    \end{enumerate}
+  \end{enumerate}
+\end{frame}
+
 \subsection{Esperança e variância}
 
 \begin{frame}[fragile]{Esperança}
@@ -1147,9 +1187,10 @@ lines(density(x))
   A variância, como já vimos, dá o grau de dispersão
   dos valores de uma variável aleatória em relação à sua média ou
   esperança $\E(X)$.  A forma geral para o cálculo em V.A.s contínuas é
-  \begin{equation*}
-    \Var(X) = \int_{-\infty}^{+\infty} [x - \E(X)]^2 \cdot f(x) dx
-  \end{equation*}
+  \begin{align*}
+    \Var(X) &= \E[(X -  \E(X))^2] \\
+      &= \int_{-\infty}^{+\infty} [x - \E(X)]^2 \cdot f(x) dx
+  \end{align*}
   No entanto, assim como para V.A.s discretas, uma foma mais fácil
   operacionalmente pode ser deduzida a partir da primeira, e temos
   \begin{equation*}
@@ -1162,6 +1203,21 @@ lines(density(x))
 \end{frame}
 
 %% AQUI tambem poderia dar um exemplo com integrais
+
+\begin{frame}[fragile]{Exemplo}
+  Seja a função:
+  \[
+    f(x)=
+    \begin{cases}
+      1,5 x^2, & \text{se } -1 \leq x \leq 1 \\
+      0,              & \text{caso contrário}
+    \end{cases}
+  \]
+  \begin{enumerate}
+  \item Calcule a esperança, a variância, e o desvio-padrão.
+  \end{enumerate}
+\end{frame}
+
 
 \subsection[Distribuições Contínuas]{Distribuições contínuas de
   probabilidade}
@@ -1239,6 +1295,21 @@ par(mfrow=c(1,1))
   \item A área total sob a curva é 1 ou 100\%
   \item A curva é \textbf{assintótica} em relação ao eixo $x$
   \end{itemize}
+\end{frame}
+
+\begin{frame}[fragile]{Modelo normal}
+  Para qualquer VA normal $X$, valem as seguintes relações: \\~\\
+  \begin{align*}
+    &P[X > \mu] = P[X < \mu] \\
+    &P[\mu - \sigma < X < \mu + \sigma] \approxeq 0,6827 \\
+    &P[\mu - 2\sigma < X < \mu + 2\sigma] \approxeq 0,9545 \\
+    &P[\mu - 3\sigma < X < \mu + 3\sigma] \approxeq 0,9973
+  \end{align*}
+  Portanto, $6\sigma$ é frequentemente referida como a \textbf{largura}
+  de uma distribuição normal. \\~\\
+  Métodos mais avançados de integração podem ser utilizados para mostrar
+  que a área sob a função densidade de probabilidade normal de $-\infty
+  < x < \infty$ é igual a 1.
 \end{frame}
 
 \begin{frame}[fragile]{Modelo normal}
@@ -1341,16 +1412,20 @@ mtext("Z", side = 1, line = 8, cex = 1.2)
   \end{itemize}
 \end{frame}
 
-% \subsubsection{Exercícios}
+\section{Exercícios}
 
-% \begin{frame}[fragile]{Exercícios}
-%   Exercícios 1--6, 9, 11 do capítulo 8 do livro (pgs. 184--187).
-%   \vspace{1em}
-%   \begin{itemize}
-%   \item[] Pinto, SS; Silva, CS. \textbf{Estatística, Vol I}. Rio Grande:
-%     Editora da FURG, 2010. [Cap. 8]
-%   \end{itemize}
-% \end{frame}
+\begin{frame}[fragile]{Exercícios}
+  \begin{itemize}
+  \item Montgomery, DC; Runger, GC. \textbf{Estatística aplicada e
+      probabilidade para engenheiros}. Rio de Janeiro: LTC Editora,
+    2012.
+    \begin{itemize}
+    \item Cap. 3: 14--17, 21, 26--28, 47--51, 60, 78, 79, 85--87, 90,
+      98, 129--132, 135, 141, 142.
+    \item Cap. 4: 2, 4, 5, 7, 27--30, 33, 53, 55, 61, 69, 70, 75.
+    \end{itemize}
+  \end{itemize}
+\end{frame}
 
 \section{Referências}
 
@@ -1362,7 +1437,7 @@ mtext("Z", side = 1, line = 8, cex = 1.2)
       Estatística}. São Paulo: EDUSP, 2008. [Cap. 3]
   \item Montgomery, DC; Runger, GC. \textbf{Estatística aplicada e
       probabilidade para engenheiros}. Rio de Janeiro: LTC Editora,
-    2012. [Cap. 3]
+    2012. [Cap. 3 e 4]
   \end{itemize}
 \end{frame}
 
