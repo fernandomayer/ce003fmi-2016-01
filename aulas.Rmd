@@ -36,8 +36,21 @@ classe aplicadas.
   eventos. [Slides](04_Probabilidade/04_Probabilidade.pdf)
 - **20/04**: Sabatina 3
 - **25/04**: Variáveis aleatórias: definições e exemplos.
-- **27/04**: Variáveis aleatórias: definições e propriedades de
-  esperança e variância. Modelo Bernoulli.
+  [Slides](05_Variaveis_aleatorias/05_Variaveis_Aleatorias.pdf)
+- **27/04**: Variáveis aleatórias discretas: definições e propriedades
+  de esperança e variância. Modelo Bernoulli.
+  [Slides](05_Variaveis_aleatorias/05_Variaveis_Aleatorias.pdf)
+- **02/05**: Variáveis aleatórias discretas: Modelo binomial.
+  [Slides](05_Variaveis_aleatorias/05_Variaveis_Aleatorias.pdf)
+- **04/05**: Variáveis aleatórias discretas: Modelo Poisson.
+  [Slides](05_Variaveis_aleatorias/05_Variaveis_Aleatorias.pdf)
+- **09/05**: Variáveis aleatórias contínuas: definições, propriedades,
+  esperança e variância.
+  [Slides](05_Variaveis_aleatorias/05_Variaveis_Aleatorias.pdf)
+- **11/05**: Variáveis aleatórias contínuas: Modelo normal.
+  [Slides](05_Variaveis_aleatorias/05_Variaveis_Aleatorias.pdf)
+- **16/05**: Variáveis aleatórias: revisão e exercícios
+- **18/05**: Sabatina 4
 
 ## Exercícios
 
