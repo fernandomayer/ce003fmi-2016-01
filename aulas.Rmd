@@ -51,6 +51,8 @@ classe aplicadas.
   [Slides](05_Variaveis_aleatorias/05_Variaveis_Aleatorias.pdf)
 - **16/05**: Variáveis aleatórias: revisão e exercícios
 - **18/05**: Sabatina 4
+- **23/05**: Não haverá aula (em função da [RBRAS 2016])
+- **24/05**: Não haverá aula (em função da [RBRAS 2016])
 
 ## Exercícios
 
@@ -70,3 +72,5 @@ As notas estão disponíveis [nesta página](notas.html).
 [Gabarito 2]: exercicios/03_Medidas_resumo_GABARITO.pdf
 [Lista 3]: exercicios/04_Probabilidade.pdf
 [Gabarito 3]: exercicios/04_Probabilidade_GABARITO.pdf
+
+[RBRAS 2016]: http://rbras2016.ufba.br/pt
