@@ -284,7 +284,7 @@ boxplot(notas.all, horizontal = TRUE, ylim = c(0, 10),
 }
 round(statm(notas.all), 2)</code></pre>
 <pre><code>  Min    Q1    Q2    Q3   Max Média     s   NAs 
- 1.80  6.80  8.90  9.70 10.00  7.99  2.06 11.00 </code></pre>
+ 1.80  6.80  8.90  9.70 10.00  7.96  2.06 10.00 </code></pre>
 </div>
 <div id="resumos-por-prova" class="section level2">
 <h2>Resumos por prova</h2>
@@ -296,13 +296,13 @@ boxplot(notas[, notas.col], ylim = c(0, 10), ylab = &quot;Notas&quot;)</code></p
 <pre class="r"><code>round(apply(notas[, notas.col], 2, statm), 2)</code></pre>
 <pre><code>         S1    S2    S3
 Min    4.50  2.50  1.80
-Q1     8.50  5.90  6.35
-Q2     9.00  8.10  8.40
+Q1     8.50  5.90  5.75
+Q2     9.00  8.10  8.20
 Q3     9.50  9.80  9.90
 Max   10.00 10.00 10.00
-Média  8.74  7.44  7.77
+Média  8.74  7.44  7.70
 s      1.21  2.39  2.20
-NAs    3.00  3.00  5.00</code></pre>
+NAs    3.00  3.00  4.00</code></pre>
 </div>
 <div id="notas-individuais" class="section level2">
 <h2>Notas individuais</h2>
@@ -369,7 +369,7 @@ NAs    3.00  3.00  5.00</code></pre>
 <td align="center">20150452</td>
 <td align="center">8.7</td>
 <td align="center">3.0</td>
-<td align="center">NA</td>
+<td align="center">5.5</td>
 </tr>
 <tr class="even">
 <td align="center">20150470</td>
