@@ -63,6 +63,7 @@
 \usepackage{hyperref}
 \usepackage[scaled]{beramono} % truetype: Bistream Vera Sans Mono
 %\usepackage{inconsolata}
+\usepackage{amsmath}
 \usepackage{xfrac}
 \usepackage{tikz}
 \usepackage{xcolor}
@@ -84,6 +85,7 @@
 \providecommand{\E}{\text{E}}
 \providecommand{\Var}{\text{Var}}
 \providecommand{\DP}{\text{DP}}
+\providecommand{\EP}{\text{EP}}
 \providecommand{\N}{\text{N}}
 \theoremstyle{definition}
 \newtheorem*{mydef}{Definição}
@@ -552,12 +554,66 @@
   \end{itemize}
 \end{frame}
 
+\begin{frame}[fragile]{Propriedades dos estimadores}
+  \textbf{Exemplo}: média amostral $\bar{X} = \frac{1}{n} \sum_{i=1}^{n}
+  X_i$ como estimador da média populacional $\mu$: \\~\\
+  \begin{flalign*}
+    \E(\bar{X}) &= \E \left[ \frac{1}{n} \sum_{i=1}^{n} X_i \right] = \mu&& \\
+    \Var(\bar{X}) &= \Var \left[ \frac{1}{n} \sum_{i=1}^{n} X_i \right] = \frac{\sigma^2}{n}&&
+  \end{flalign*}
+  \vspace{1em}
+
+  Portanto $\bar{X}$ é um estimador \textbf{não viciado} e
+  \textbf{consistente} para $\mu$.
+\end{frame}
+
+\begin{frame}[fragile]{Propriedades dos estimadores}
+  \textbf{Exemplo}: variância amostral $\hat{\sigma}^2 = \frac{1}{n}
+  \sum_{i=1}^{n} (X_i - \bar{X})^2$ como estimador da variância populacional
+  $\sigma^2$:
+  \begin{flalign*}
+    \E(\hat{\sigma}^2) = \E \left[ \frac{1}{n} \sum_{i=1}^{n} (X_i - \bar{X})^2 \right]
+    = \left( \frac{n-1}{n} \right) \sigma^2 &&
+  \end{flalign*}
+  Portanto $\hat{\sigma}^2$ é um estimador \textbf{viciado} para
+  $\sigma^2$. Para aliminar esse vício, definimos então um novo
+  estimador: $s^2 = \frac{1}{n-1} \sum_{i=1}^{n} (X_i - \bar{X})^2$, e
+  \begin{flalign*}
+    \E(s^2) = \E \left[ \frac{1}{n-1} \sum_{i=1}^{n} (X_i - \bar{X})^2 \right]
+    = \sigma^2 &&
+  \end{flalign*}
+  que é então um estimador \textbf{não viciado} para $\sigma^2$.
+\end{frame}
+
+\begin{frame}[fragile]{Propriedades dos estimadores}
+  O \textbf{erro padrão} de um estimador dá uma ideia da
+  \textbf{precisão} da estimativa.
+  \begin{mydef}[Erro padrão de um estimador]
+    O erro padrão (EP) de um estimador é o seu desvio-padrão, ou seja,
+    \begin{equation*}
+      \EP(\hat\theta) = \sqrt{\Var(\hat\theta)}
+    \end{equation*}
+  \end{mydef}
+  \vspace{1em}
+  \textbf{Exemplo:} Sabemos que a distribuição de $\bar{X}$ é normal com
+  média $\mu$ e variância $\sigma^2/n$. Então o erro padrão de $\bar{X}$ é
+  \begin{equation*}
+    \EP(\bar{X}) = \sqrt{\Var(\bar{X})} = \sqrt{\frac{\sigma^2}{n}} = \frac{\sigma}{\sqrt{n}}
+  \end{equation*}
+\end{frame}
+
 \section{Erros amostrais}
 
 \begin{frame}{Erros amostrais}
   \begin{block}{Erros amostrais}
     Diferença entre o resultado da amostra e o verdadeiro valor da
-    população. Ocorre pois as amostras são \textbf{aleatórias}!
+    população. Ocorre pois as amostras são \textbf{aleatórias}! \\
+    \textbf{Exemplo}: a diferença entre a média amostral $\bar{X}$ e a
+    média populacional $\mu$
+    \begin{equation*}
+      e = \bar{X} - \mu
+    \end{equation*}
+    é chamada de \textit{erro amostral da média}.
   \end{block}
   \vspace{1em}
   \begin{block}{Erros não amostrais}
@@ -590,7 +646,7 @@
     \centering
     \begin{tabular}{lrr}
       \hline
-      Amostra & $\bar{x}$ & $\epsilon = \bar{x} - \mu$ \\
+      Amostra & $\bar{x}$ & $e = \bar{x} - \mu$ \\
       \hline
       23 23 23 24 23 & 23.2 & 0.7 \\
       24 22 20 20 20 & 21.2 & -1.3 \\
@@ -677,7 +733,8 @@
   \\~\\
   A função $T(\cdot)$ pode ser um valor real ou um vetor. Dessa forma,
   $Y = T(x_1, x_2, \ldots, x_n)$ \textbf{é também uma variável
-    aleatória} (ou vetor aleatório) \\~\\
+    aleatória} (ou vetor aleatório). Se $Y$ é uma VA, \emph{então ela possui
+  uma distribuição de probabilidade}. \\~\\
   Uma vez que a amostra aleatória $X_1, X_2, \ldots, X_n$ tem uma
   estrutura probabilística simples (porque $X_i$ são iid), $Y$ é
   particularmente tratável. Uma vez que a distribuição de $Y$ é derivada
@@ -692,21 +749,22 @@
     $Y$. Assim, uma estatística também é uma variável aleatória, pois
     seus valores mudam conforme a amostra aleatória
   \end{mydef}
-    Exemplo: duas estatísticas comumente utilizadas para o resumo de uma
-    amostra aleatória são a \textbf{média amostral}
+  \vspace{1em}
+    \textbf{Exemplo}: duas estatísticas comumente utilizadas para o
+    resumo de uma amostra aleatória são a \textbf{média amostral}
 \begin{equation*}
-  \bar{x} = \frac{1}{n} \sum_{i=1}^{n} x_i
+  \bar{X} = \frac{1}{n} \sum_{i=1}^{n} X_i
 \end{equation*}
-e a \textbf{variância amostral}
+e a \textbf{proporção amostral}
 \begin{equation*}
-  s^2 = \frac{1}{n} \sum_{i=1}^{n} (x_i - \bar{x})^2
+  \hat{p} = \frac{x}{n}
 \end{equation*}
 \end{frame}
 
 \subsection{Distribuição amostral da média}
 
 \begin{frame}[fragile=singleslide]{Distribuição amostral da média}
-  Para estudarmos a distribuição amostral da estatística $\bar{x}$,
+  Para estudarmos a distribuição amostral da estatística $\bar{X}$,
   considere uma população identificada pela VA $X$, com parâmetros
   \begin{equation*}
     \E(X) = \mu = \text{média} \qquad \qquad \Var(X) = \sigma^2 =
@@ -820,6 +878,27 @@ Veja a figura \texttt{dist\_amostral\_idades.pdf}\\~\\
 \end{frame}
 
 \begin{frame}[fragile=singleslide]{Distribuição amostral da média}
+  \begin{mythm}[Teorema Central do Limite (TCL)]
+    Para amostras aleatórias simples $(X_1, X_2, \ldots, X_n)$,
+    retiradas de uma população normal com média $\mu$ e variância
+    $\sigma^2$, a distribuição amostral da média $\bar{X}$,
+    terá forma dada por
+    \begin{equation*}
+      Z = \frac{\bar{X} - \mu}{\sigma/\sqrt{n}}
+    \end{equation*}
+    no limite quando $n \to \infty$, que é a ditribuição normal padrão:
+    $Z \sim \N(0,1)$.
+  \end{mythm}
+  \begin{itemize}
+  \item Se a população for normal, então $\bar{X}$ terá distribuição
+    \textit{exata} normal.
+  \item A rapidez da convergência para a normal depende da distribuição
+    da população da qual as amostras foram geradas
+  \end{itemize}
+\end{frame}
+
+
+\begin{frame}[fragile=singleslide]{Distribuição amostral da média}
   Este teorema nos mostra que, para amostras suficientemente grandes ($n
   > 30$), \textbf{a média amostral $\bar{X}$  converge para o verdadeiro
   valor da média populacional $\mu$} (é um \textbf{estimador
@@ -834,7 +913,7 @@ Veja a figura \texttt{dist\_amostral\_idades.pdf}\\~\\
   \end{center}
   \textbf{a distribuição amostral de $\bar{X}$ aproxima-se
     cada vez mais de uma distribuição normal}, um resultado fundamental
-  na teoria de probabilidade conhecido como \textbf{Teorema do Limite Central}
+  na teoria de probabilidade conhecido como \textbf{Teorema Central do Limite}
 \end{frame}
 
 \begin{frame}{Distribuição amostral da média}
@@ -842,38 +921,20 @@ Exemplo computacional $\rightarrow$ veja a figura
 \texttt{dist\_amostrais.pdf}
 \end{frame}
 
-\begin{frame}[fragile=singleslide]{Distribuição amostral da média}
-  \begin{mythm}[Teorema do Limite Central (TLC)]
-    Para amostras aleatórias simples $(X_1, X_2, \ldots, X_n)$,
-    retiradas de uma população com média $\mu$ e variância
-    $\sigma^2$, a distribuição amostral da média $\bar{X}$,
-    aproxima-se, para $n$ grande ($n>30$), de uma distribuição normal
-    com média $\mu$ e variância $\sigma^2/n$, ou seja,
-  \begin{equation*}
-    \bar{X} \sim \text{N}\left(\mu, \frac{\sigma^2}{n} \right)
-  \end{equation*}
-  \end{mythm}
-  \begin{itemize}
-  \item Se a população for normal, então $\bar{X}$ terá distribuição
-    \textit{exata} normal.
-  \item A rapidez da convergência para a normal depende da distribuição
-    da população da qual as amostras foram geradas
-  \end{itemize}
-\end{frame}
 
-\begin{frame}{Distribuição amostral da média}
-  Outra forma de apresentar o TLC é através do resultado
-  \begin{equation*}
-    Z = \frac{\bar{X} - \mu}{\sigma/\sqrt{n}} \, \sim \, \text{N}(0,1)
-  \end{equation*}
-  que decorre da transformação usual de uma variável aleatória $X \sim
-  \text{N}(\mu, \sigma^2)$ para uma normal padrão $\text{N}(0,1)$,
-  \begin{equation*}
-    Z = \frac{X - \mu}{\sigma}
-  \end{equation*}
-  % Nesse caso, assumindo que $\sigma$ é conhecido, e $\bar{X}$ será
-  % medido, podemos usar $Z$ para estimar $\mu$
-\end{frame}
+% \begin{frame}{Distribuição amostral da média}
+%   Outra forma de apresentar o TLC é através do resultado
+%   \begin{equation*}
+%     Z = \frac{\bar{X} - \mu}{\sigma/\sqrt{n}} \, \sim \, \text{N}(0,1)
+%   \end{equation*}
+%   que decorre da transformação usual de uma variável aleatória $X \sim
+%   \text{N}(\mu, \sigma^2)$ para uma normal padrão $\text{N}(0,1)$,
+%   \begin{equation*}
+%     Z = \frac{X - \mu}{\sigma}
+%   \end{equation*}
+%   % Nesse caso, assumindo que $\sigma$ é conhecido, e $\bar{X}$ será
+%   % medido, podemos usar $Z$ para estimar $\mu$
+% \end{frame}
 
 \begin{frame}{Distribuição amostral da média}
   Em palavras, o teorema garante que que para $n$ grande, a distribuição
@@ -893,11 +954,29 @@ Exemplo computacional $\rightarrow$ veja a figura
   No entanto, quando temos uma \textbf{amostra}, e queremos calcular
   probabilidades associadas à \textbf{média amostral} (a probabilidade
   da média amostral estar em um determinado intervalo de valores),
-  precisamos necessariamente usar os resultados do TLC.
+  precisamos necessariamente usar os resultados do TCL.
+\end{frame}
+
+\begin{frame}{Distribuição amostral da média e erros amostrais}
+  Já vimos que o \textbf{erro amostral da média} é dado pela diferença
+  entre $\bar{X}$ e $\mu$, ou seja,
+  \begin{equation*}
+    e = \bar{X} - \mu
+  \end{equation*}
+  Dessa forma, se
+  \begin{equation*}
+    Z = \frac{\bar{X} - \mu}{\sigma/\sqrt{n}} \, \sim \, \N(0,1)
+  \end{equation*}
+  então a distribuição de $e$ também será normal padrão, pois
+  \begin{equation*}
+    \frac{e \sqrt{n}}{\sigma} \, \sim \, \N(0,1)
+  \end{equation*}
+  Esse resultado será fundamental na construção de estimativas
+  intervalares.
 \end{frame}
 
 \begin{frame}{Distribuição amostral da média}
-  \textbf{Usando o TLC} \\~\\
+  \textbf{Usando o TCL} \\~\\
 
   \textbf{Exemplo:} Uma máquina de empacotamento que abastece pacotes de
   feijão apresenta distribuição normal com média de 500 g e
@@ -916,7 +995,7 @@ Exemplo computacional $\rightarrow$ veja a figura
 \end{frame}
 
 \begin{frame}{Distribuição amostral da média}
-  \textbf{Usando o TLC} \\~\\
+  \textbf{Usando o TCL} \\~\\
 
   \textbf{Exemplo:} Uma pesquisa com 12000 estudantes mostrou que a
   média de horas de estudo por semana foi de 7,3 horas, com
@@ -933,19 +1012,113 @@ Exemplo computacional $\rightarrow$ veja a figura
   \end{itemize}
 \end{frame}
 
-\section{Exercícios}
+\subsection{Distribuição amostral da proporção}
 
-\begin{frame}[fragile]{Exercícios}
+\begin{frame}{Distribuição amostral da proporção}
+  Muitas vezes, o interesse é conhecer uma \textbf{proporção}, e não a
+  média de uma população. \\~\\
+  Suponha que uma amostra de tamanho $n$ foi obtida de uma população, e
+  que $x \leq n$ observações nessa amostra pertençam a uma classe de
+  interesse (ex.: pessoas do sexo masculino). \\~\\
+  Dessa forma, a proporção amostral
+  \begin{equation*}
+    \hat{p} = \frac{x}{n} = \frac{\text{número de sucessos}}{\text{total de
+        tentativas}}
+  \end{equation*}
+  é o ``melhor estimador'' para a proporção populacional $p$. \\~\\
+  Note que $n$ e $p$ são os parâmetros de uma \textbf{distribuição
+    binomial}.
+\end{frame}
+
+\begin{frame}{Distribuição amostral da proporção}
+  \textbf{Exemplo}: em 5 lançamentos de uma moeda considere que o evento
+  ``cara'' (C) seja o sucesso (``sucesso'' = 1; ``fracasso'' = 0). Um possível
+  resultado seria o conjunto \{C, C, R, R, C\}. A proporção
+  amostral seria
+  \begin{equation*}
+    \hat{p} = \frac{x}{n} = \frac{\text{número de sucessos}}{\text{total de
+        tentativas}} = \frac{3}{5} = 0,6
+  \end{equation*}
+  \vspace{1em}
+
+  \textbf{Exemplo}: em uma amostra de 2500 eleitores de uma cidade, 1784
+  deles eram favoráveis à reeleição do atual prefeito. A proporção
+  amostral é então
+  \begin{equation*}
+    \hat{p} = \frac{x}{n} = \frac{\text{número de sucessos}}{\text{total de
+        tentativas}} = \frac{1784}{2500} = 0,7136
+  \end{equation*}
+\end{frame}
+
+
+\begin{frame}{Distribuição amostral de uma proporção}
+  A distribuição amostral de uma \textbf{proporção} é a distribuição das
+  proporções de todas as possíveis amostras de tamanho $n$ retiradas de
+  uma população \\~\\
+  Ver figura \texttt{dist\_amostral\_proporcoes.pdf}:
   \begin{itemize}
-  \item Montgomery, DC; Runger, GC. \textbf{Estatística aplicada e
-      probabilidade para engenheiros}. Rio de Janeiro: LTC Editora,
-    2012.
-    \begin{itemize}
-    \item Cap. 3: 14--17, 21, 26--28, 47--51, 60, 78, 79, 85--87, 90,
-      98, 129--132, 135, 141, 142.
-    \item Cap. 4: 2, 4, 5, 7, 27--30, 33, 53, 55, 61, 69, 70, 75.
-    \end{itemize}
+  \item Uma moeda é lançada $n=10$ vezes, e a proporção de caras é
+    registrada
+  \item Esse processo é repetido $m = 10, 30, 100, 1000, 10000$ vezes
   \end{itemize}
+  \vspace{1em}
+  Com isso, concluimos que:
+  \begin{itemize}
+  \item A média das proporções para $m \to \infty$ tende para a
+    verdadeira proporção populacional $p = 0,5$
+  \item A \textbf{distribuição amostral} das proporções segue
+    aproximadamente uma \textbf{distribuição normal}
+  \end{itemize}
+\end{frame}
+
+\begin{frame}{Distribuição amostral de uma proporção}
+  Através do estudo da distribuição amostral da proporção, chegamos aos
+  seguintes resultados
+  \begin{itemize}
+  \item $\E(\hat{p}) = \mu_{\hat{p}} = p$
+  \item $\Var(\hat{p}) = \sigma^{2}_{\hat{p}} = \frac{p(1-p)}{n}$
+  \end{itemize}
+  \vspace{1em}
+
+  Ou seja, $\hat{p}$ é um estimador \textbf{não viciado} e
+  \textbf{consistente} para $p$. \\~\\
+  Assim, a \textbf{distribuição amostral} de $\hat{p}$ será
+  \begin{equation*}
+    \hat{p} \sim \N \left( p, \frac{p(1-p)}{n} \right)
+  \end{equation*}
+\end{frame}
+
+\begin{frame}{Distribuição amostral de uma proporção}
+  Note que o \textbf{erro padrão} de $\hat{p}$ será
+  \begin{equation*}
+    \EP(\hat{p}) = \sqrt{\Var(\hat{p})} = \sqrt{\frac{p(1-p)}{n}}
+  \end{equation*}
+  Assim, usando o TCL, podemos mostrar que a quantidade
+  \begin{equation*}
+    Z = \frac{\hat{p} - p}{\sqrt{\frac{p(1-p)}{n}}} \, \sim \, \N(0,1)
+  \end{equation*}
+  segue uma distribuição \textbf{normal padrão} com média 0 e variância
+  1. \\~\\
+  Quando não conhecemos $p$, usamos $\hat{p} = x/n$ como estimativa para
+  calcular o erro padrão.
+\end{frame}
+
+\begin{frame}{A normal como aproximação da binomial}
+  Sob determinadas condições, podemos usar a distribuição normal como
+  aproximação da distribuição binomial. \\~\\
+  Se $X$ for uma VA binomial com parâmetros $n$ e $p$, então
+  \begin{equation*}
+    Z = \frac{X - np}{\sqrt{np(1-p)}}
+  \end{equation*}
+  será uma VA \textbf{normal padrão}, $Z \sim \N(0,1)$, desde que as
+  seguintes condições sejam satisfeitas:
+  \begin{itemize}
+  \item $np \geq 5$
+  \item $n(1-p) \geq 5$
+  \end{itemize}
+  Dessa forma, podemos calcular probabilidades para uma VA binomial,
+  aproximadas por uma distribuição normal com média $\mu = np$ e
+  desvio-padrão $\sigma = \sqrt{np(1-p)}$.
 \end{frame}
 
 \section{Referências}
@@ -953,12 +1126,12 @@ Exemplo computacional $\rightarrow$ veja a figura
 \begin{frame}{Referências}
   \begin{itemize}
   \item Bussab, WO; Morettin, PA. \textbf{Estatística básica}. São
-    Paulo: Saraiva, 2006. [Cap. 6]
+    Paulo: Saraiva, 2006. [Cap. 10]
   \item Magalhães, MN; Lima, ACP. \textbf{Noções de Probabilidade e
-      Estatística}. São Paulo: EDUSP, 2008. [Cap. 3]
+      Estatística}. São Paulo: EDUSP, 2008. [Cap. 7]
   \item Montgomery, DC; Runger, GC. \textbf{Estatística aplicada e
       probabilidade para engenheiros}. Rio de Janeiro: LTC Editora,
-    2012. [Cap. 3 e 4]
+    2012. [Cap. 7]
   \end{itemize}
 \end{frame}
 
