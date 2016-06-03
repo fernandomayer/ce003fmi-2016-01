@@ -52,11 +52,22 @@ classe aplicadas.
 - **16/05**: Variáveis aleatórias: revisão e exercícios
 - **18/05**: Sabatina 4
 - **23/05**: Não haverá aula (em função da [RBRAS 2016])
-- **24/05**: Não haverá aula (em função da [RBRAS 2016])
+- **25/05**: Não haverá aula (em função da [RBRAS 2016])
+- **30/05**: Introdução à inferência estatística. Estimadores pontuais e
+  propriedades dos estimadores.
+  [Slides](06_Estimacao_pontual/06_Estimacao_pontual.pdf)
+- **01/06**: Propriedades de estimadores e erros amostrais.
+  [Slides](06_Estimacao_pontual/06_Estimacao_pontual.pdf)
+- **06/06**: Distribuição amostral da média (ver slides e figuras:
+  [dist_amostral_idades.pdf](06_Estimacao_pontual/dist_amostral_idades.pdf)
+  e [dist_amostrais.pdf](06_Estimacao_pontual/dist_amostrais.pdf)).
+  Estimação intervalar. Intervalo de confiança para a média ($\sigma$
+  conhecido).
+- **08/06**: Sabatina 5.
 
 ## Exercícios
 
-- [Lista 1][]: amostragem e análise exploratória de dados. [Gabarito 1][].
+- [Lista 1][]: Amostragem e análise exploratória de dados. [Gabarito 1][].
 - [Lista 2][]: Medidas resumo. [Gabarito 2][]
 - [Lista 3][]: Probabilidade. [Gabarito 3][]
 
