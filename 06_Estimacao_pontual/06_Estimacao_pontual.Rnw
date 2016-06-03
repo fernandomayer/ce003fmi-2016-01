@@ -549,7 +549,9 @@ require(latticeExtra, quietly = TRUE)
     = \left( \frac{n-1}{n} \right) \sigma^2 &&
   \end{flalign*}
   Portanto $\hat{\sigma}^2$ é um estimador \textbf{viciado} para
-  $\sigma^2$. Para aliminar esse vício, definimos então um novo
+  $\sigma^2$. (Embora seja um estimador \textbf{assintoticamente} não
+  viciado). \\~\\
+  Para eliminar esse vício, podemos definir então um novo
   estimador: $s^2 = \frac{1}{n-1} \sum_{i=1}^{n} (X_i - \bar{X})^2$, e
   \begin{flalign*}
     \E(s^2) = \E \left[ \frac{1}{n-1} \sum_{i=1}^{n} (X_i - \bar{X})^2 \right]
@@ -562,13 +564,14 @@ require(latticeExtra, quietly = TRUE)
   O \textbf{erro padrão} de um estimador dá uma ideia da
   \textbf{precisão} da estimativa.
   \begin{mydef}[Erro padrão de um estimador]
-    O erro padrão (EP) de um estimador é o seu desvio-padrão, ou seja,
+    O erro padrão (EP) de um estimador é o seu desvio-padrão (raíz
+    quadrada da variância), ou seja,
     \begin{equation*}
       \EP(\hat\theta) = \sqrt{\Var(\hat\theta)}
     \end{equation*}
   \end{mydef}
   \vspace{1em}
-  \textbf{Exemplo:} Sabemos que a distribuição de $\bar{X}$ é normal com
+  \textbf{Exemplo:} Sabemos que a distribuição de $\bar{X}$ tem
   média $\mu$ e variância $\sigma^2/n$. Então o erro padrão de $\bar{X}$ é
   \begin{equation*}
     \EP(\bar{X}) = \sqrt{\Var(\bar{X})} = \sqrt{\frac{\sigma^2}{n}} = \frac{\sigma}{\sqrt{n}}
