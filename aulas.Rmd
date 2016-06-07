@@ -61,9 +61,9 @@ classe aplicadas.
 - **06/06**: Distribuição amostral da média (ver slides e figuras:
   [dist_amostral_idades.pdf](06_Estimacao_pontual/dist_amostral_idades.pdf)
   e [dist_amostrais.pdf](06_Estimacao_pontual/dist_amostrais.pdf)).
-  Estimação intervalar. Intervalo de confiança para a média ($\sigma$
-  conhecido).
-- **08/06**: Sabatina 5.
+- **08/06**: Sabatina 5. Estimação intervalar. Intervalo de confiança
+  para a média ($\sigma$ conhecido).
+  [Slides](07_Estimacao_intervalar/07_Estimacao_intervalar.pdf)
 
 ## Exercícios
 
