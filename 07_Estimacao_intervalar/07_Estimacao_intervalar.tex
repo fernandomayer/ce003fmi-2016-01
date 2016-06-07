@@ -404,7 +404,7 @@
 \end{knitrout}
 \end{frame}
 
-\begin{frame}{Intervalos de confiança para a média: $\sigma$ conhecido}
+\begin{frame}[fragile]{Intervalos de confiança para a média: $\sigma$ conhecido}
   \textbf{Exemplo}: Uma empresa de computadores deseja estimar o tempo médio de
   horas semanais que as pessoas utilizam o computador. Uma amostra
   aleatória de 25 pessoas apresentou um tempo médio
@@ -420,6 +420,13 @@
   \item[d)] Construa o intervalo de confiança
   \item[e)] Escreva a interpretação do resultado
   \end{itemize}
+\begin{knitrout}\footnotesize
+\definecolor{shadecolor}{rgb}{0.969, 0.969, 0.969}\color{fgcolor}\begin{kframe}
+\begin{verbatim}
+Resp.: [20.362; 24.438]
+\end{verbatim}
+\end{kframe}
+\end{knitrout}
 \end{frame}
 
 \begin{frame}{Intervalos de confiança para a média: $\sigma$ conhecido}
@@ -470,7 +477,7 @@
   \end{itemize}
 \end{frame}
 
-\begin{frame}{Intervalos de confiança para a média: $\sigma$ conhecido}
+\begin{frame}[fragile]{Intervalos de confiança para a média: $\sigma$ conhecido}
   % baseado em  magalhaes, cap 7, pg 238, ex. 18
   \textbf{Exemplo:} Seja $X \sim \N(\mu, 36)$
   \begin{itemize}
@@ -490,6 +497,45 @@
   \item[d)] Calcule as amplitudes dos intervalos acima e explique a
     diferença.
   \end{itemize}
+\end{frame}
+
+\begin{frame}[fragile]{Intervalos de confiança para a média: $\sigma$ conhecido}
+Respostas do exercício anterior:
+\begin{knitrout}\footnotesize
+\definecolor{shadecolor}{rgb}{0.969, 0.969, 0.969}\color{fgcolor}\begin{kframe}
+\begin{alltt}
+\hlcom{## a)}
+\end{alltt}
+\begin{verbatim}
+      (i)   (ii)  (iii)
+LI 17.104 16.837 16.314
+LS 19.896 20.163 20.686
+\end{verbatim}
+\begin{alltt}
+\hlcom{## b)}
+\end{alltt}
+\begin{verbatim}
+  (i)  (ii) (iii) 
+2.792 3.326 4.372 
+\end{verbatim}
+\begin{alltt}
+\hlcom{## c)}
+\end{alltt}
+\begin{verbatim}
+      (i)   (ii)
+LI 15.464 17.324
+LS 21.536 19.676
+\end{verbatim}
+\begin{alltt}
+\hlcom{## d)}
+\end{alltt}
+\begin{verbatim}
+  (i)  (ii) 
+6.072 2.352 
+\end{verbatim}
+\end{kframe}
+\end{knitrout}
+
 \end{frame}
 
 \subsection{Determinação do tamanho amostral}

@@ -98,6 +98,7 @@ require(plyr, quietly = TRUE)
 require(lattice, quietly = TRUE)
 require(latticeExtra, quietly = TRUE)
 library(TeachingDemos, quietly = TRUE)
+source("~/GitHub/Rutilities/funcoes_IC.R")
 @
 
 \begin{frame}
@@ -372,7 +373,7 @@ ci.examp(reps = 100)
 @
 \end{frame}
 
-\begin{frame}{Intervalos de confiança para a média: $\sigma$ conhecido}
+\begin{frame}[fragile]{Intervalos de confiança para a média: $\sigma$ conhecido}
   \textbf{Exemplo}: Uma empresa de computadores deseja estimar o tempo médio de
   horas semanais que as pessoas utilizam o computador. Uma amostra
   aleatória de 25 pessoas apresentou um tempo médio
@@ -388,6 +389,12 @@ ci.examp(reps = 100)
   \item[d)] Construa o intervalo de confiança
   \item[e)] Escreva a interpretação do resultado
   \end{itemize}
+<<echo=FALSE>>=
+x <- icz(alfa = 0.05, xbarra = 22.4, sigma = 5.2, n = 25, ic = 2)[3]
+x <- round(unname(unlist(x)), 3)
+cat(paste0("[", x[1], "; ", x[2], "]"), sep = "\n",
+    fill = TRUE, labels = "Resp.:")
+@
 \end{frame}
 
 \begin{frame}{Intervalos de confiança para a média: $\sigma$ conhecido}
@@ -438,7 +445,7 @@ ci.examp(reps = 100)
   \end{itemize}
 \end{frame}
 
-\begin{frame}{Intervalos de confiança para a média: $\sigma$ conhecido}
+\begin{frame}[fragile]{Intervalos de confiança para a média: $\sigma$ conhecido}
   % baseado em  magalhaes, cap 7, pg 238, ex. 18
   \textbf{Exemplo:} Seja $X \sim \N(\mu, 36)$
   \begin{itemize}
@@ -458,6 +465,35 @@ ci.examp(reps = 100)
   \item[d)] Calcule as amplitudes dos intervalos acima e explique a
     diferença.
   \end{itemize}
+\end{frame}
+
+\begin{frame}[fragile]{Intervalos de confiança para a média: $\sigma$ conhecido}
+Respostas do exercício anterior:
+<<echo=c(1,8,10,17)>>=
+## a)
+alfas <- c(.1, .05, .01)
+a <- sapply(alfas, function(x){
+    icz(alfa = x, xbarra = 18.5, sigma = 6, n = 50, ic = 2)[3]
+})
+a <- sapply(a, round, 3)
+rownames(a) <- c("LI", "LS")
+colnames(a) <- c("(i)", "(ii)", "(iii)")
+a
+## b)
+apply(a, 2, diff)
+## c)
+ns <- c(15, 100)
+c <- sapply(ns, function(x){
+    icz(alfa = .05, xbarra = 18.5, sigma = 6, n = x, ic = 2)[3]
+})
+c <- sapply(c, round, 3)
+rownames(c) <- c("LI", "LS")
+colnames(c) <- c("(i)", "(ii)")
+c
+## d)
+apply(c, 2, diff)
+@
+
 \end{frame}
 
 \subsection{Determinação do tamanho amostral}
