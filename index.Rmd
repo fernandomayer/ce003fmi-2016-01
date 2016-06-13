@@ -7,8 +7,8 @@ output:
 
 [![Build Status](https://travis-ci.org/fernandomayer/ce003fmi-2016-01.svg)](https://travis-ci.org/fernandomayer/ce003fmi-2016-01)
 
-<!-- <div class="alert alert-danger" role="alert"> **ATENÇÃO!** As aulas serão no -->
-<!-- **Anfieatro 14** do Setor de Ciências Biológicas </div> -->
+<div class="alert alert-danger" role="alert"> **ATENÇÃO!** Nesta
+segunda-feira (13/06) **não** haverá aula. </div>
 
 # Detalhes da oferta da disciplina
 

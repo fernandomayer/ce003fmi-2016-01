@@ -64,6 +64,7 @@ classe aplicadas.
 - **08/06**: Sabatina 5. Estimação intervalar. Intervalo de confiança
   para a média ($\sigma$ conhecido).
   [Slides](07_Estimacao_intervalar/07_Estimacao_intervalar.pdf)
+- **13/06**: Não haverá aula.
 
 ## Exercícios
 
