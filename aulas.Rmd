@@ -66,6 +66,10 @@ classe aplicadas.
   [Slides](07_Estimacao_intervalar/07_Estimacao_intervalar.pdf)
 - **13/06**: Não haverá aula.
 - **15/06**: Não haverá aula.
+- **20/06**: Estimação intervalar. Intervalo de confiança para a média
+  ($\sigma$ desconhecido). Tamanho de amostra.
+  [Slides](07_Estimacao_intervalar/07_Estimacao_intervalar.pdf)
+
 
 ## Exercícios
 
