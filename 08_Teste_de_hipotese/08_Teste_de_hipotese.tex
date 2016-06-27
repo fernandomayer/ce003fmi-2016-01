@@ -335,13 +335,14 @@
 \subsection{$\sigma$ conhecido}
 
 \begin{frame}{Testes de hipótese para a média: $\sigma$ conhecido}
-  Quando temos os seguintes requisitos:
+  Quando temos os seguintes requisitos: \\~\\
   \begin{enumerate}
   \item Temos uma AAS
   \item $\sigma$ é conhecido
   \item A população tem distribuição normal ou $n>30$
   \end{enumerate}
-  podemos usar o Teorema do Limite Central para afirmar que a média
+  \vspace{1em}
+  podemos usar o Teorema Central do Limite para afirmar que a média
   segue uma distribuição normal, e a \textbf{estatística de teste} é
   dada por
   \begin{equation*}
@@ -369,36 +370,70 @@
 \end{enumerate}
 \end{frame}
 
-\begin{frame}{Testes de hipótese para a média: $\sigma$ conhecido}
-  Exemplo: Uma máquina de encher embalagens de café está funcionando
-  adequadamente se colocar 700 g em cada embalagem. Para verificar a
-  calibração da máquina, uma empresa coletou uma amostra de 40
-  embalagens, que resultou em uma média de 698 g. Sabe-se que o
-  desvio-padrão do enchimento da máquina é de 10 g. Teste a hipótese de
-  o peso médio das embalagens na população ser 700 g, com um nível de
-  significância de 5\%.
+\begin{frame}[fragile]{Testes de hipótese para a média: $\sigma$ conhecido}
+  \textbf{Exemplo}: \\~\\
+  Uma máquina de encher embalagens de café está funcionando
+  adequadamente se colocar 700 g em cada embalagem. \\~\\
+  Para verificar a calibração da máquina, uma empresa coletou uma
+  amostra de 40 embalagens, que resultou em uma média de 698 g. Sabe-se
+  que o desvio-padrão do enchimento da máquina é de 10 g. \\~\\
+  Teste a hipótese de o peso médio das embalagens na população ser 700
+  g, com um nível de significância de 5\%.
+  \pause
+\begin{knitrout}\footnotesize
+\definecolor{shadecolor}{rgb}{0.969, 0.969, 0.969}\color{fgcolor}\begin{kframe}
+\begin{verbatim}
+$`valor critico`
+[1] -1.96  1.96
+
+$`estatistica de teste`
+[1] -1.2649
+
+$decisao
+[1] "nao rejeita H0"
+\end{verbatim}
+\end{kframe}
+\end{knitrout}
 \end{frame}
 
 % Morettin pg 244
-\begin{frame}{Testes de hipótese para a média: $\sigma$ conhecido}
-  Exemplo: Um fabricante de lajotas introduz um novo material em sua
-  fabricação e acredita que aumentará a resistência média, que é de 206
-  kg. A resistência das lajotas tem distribuição normal com
-  desvio-padrão de 12 kg. Retirou-se uma amostra de 30 lajotas, e
-  obteve-se uma média amostral de 210 kg. Ao nível de 10\%, pode o
-  fabricante afirmar que a resistência média de suas lajotas tenha
-  aumentado?
+\begin{frame}[fragile]{Testes de hipótese para a média: $\sigma$ conhecido}
+  \textbf{Exemplo}: \\~\\
+  Um fabricante de lajotas introduz um novo material em sua fabricação e
+  acredita que aumentará a resistência média, que é de 206
+  kg. \\~\\
+  A resistência das lajotas tem distribuição normal com desvio-padrão de
+  12 kg. Retirou-se uma amostra de 30 lajotas, e
+  obteve-se uma média amostral de 210 kg. \\~\\
+  Ao nível de 10\%, o fabricante pode afirmar que a resistência média de
+  suas lajotas aumentou?
+  \pause
+\begin{knitrout}\footnotesize
+\definecolor{shadecolor}{rgb}{0.969, 0.969, 0.969}\color{fgcolor}\begin{kframe}
+\begin{verbatim}
+$`valor critico`
+[1] 1.2816
+
+$`estatistica de teste`
+[1] 1.8257
+
+$decisao
+[1] "rejeita H0"
+\end{verbatim}
+\end{kframe}
+\end{knitrout}
 \end{frame}
 
 \subsection[$\sigma$ desconhe.]{$\sigma$ desconhecido}
 
 \begin{frame}{Testes de hipótese para a média: $\sigma$ desconhecido}
-  Quando temos os seguintes requisitos:
+  Quando temos os seguintes requisitos: \\~\\
   \begin{enumerate}
   \item Temos uma AAS
   \item $\sigma$ é \textbf{desconhecido}
   \item A população tem distribuição normal ou $n>30$
   \end{enumerate}
+  \vspace{1em}
   usamos a distribuição $t$ como \textbf{estatística de teste}, dada por
   \begin{equation*}
     t_{calc} = \frac{\bar{x} - \mu_0}{s/\sqrt{n}}
@@ -426,16 +461,35 @@
 \end{enumerate}
 \end{frame}
 
-\begin{frame}{Testes de hipótese para a média: $\sigma$ desconhecido}
-  Exemplo: A vida média das lâmpadas produzidas por uma empresa era de
-  1120 horas. Uma amostra de 8 lâmpadas extraída recentemente apresentou
+\begin{frame}[fragile]{Testes de hipótese para a média: $\sigma$ desconhecido}
+  \textbf{Exemplo}: \\~\\
+  A vida média das lâmpadas produzidas por uma empresa era de
+  1120 horas. \\~\\
+  Uma amostra de 8 lâmpadas extraída recentemente apresentou
   a vida média de 1070 horas, com desvio-padrão de 125 horas, e
-  distribuição próxima da normal. Testar a hipótese de que a vida média
+  distribuição próxima da normal. \\~\\
+  Testar a hipótese de que a vida média
   das lâmpadas não tenha se alterado, ao nível de 1\% de significância.
+  \pause
+\begin{knitrout}\footnotesize
+\definecolor{shadecolor}{rgb}{0.969, 0.969, 0.969}\color{fgcolor}\begin{kframe}
+\begin{verbatim}
+$`valor critico`
+[1] -3.4995  3.4995
+
+$`estatistica de teste`
+[1] -1.1314
+
+$decisao
+[1] "nao rejeita H0"
+\end{verbatim}
+\end{kframe}
+\end{knitrout}
 \end{frame}
 
-\begin{frame}{Testes de hipótese para a média: $\sigma$ desconhecido}
-  Exemplo: Querendo determinar a quantidade média de nicotina dos
+\begin{frame}[fragile]{Testes de hipótese para a média: $\sigma$ desconhecido}
+  \textbf{Exemplo}: \\~\\
+  Querendo determinar a quantidade média de nicotina dos
   cigarros, uma empresa retirou uma amostra de 25 cigarros e obteve os
   seguintes resultados:
   \begin{equation*}
@@ -443,15 +497,46 @@
   \end{equation*}
   Ao nível de 5\%, teste se a quantidade média de nicotina pode ser
   considerada inferior a 40 mg.
+  \pause
+\begin{knitrout}\footnotesize
+\definecolor{shadecolor}{rgb}{0.969, 0.969, 0.969}\color{fgcolor}\begin{kframe}
+\begin{verbatim}
+$`valor critico`
+[1] -1.7109
+
+$`estatistica de teste`
+[1] -20
+
+$decisao
+[1] "rejeita H0"
+\end{verbatim}
+\end{kframe}
+\end{knitrout}
 \end{frame}
 
-% \begin{frame}{Testes de hipótese para a média: $\sigma$ desconhecido}
-%   Exemplo: Uma máquina é projetada para fazer esferas de aço de 1 cm de
-%   raio. Uma amostra de 10 esferas é produzida, e tem raio médio de 1,004
-%   cm, com $s = 0,003$. Há razões para suspeitar que a máquina esteja
-%   produzindo esferas com raio maior que 1 cm? (Use um nível de
-%   significância de 10\%).
-% \end{frame}
+\begin{frame}[fragile]{Testes de hipótese para a média: $\sigma$ desconhecido}
+  \textbf{Exemplo}: \\~\\
+  Uma máquina é projetada para fazer esferas de aço de 1 cm de raio. Uma
+  amostra de 10 esferas é produzida, e tem raio médio de 1,004
+  cm, com $s = 0,003$. \\~\\
+  Há razões para suspeitar que a máquina esteja produzindo esferas com
+  raio maior que 1 cm? (Use um nível de significância de 10\%).
+  \pause
+\begin{knitrout}\footnotesize
+\definecolor{shadecolor}{rgb}{0.969, 0.969, 0.969}\color{fgcolor}\begin{kframe}
+\begin{verbatim}
+$`valor critico`
+[1] 1.383
+
+$`estatistica de teste`
+[1] 4.2164
+
+$decisao
+[1] "rejeita H0"
+\end{verbatim}
+\end{kframe}
+\end{knitrout}
+\end{frame}
 
 \section{Testes de hipótese para a proporção $p$}
 
