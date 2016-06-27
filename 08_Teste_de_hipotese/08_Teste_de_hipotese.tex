@@ -540,10 +540,10 @@ $decisao
 
 \section{Testes de hipótese para a proporção $p$}
 
-\begin{frame}{Testes de hipótese para a proporção $\pi$}
+\begin{frame}{Testes de hipótese para a proporção $p$}
   A proporção amostral
   \begin{equation*}
-    p = \frac{x}{n} = \frac{\text{número de sucessos}}{\text{total de
+    \hat{p} = \frac{x}{n} = \frac{\text{número de sucessos}}{\text{total de
         tentativas}}
   \end{equation*}
   é a \textbf{melhor estimativa} para a proporção populacional $\pi$
@@ -558,7 +558,7 @@ $decisao
   np$ e desvio-padrão $\sigma = \sqrt{np(1-p)}$
 \end{frame}
 
-\begin{frame}{Testes de hipótese para a proporção $\pi$}
+\begin{frame}{Testes de hipótese para a proporção $p$}
   Quando temos os seguintes requisitos:
   \begin{enumerate}
   \item Temos uma AAS
@@ -568,23 +568,23 @@ $decisao
     \item há duas categorias de resultado (``sucesso'', ``fracasso'')
     \item a probabilidade de sucesso $p$ permanece constante
     \end{itemize}
-  \item $n\pi_0 \geq 5$ e $n(1-\pi_0) \geq 5$
+  \item $np_0 \geq 5$ e $n(1-p_0) \geq 5$
   \end{enumerate}
   podemos usar a distribuição normal como aproximação da binomial, e
   portanto, usamos a \textbf{estatística de teste}
   \begin{equation*}
-    z_{calc} = \frac{p - \pi_0}{\sqrt{\frac{\pi_0(1-\pi_0)}{n}}}
+    z_{calc} = \frac{\hat{p} - p_0}{\sqrt{\frac{p_0(1-p_0)}{n}}}
   \end{equation*}
-  onde $\pi_0$ é o valor de proporção de teste na hiótese nula.
+  onde $p_0$ é o valor de proporção de teste na hiótese nula.
 \end{frame}
 
-\begin{frame}{Testes de hipótese para a proporção $\pi$}
+\begin{frame}{Testes de hipótese para a proporção $p$}
   \textbf{Procedimentos gerais para a construção de um teste de hipótese
-    para a proporção $\pi$} \\~\\
+    para a proporção $p$} \\~\\
   \begin{enumerate}
   \item Definir a hipótese nula ($H_0$) e a alternativa ($H_1$)
-  \item Determine o valor de $p = \frac{x}{n}$
-  \item Verifique se $n\pi_0 \geq 5$ e $n(1-\pi_0) \geq 5$
+  \item Determine o valor de $\hat{p} = \frac{x}{n}$
+  \item Verifique se $np_0 \geq 5$ e $n(1-p_0) \geq 5$
   \item Definir um nível de \textbf{significância} $\alpha$ (ex.: $\alpha
     = 0,05$), que irá determinar o nível de \textbf{confiança}
     $100(1-\alpha)\%$ do teste
@@ -592,16 +592,17 @@ $decisao
     significância $\rightarrow$ $z_{crit}$
   \item Calcular a \textbf{estatística de teste}, sob a hipótese nula
     \begin{equation*}
-      z_{calc} = \frac{p - \pi_0}{\sqrt{\frac{\pi_0(1-\pi_0)}{n}}}
+      z_{calc} = \frac{\hat{p} - p_0}{\sqrt{\frac{p_0(1-p_0)}{n}}}
     \end{equation*}
   \item Rejeitar a hipótese nula se a estatística de teste calculada
     estiver dentro da região de rejeição ($|z_{calc}| > |z_{crit}|$)
   \end{enumerate}
 \end{frame}
 
-\begin{frame}{Testes de hipótese para a proporção $\pi$}
+\begin{frame}[fragile]{Testes de hipótese para a proporção $p$}
   % triola pg 334
-  Exemplo: Uma empresa desenvolveu um método de seleção de gênero, e
+  \textbf{Exemplo}: \\~\\
+  Uma empresa desenvolveu um método de seleção de gênero, e
   afirma que, com a utilização deste método, a proporção de nascer uma
   menina é maior do que 50\%. Para pais que utilizaram o método, dos 726
   bebês nascidos, 668 eram meninas.\\~\\
@@ -609,15 +610,46 @@ $decisao
   a afirmativa de que, entre bebês nascidos de casais que utilizaram o
   método, a proporção de meninas é maior do que 50\% (que seria o valor
   esperado sem qualquer tratamento).
+  \pause
+\begin{knitrout}\footnotesize
+\definecolor{shadecolor}{rgb}{0.969, 0.969, 0.969}\color{fgcolor}\begin{kframe}
+\begin{verbatim}
+$`valor critico`
+[1] 1.6449
+
+$`estatistica de teste`
+[1] 22.639
+
+$decisao
+[1] "rejeita H0"
+\end{verbatim}
+\end{kframe}
+\end{knitrout}
 \end{frame}
 
-\begin{frame}{Testes de hipótese para a proporção $\pi$}
+\begin{frame}[fragile]{Testes de hipótese para a proporção $p$}
   % morettin pg 250
-  Exemplo: Um candidato a deputado estadual afirma que terá 60\% dos
+  \textbf{Exemplo}: \\~\\
+  Um candidato a deputado estadual afirma que terá 60\% dos
   votos dos eleitores de uma cidade. Um instituto de pesquisa colhe uma
   amostra de 300 eleitores dessa cidade, encontrando 160 que votarão no
   candidato. Esse resultado mostra que a afirmação do candidato é
   verdadeira? (Use um nível de significância de 5\%).
+  \pause
+\begin{knitrout}\footnotesize
+\definecolor{shadecolor}{rgb}{0.969, 0.969, 0.969}\color{fgcolor}\begin{kframe}
+\begin{verbatim}
+$`valor critico`
+[1] -1.96  1.96
+
+$`estatistica de teste`
+[1] -2.357
+
+$decisao
+[1] "rejeita H0"
+\end{verbatim}
+\end{kframe}
+\end{knitrout}
 \end{frame}
 
 \section{Referências}
@@ -625,12 +657,12 @@ $decisao
 \begin{frame}{Referências}
   \begin{itemize}
   \item Bussab, WO; Morettin, PA. \textbf{Estatística básica}. São
-    Paulo: Saraiva, 2006. [Cap. 11]
+    Paulo: Saraiva, 2006. [Cap. 12]
   \item Magalhães, MN; Lima, ACP. \textbf{Noções de Probabilidade e
-      Estatística}. São Paulo: EDUSP, 2008. [Cap. 7]
+      Estatística}. São Paulo: EDUSP, 2008. [Cap. 8]
   \item Montgomery, DC; Runger, GC. \textbf{Estatística aplicada e
       probabilidade para engenheiros}. Rio de Janeiro: LTC Editora,
-    2012. [Cap. 8]
+    2012. [Cap. 9]
   \end{itemize}
 \end{frame}
 
