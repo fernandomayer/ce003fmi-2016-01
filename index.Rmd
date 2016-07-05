@@ -7,8 +7,8 @@ output:
 
 [![Build Status](https://travis-ci.org/fernandomayer/ce003fmi-2016-01.svg)](https://travis-ci.org/fernandomayer/ce003fmi-2016-01)
 
-<!-- <div class="alert alert-danger" role="alert"> **ATENÇÃO!** Nesta -->
-<!-- quarta-feira (22/06) **não** haverá aula. </div> -->
+<div class="alert alert-danger" role="alert"> **ATENÇÃO!** O exame final
+será dia 13/07 (quarta-feira) no horário normal de aula. </div>
 
 # Detalhes da oferta da disciplina
 
