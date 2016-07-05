@@ -291,7 +291,7 @@ boxplot(notas.all, horizontal = TRUE, ylim = c(0, 10),
 }
 round(statm(notas.all), 2)</code></pre>
 <pre><code>  Min    Q1    Q2    Q3   Max Média     s   NAs 
- 0.50  5.40  8.00  9.50 10.00  7.27  2.46 13.00 </code></pre>
+ 0.50  5.50  8.00  9.50 10.00  7.35  2.46 18.00 </code></pre>
 </div>
 <div id="resumos-por-prova" class="section level2">
 <h2>Resumos por prova</h2>
@@ -301,15 +301,15 @@ boxplot(notas[, notas.col], ylim = c(0, 10), ylab = &quot;Notas&quot;)</code></p
 <p><img src="figures/unnamed-chunk-4-1.png" width="640" style="display: block; margin: auto;" /></p>
 <p>Resumo dos cinco números, média, desvio-padrão, e número de provas não realizadas (NA):</p>
 <pre class="r"><code>round(apply(notas[, notas.col], 2, statm), 2)</code></pre>
-<pre><code>         S1    S2    S3   S4
-Min    4.50  2.50  1.80 0.50
-Q1     8.50  5.90  5.75 3.50
-Q2     9.00  8.10  8.20 5.00
-Q3     9.50  9.80  9.90 7.50
-Max   10.00 10.00 10.00 9.50
-Média  8.74  7.44  7.70 5.19
-s      1.21  2.39  2.20 2.41
-NAs    3.00  3.00  4.00 3.00</code></pre>
+<pre><code>         S1    S2    S3   S4    S5
+Min    4.50  2.50  1.80 0.50  1.00
+Q1     8.50  5.90  5.75 3.50  7.00
+Q2     9.00  8.10  8.20 5.00  9.00
+Q3     9.50  9.80  9.90 7.50  9.65
+Max   10.00 10.00 10.00 9.50 10.00
+Média  8.74  7.44  7.70 5.19  7.71
+s      1.21  2.39  2.20 2.41  2.44
+NAs    3.00  3.00  4.00 3.00  5.00</code></pre>
 </div>
 <div id="notas-individuais" class="section level2">
 <h2>Notas individuais</h2>
@@ -322,6 +322,7 @@ NAs    3.00  3.00  4.00 3.00</code></pre>
 <th align="center">S2</th>
 <th align="center">S3</th>
 <th align="center">S4</th>
+<th align="center">S5</th>
 </tr>
 </thead>
 <tbody>
@@ -331,6 +332,7 @@ NAs    3.00  3.00  4.00 3.00</code></pre>
 <td align="center">5.9</td>
 <td align="center">1.8</td>
 <td align="center">4.0</td>
+<td align="center">7.0</td>
 </tr>
 <tr class="even">
 <td align="center">20124652</td>
@@ -338,6 +340,7 @@ NAs    3.00  3.00  4.00 3.00</code></pre>
 <td align="center">5.3</td>
 <td align="center">2.9</td>
 <td align="center">0.5</td>
+<td align="center">7.0</td>
 </tr>
 <tr class="odd">
 <td align="center">20136720</td>
@@ -345,6 +348,7 @@ NAs    3.00  3.00  4.00 3.00</code></pre>
 <td align="center">9.8</td>
 <td align="center">9.9</td>
 <td align="center">5.0</td>
+<td align="center">9.0</td>
 </tr>
 <tr class="even">
 <td align="center">20149073</td>
@@ -352,6 +356,7 @@ NAs    3.00  3.00  4.00 3.00</code></pre>
 <td align="center">7.0</td>
 <td align="center">8.0</td>
 <td align="center">3.0</td>
+<td align="center">8.0</td>
 </tr>
 <tr class="odd">
 <td align="center">20149110</td>
@@ -359,6 +364,7 @@ NAs    3.00  3.00  4.00 3.00</code></pre>
 <td align="center">8.1</td>
 <td align="center">7.0</td>
 <td align="center">5.5</td>
+<td align="center">7.0</td>
 </tr>
 <tr class="even">
 <td align="center">20149145</td>
@@ -366,6 +372,7 @@ NAs    3.00  3.00  4.00 3.00</code></pre>
 <td align="center">2.5</td>
 <td align="center">5.3</td>
 <td align="center">5.5</td>
+<td align="center">9.0</td>
 </tr>
 <tr class="odd">
 <td align="center">20150149</td>
@@ -373,6 +380,7 @@ NAs    3.00  3.00  4.00 3.00</code></pre>
 <td align="center">2.5</td>
 <td align="center">6.7</td>
 <td align="center">0.5</td>
+<td align="center">6.0</td>
 </tr>
 <tr class="even">
 <td align="center">20150417</td>
@@ -380,6 +388,7 @@ NAs    3.00  3.00  4.00 3.00</code></pre>
 <td align="center">10.0</td>
 <td align="center">10.0</td>
 <td align="center">8.0</td>
+<td align="center">10.0</td>
 </tr>
 <tr class="odd">
 <td align="center">20150452</td>
@@ -387,6 +396,7 @@ NAs    3.00  3.00  4.00 3.00</code></pre>
 <td align="center">3.0</td>
 <td align="center">5.5</td>
 <td align="center">5.0</td>
+<td align="center">9.0</td>
 </tr>
 <tr class="even">
 <td align="center">20150470</td>
@@ -394,6 +404,7 @@ NAs    3.00  3.00  4.00 3.00</code></pre>
 <td align="center">6.0</td>
 <td align="center">6.0</td>
 <td align="center">3.0</td>
+<td align="center">1.0</td>
 </tr>
 <tr class="odd">
 <td align="center">20150836</td>
@@ -401,6 +412,7 @@ NAs    3.00  3.00  4.00 3.00</code></pre>
 <td align="center">10.0</td>
 <td align="center">10.0</td>
 <td align="center">8.0</td>
+<td align="center">10.0</td>
 </tr>
 <tr class="even">
 <td align="center">20150978</td>
@@ -408,6 +420,7 @@ NAs    3.00  3.00  4.00 3.00</code></pre>
 <td align="center">9.8</td>
 <td align="center">10.0</td>
 <td align="center">7.5</td>
+<td align="center">10.0</td>
 </tr>
 <tr class="odd">
 <td align="center">20151292</td>
@@ -415,6 +428,7 @@ NAs    3.00  3.00  4.00 3.00</code></pre>
 <td align="center">7.0</td>
 <td align="center">8.9</td>
 <td align="center">1.5</td>
+<td align="center">6.0</td>
 </tr>
 <tr class="even">
 <td align="center">20151516</td>
@@ -422,6 +436,7 @@ NAs    3.00  3.00  4.00 3.00</code></pre>
 <td align="center">10.0</td>
 <td align="center">9.9</td>
 <td align="center">5.0</td>
+<td align="center">9.5</td>
 </tr>
 <tr class="odd">
 <td align="center">20152147</td>
@@ -429,6 +444,7 @@ NAs    3.00  3.00  4.00 3.00</code></pre>
 <td align="center">6.5</td>
 <td align="center">5.3</td>
 <td align="center">4.5</td>
+<td align="center">7.0</td>
 </tr>
 <tr class="even">
 <td align="center">20152591</td>
@@ -436,9 +452,11 @@ NAs    3.00  3.00  4.00 3.00</code></pre>
 <td align="center">9.5</td>
 <td align="center">8.4</td>
 <td align="center">7.5</td>
+<td align="center">10.0</td>
 </tr>
 <tr class="odd">
 <td align="center">20152736</td>
+<td align="center">NA</td>
 <td align="center">NA</td>
 <td align="center">NA</td>
 <td align="center">NA</td>
@@ -450,6 +468,7 @@ NAs    3.00  3.00  4.00 3.00</code></pre>
 <td align="center">NA</td>
 <td align="center">NA</td>
 <td align="center">NA</td>
+<td align="center">NA</td>
 </tr>
 <tr class="odd">
 <td align="center">20152988</td>
@@ -457,6 +476,7 @@ NAs    3.00  3.00  4.00 3.00</code></pre>
 <td align="center">9.8</td>
 <td align="center">7.0</td>
 <td align="center">7.5</td>
+<td align="center">10.0</td>
 </tr>
 <tr class="even">
 <td align="center">20153016</td>
@@ -464,6 +484,7 @@ NAs    3.00  3.00  4.00 3.00</code></pre>
 <td align="center">10.0</td>
 <td align="center">NA</td>
 <td align="center">8.5</td>
+<td align="center">10.0</td>
 </tr>
 <tr class="odd">
 <td align="center">20153599</td>
@@ -471,6 +492,7 @@ NAs    3.00  3.00  4.00 3.00</code></pre>
 <td align="center">4.8</td>
 <td align="center">5.0</td>
 <td align="center">3.5</td>
+<td align="center">NA</td>
 </tr>
 <tr class="even">
 <td align="center">20153646</td>
@@ -478,6 +500,7 @@ NAs    3.00  3.00  4.00 3.00</code></pre>
 <td align="center">6.8</td>
 <td align="center">7.3</td>
 <td align="center">4.8</td>
+<td align="center">9.8</td>
 </tr>
 <tr class="odd">
 <td align="center">20154101</td>
@@ -485,6 +508,7 @@ NAs    3.00  3.00  4.00 3.00</code></pre>
 <td align="center">9.5</td>
 <td align="center">10.0</td>
 <td align="center">7.0</td>
+<td align="center">9.0</td>
 </tr>
 <tr class="even">
 <td align="center">20154112</td>
@@ -492,6 +516,7 @@ NAs    3.00  3.00  4.00 3.00</code></pre>
 <td align="center">4.0</td>
 <td align="center">7.5</td>
 <td align="center">3.5</td>
+<td align="center">7.0</td>
 </tr>
 <tr class="odd">
 <td align="center">20154179</td>
@@ -499,6 +524,7 @@ NAs    3.00  3.00  4.00 3.00</code></pre>
 <td align="center">9.5</td>
 <td align="center">9.9</td>
 <td align="center">7.0</td>
+<td align="center">9.0</td>
 </tr>
 <tr class="even">
 <td align="center">20154443</td>
@@ -506,6 +532,7 @@ NAs    3.00  3.00  4.00 3.00</code></pre>
 <td align="center">8.0</td>
 <td align="center">9.0</td>
 <td align="center">9.0</td>
+<td align="center">8.0</td>
 </tr>
 <tr class="odd">
 <td align="center">20154966</td>
@@ -513,6 +540,7 @@ NAs    3.00  3.00  4.00 3.00</code></pre>
 <td align="center">9.8</td>
 <td align="center">10.0</td>
 <td align="center">9.5</td>
+<td align="center">10.0</td>
 </tr>
 <tr class="even">
 <td align="center">20155156</td>
@@ -520,6 +548,7 @@ NAs    3.00  3.00  4.00 3.00</code></pre>
 <td align="center">5.5</td>
 <td align="center">8.9</td>
 <td align="center">5.0</td>
+<td align="center">2.0</td>
 </tr>
 <tr class="odd">
 <td align="center">20155208</td>
@@ -527,6 +556,7 @@ NAs    3.00  3.00  4.00 3.00</code></pre>
 <td align="center">3.5</td>
 <td align="center">9.0</td>
 <td align="center">2.5</td>
+<td align="center">7.0</td>
 </tr>
 <tr class="even">
 <td align="center">20156753</td>
@@ -534,6 +564,7 @@ NAs    3.00  3.00  4.00 3.00</code></pre>
 <td align="center">9.8</td>
 <td align="center">8.5</td>
 <td align="center">8.0</td>
+<td align="center">10.0</td>
 </tr>
 <tr class="odd">
 <td align="center">20157092</td>
@@ -541,6 +572,7 @@ NAs    3.00  3.00  4.00 3.00</code></pre>
 <td align="center">9.1</td>
 <td align="center">5.0</td>
 <td align="center">3.0</td>
+<td align="center">NA</td>
 </tr>
 <tr class="even">
 <td align="center">20157880</td>
@@ -548,6 +580,7 @@ NAs    3.00  3.00  4.00 3.00</code></pre>
 <td align="center">5.0</td>
 <td align="center">9.8</td>
 <td align="center">5.0</td>
+<td align="center">2.0</td>
 </tr>
 <tr class="odd">
 <td align="center">20158399</td>
@@ -555,6 +588,7 @@ NAs    3.00  3.00  4.00 3.00</code></pre>
 <td align="center">6.8</td>
 <td align="center">9.0</td>
 <td align="center">3.5</td>
+<td align="center">4.5</td>
 </tr>
 <tr class="even">
 <td align="center">20159053</td>
@@ -562,6 +596,7 @@ NAs    3.00  3.00  4.00 3.00</code></pre>
 <td align="center">8.6</td>
 <td align="center">5.4</td>
 <td align="center">5.5</td>
+<td align="center">9.0</td>
 </tr>
 <tr class="odd">
 <td align="center">20159109</td>
@@ -569,6 +604,7 @@ NAs    3.00  3.00  4.00 3.00</code></pre>
 <td align="center">8.1</td>
 <td align="center">7.0</td>
 <td align="center">7.5</td>
+<td align="center">9.0</td>
 </tr>
 <tr class="even">
 <td align="center">20159160</td>
@@ -576,6 +612,7 @@ NAs    3.00  3.00  4.00 3.00</code></pre>
 <td align="center">10.0</td>
 <td align="center">10.0</td>
 <td align="center">7.5</td>
+<td align="center">9.0</td>
 </tr>
 <tr class="odd">
 <td align="center">20159633</td>
@@ -583,6 +620,7 @@ NAs    3.00  3.00  4.00 3.00</code></pre>
 <td align="center">8.1</td>
 <td align="center">8.0</td>
 <td align="center">4.3</td>
+<td align="center">8.0</td>
 </tr>
 <tr class="even">
 <td align="center">20159711</td>
@@ -590,10 +628,12 @@ NAs    3.00  3.00  4.00 3.00</code></pre>
 <td align="center">9.0</td>
 <td align="center">10.0</td>
 <td align="center">5.0</td>
+<td align="center">5.0</td>
 </tr>
 <tr class="odd">
 <td align="center">20159781</td>
 <td align="center">8.0</td>
+<td align="center">NA</td>
 <td align="center">NA</td>
 <td align="center">NA</td>
 <td align="center">NA</td>
@@ -604,6 +644,7 @@ NAs    3.00  3.00  4.00 3.00</code></pre>
 <td align="center">6.6</td>
 <td align="center">5.4</td>
 <td align="center">1.0</td>
+<td align="center">6.0</td>
 </tr>
 </tbody>
 </table>
