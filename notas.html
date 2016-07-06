@@ -313,7 +313,12 @@ NAs    3.00  3.00  4.00 3.00  5.00 10.0</code></pre>
 </div>
 <div id="notas-individuais" class="section level2">
 <h2>Notas individuais</h2>
-<pre class="r"><code>kable(notas, align = c(&quot;c&quot;, &quot;c&quot;))</code></pre>
+<p><strong>Aqui estão apenas as notas individuais de cada sabatina. Veja na seção abaixo as médias finais calculadas!</strong></p>
+<pre class="r"><code>if(&quot;Freq&quot; %in% names(notas)){
+    kable(notas[-which(names(notas) %in% &quot;Freq&quot;)], align = &quot;c&quot;)
+} else{
+    kable(notas, align = &quot;c&quot;)
+    }</code></pre>
 <table>
 <thead>
 <tr class="header">
@@ -689,6 +694,515 @@ NAs    3.00  3.00  4.00 3.00  5.00 10.0</code></pre>
 </tr>
 </tbody>
 </table>
+</div>
+<div id="resultados-finais" class="section level2">
+<h2>Resultados finais</h2>
+<p>Na tabela abaixo estão as notas consideradas para o cálculo da média final. Das 6 sabatinas, foram consideradas apenas as 4 com maiores notas (<code>N1</code>, <code>N2</code>, <code>N3</code>, <code>N4</code>). A frequência (<code>F</code>) é o percentual de presença.</p>
+<p>A média (<code>M</code>) foi calculada com estas 4 notas, e já <strong>arredondada para cima</strong> nos seguintes casos:</p>
+<ul>
+<li>Médias finais maiores ou iguais a 6,5 e menores do que 7,0 foram arredondadas para 7,0, SE a frequência do aluno foi maior ou igual a 75%.</li>
+<li>Médias finais maiores ou iguais a 3,5 e menores do que 4,0 foram arredondadas para 4,0, SE a frequência do aluno foi maior ou igual a 75%.</li>
+</ul>
+<p><strong>Observação</strong>: a frequência só foi utilizada aqui para critério de arredondamento de nota. Mesmo que o aluno tenha frequência abaixo de 75%, é permitido fazer o exame.</p>
+<p>A coluna de situação (<code>S</code>) indica se o aluno foi aprovado (<code>Ap</code>), ficou em exame (<code>Ex</code>), ou foi reprovado (<code>Re</code>).</p>
+<pre class="r"><code>##----------------------------------------------------------------------
+## Tabela com as notas finais
+
+## Ordena pelas maiores notas
+notas2 &lt;- apply(notas[, notas.col], 1, sort,
+                decreasing = TRUE, na.last = TRUE)
+
+## Numero de provas consideradas
+np &lt;- 4
+
+## Tabela com as np maiores notas
+notas2 &lt;- t(notas2[1:np, ])
+
+## Calcula a media
+notas2 &lt;- cbind(notas2,
+                apply(notas2, 1, function(x) sum(x, na.rm = TRUE)/np))
+
+## Insere o GRR
+notas2 &lt;- as.data.frame(cbind(notas$Matricula, notas2))
+names(notas2) &lt;- c(&quot;Matricula&quot;, paste0(&quot;N&quot;, 1:np), &quot;Media&quot;)
+
+## Insere a frequencia (Freq.rel2 de notas)
+notas2$Freq.rel &lt;- ceiling(notas$Freq.rel2*100)
+
+## Arredonda a media para duas casa decimais
+notas2$Media &lt;- round(notas2$Media, 2)
+
+## Regras para ser aprovado
+## 1) Se 6.5 &lt;= MF &lt; 7.0 E Freq &gt;= 75 entao SOMA difer
+
+## Cria nova coluna e condicoes
+notas2$Media2 &lt;- notas2$Media
+cond.nota1 &lt;- notas2$Media &gt;=6.5 &amp; notas2$Media &lt; 7
+cond.nota2 &lt;- notas2$Freq.rel &gt;= 75
+
+## Soma as diferencas
+notas2$Media2[cond.nota1 &amp; cond.nota2] &lt;-
+    notas2$Media2[cond.nota1 &amp; cond.nota2] +
+    difer(notas2$Media2[cond.nota1 &amp; cond.nota2], 7)
+
+## Regras para ir para exame
+## 1) Se 3.5 &lt;= MF &lt; 4.0 E Freq &gt;= 75 entao SOMA difer
+
+## Cria condicoes
+cond.exam1 &lt;- notas2$Media &gt;=3.5 &amp; notas2$Media &lt; 4
+
+## Soma as diferencas
+notas2$Media2[cond.exam1 &amp; cond.nota2] &lt;-
+    notas2$Media2[cond.exam1 &amp; cond.nota2] +
+    difer(notas2$Media2[cond.exam1 &amp; cond.nota2], 4)
+
+##----------------------------------------------------------------------
+## BONUS: aqui tem uma aluna que acertou uma questao bonus e ficou com
+## uma prova com nota &#39;12&#39;. Portanto, deveria distribuir essa nota entre
+## as outras provas dela. Como as outras tambem eram quase 10, vou
+## atribuir 10 para todas as provas dela.
+## grr &lt;- 20154966
+## notas2[notas2$Matricula == grr, ]
+## Como ja esta com 10 nas 4 maiores nao precisa fazer isso.
+##----------------------------------------------------------------------
+
+##----------------------------------------------------------------------
+## Tabela final
+notas.fim &lt;- notas2[, 1:5]
+notas.fim$M &lt;- notas2$Media2
+notas.fim$F &lt;- notas2$Freq.rel
+## Cria a coluna Situacao
+notas.fim$S &lt;- &quot;Ap&quot;
+notas.fim$S[notas.fim$M &gt;= 4 &amp; notas.fim$M &lt; 7] &lt;- &quot;Ex&quot;
+notas.fim$S[notas.fim$M &lt; 4] &lt;- &quot;Re&quot;
+
+## Mostra tabela
+kable(notas.fim, align = &quot;c&quot;)</code></pre>
+<table>
+<thead>
+<tr class="header">
+<th align="center">Matricula</th>
+<th align="center">N1</th>
+<th align="center">N2</th>
+<th align="center">N3</th>
+<th align="center">N4</th>
+<th align="center">M</th>
+<th align="center">F</th>
+<th align="center">S</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="center">20124646</td>
+<td align="center">8.5</td>
+<td align="center">7.0</td>
+<td align="center">6.0</td>
+<td align="center">5.9</td>
+<td align="center">7.00</td>
+<td align="center">86</td>
+<td align="center">Ap</td>
+</tr>
+<tr class="even">
+<td align="center">20124652</td>
+<td align="center">7.0</td>
+<td align="center">5.3</td>
+<td align="center">4.0</td>
+<td align="center">2.9</td>
+<td align="center">4.80</td>
+<td align="center">75</td>
+<td align="center">Ex</td>
+</tr>
+<tr class="odd">
+<td align="center">20136720</td>
+<td align="center">9.9</td>
+<td align="center">9.8</td>
+<td align="center">9.5</td>
+<td align="center">9.0</td>
+<td align="center">9.55</td>
+<td align="center">96</td>
+<td align="center">Ap</td>
+</tr>
+<tr class="even">
+<td align="center">20149073</td>
+<td align="center">8.0</td>
+<td align="center">8.0</td>
+<td align="center">8.0</td>
+<td align="center">7.5</td>
+<td align="center">7.88</td>
+<td align="center">93</td>
+<td align="center">Ap</td>
+</tr>
+<tr class="odd">
+<td align="center">20149110</td>
+<td align="center">8.1</td>
+<td align="center">7.3</td>
+<td align="center">7.0</td>
+<td align="center">7.0</td>
+<td align="center">7.35</td>
+<td align="center">93</td>
+<td align="center">Ap</td>
+</tr>
+<tr class="even">
+<td align="center">20149145</td>
+<td align="center">9.0</td>
+<td align="center">7.5</td>
+<td align="center">7.5</td>
+<td align="center">5.5</td>
+<td align="center">7.38</td>
+<td align="center">89</td>
+<td align="center">Ap</td>
+</tr>
+<tr class="odd">
+<td align="center">20150149</td>
+<td align="center">7.5</td>
+<td align="center">6.7</td>
+<td align="center">6.0</td>
+<td align="center">4.5</td>
+<td align="center">6.17</td>
+<td align="center">93</td>
+<td align="center">Ex</td>
+</tr>
+<tr class="even">
+<td align="center">20150417</td>
+<td align="center">10.0</td>
+<td align="center">10.0</td>
+<td align="center">10.0</td>
+<td align="center">9.0</td>
+<td align="center">9.75</td>
+<td align="center">100</td>
+<td align="center">Ap</td>
+</tr>
+<tr class="odd">
+<td align="center">20150452</td>
+<td align="center">9.0</td>
+<td align="center">8.7</td>
+<td align="center">5.6</td>
+<td align="center">5.5</td>
+<td align="center">7.20</td>
+<td align="center">82</td>
+<td align="center">Ap</td>
+</tr>
+<tr class="even">
+<td align="center">20150470</td>
+<td align="center">8.5</td>
+<td align="center">6.0</td>
+<td align="center">6.0</td>
+<td align="center">3.0</td>
+<td align="center">5.88</td>
+<td align="center">86</td>
+<td align="center">Ex</td>
+</tr>
+<tr class="odd">
+<td align="center">20150836</td>
+<td align="center">10.0</td>
+<td align="center">10.0</td>
+<td align="center">10.0</td>
+<td align="center">10.0</td>
+<td align="center">10.00</td>
+<td align="center">100</td>
+<td align="center">Ap</td>
+</tr>
+<tr class="even">
+<td align="center">20150978</td>
+<td align="center">10.0</td>
+<td align="center">10.0</td>
+<td align="center">9.8</td>
+<td align="center">9.8</td>
+<td align="center">9.90</td>
+<td align="center">100</td>
+<td align="center">Ap</td>
+</tr>
+<tr class="odd">
+<td align="center">20151292</td>
+<td align="center">9.5</td>
+<td align="center">8.9</td>
+<td align="center">7.0</td>
+<td align="center">6.0</td>
+<td align="center">7.85</td>
+<td align="center">75</td>
+<td align="center">Ap</td>
+</tr>
+<tr class="even">
+<td align="center">20151516</td>
+<td align="center">10.0</td>
+<td align="center">9.9</td>
+<td align="center">9.5</td>
+<td align="center">9.0</td>
+<td align="center">9.60</td>
+<td align="center">82</td>
+<td align="center">Ap</td>
+</tr>
+<tr class="odd">
+<td align="center">20152147</td>
+<td align="center">7.5</td>
+<td align="center">7.0</td>
+<td align="center">6.5</td>
+<td align="center">6.5</td>
+<td align="center">7.00</td>
+<td align="center">86</td>
+<td align="center">Ap</td>
+</tr>
+<tr class="even">
+<td align="center">20152591</td>
+<td align="center">10.0</td>
+<td align="center">9.5</td>
+<td align="center">9.0</td>
+<td align="center">8.4</td>
+<td align="center">9.22</td>
+<td align="center">93</td>
+<td align="center">Ap</td>
+</tr>
+<tr class="odd">
+<td align="center">20152736</td>
+<td align="center">NA</td>
+<td align="center">NA</td>
+<td align="center">NA</td>
+<td align="center">NA</td>
+<td align="center">0.00</td>
+<td align="center">39</td>
+<td align="center">Re</td>
+</tr>
+<tr class="even">
+<td align="center">20152967</td>
+<td align="center">NA</td>
+<td align="center">NA</td>
+<td align="center">NA</td>
+<td align="center">NA</td>
+<td align="center">0.00</td>
+<td align="center">0</td>
+<td align="center">Re</td>
+</tr>
+<tr class="odd">
+<td align="center">20152988</td>
+<td align="center">10.0</td>
+<td align="center">9.8</td>
+<td align="center">8.5</td>
+<td align="center">7.5</td>
+<td align="center">8.95</td>
+<td align="center">96</td>
+<td align="center">Ap</td>
+</tr>
+<tr class="even">
+<td align="center">20153016</td>
+<td align="center">10.0</td>
+<td align="center">10.0</td>
+<td align="center">9.8</td>
+<td align="center">8.5</td>
+<td align="center">9.57</td>
+<td align="center">82</td>
+<td align="center">Ap</td>
+</tr>
+<tr class="odd">
+<td align="center">20153599</td>
+<td align="center">9.5</td>
+<td align="center">8.1</td>
+<td align="center">5.0</td>
+<td align="center">4.8</td>
+<td align="center">7.00</td>
+<td align="center">79</td>
+<td align="center">Ap</td>
+</tr>
+<tr class="even">
+<td align="center">20153646</td>
+<td align="center">10.0</td>
+<td align="center">9.8</td>
+<td align="center">7.3</td>
+<td align="center">6.8</td>
+<td align="center">8.47</td>
+<td align="center">86</td>
+<td align="center">Ap</td>
+</tr>
+<tr class="odd">
+<td align="center">20154101</td>
+<td align="center">10.0</td>
+<td align="center">10.0</td>
+<td align="center">9.7</td>
+<td align="center">9.5</td>
+<td align="center">9.80</td>
+<td align="center">93</td>
+<td align="center">Ap</td>
+</tr>
+<tr class="even">
+<td align="center">20154112</td>
+<td align="center">8.5</td>
+<td align="center">7.5</td>
+<td align="center">7.0</td>
+<td align="center">6.5</td>
+<td align="center">7.38</td>
+<td align="center">96</td>
+<td align="center">Ap</td>
+</tr>
+<tr class="odd">
+<td align="center">20154179</td>
+<td align="center">9.9</td>
+<td align="center">9.5</td>
+<td align="center">9.5</td>
+<td align="center">9.0</td>
+<td align="center">9.47</td>
+<td align="center">96</td>
+<td align="center">Ap</td>
+</tr>
+<tr class="even">
+<td align="center">20154443</td>
+<td align="center">10.0</td>
+<td align="center">9.5</td>
+<td align="center">9.0</td>
+<td align="center">9.0</td>
+<td align="center">9.38</td>
+<td align="center">96</td>
+<td align="center">Ap</td>
+</tr>
+<tr class="odd">
+<td align="center">20154966</td>
+<td align="center">10.0</td>
+<td align="center">10.0</td>
+<td align="center">10.0</td>
+<td align="center">10.0</td>
+<td align="center">10.00</td>
+<td align="center">100</td>
+<td align="center">Ap</td>
+</tr>
+<tr class="even">
+<td align="center">20155156</td>
+<td align="center">9.1</td>
+<td align="center">8.9</td>
+<td align="center">6.0</td>
+<td align="center">5.5</td>
+<td align="center">7.38</td>
+<td align="center">89</td>
+<td align="center">Ap</td>
+</tr>
+<tr class="odd">
+<td align="center">20155208</td>
+<td align="center">9.0</td>
+<td align="center">9.0</td>
+<td align="center">7.0</td>
+<td align="center">6.5</td>
+<td align="center">7.88</td>
+<td align="center">68</td>
+<td align="center">Ap</td>
+</tr>
+<tr class="even">
+<td align="center">20156753</td>
+<td align="center">10.0</td>
+<td align="center">9.8</td>
+<td align="center">9.8</td>
+<td align="center">8.5</td>
+<td align="center">9.53</td>
+<td align="center">75</td>
+<td align="center">Ap</td>
+</tr>
+<tr class="odd">
+<td align="center">20157092</td>
+<td align="center">9.1</td>
+<td align="center">9.1</td>
+<td align="center">9.0</td>
+<td align="center">5.0</td>
+<td align="center">8.05</td>
+<td align="center">93</td>
+<td align="center">Ap</td>
+</tr>
+<tr class="even">
+<td align="center">20157880</td>
+<td align="center">9.8</td>
+<td align="center">9.5</td>
+<td align="center">8.2</td>
+<td align="center">5.0</td>
+<td align="center">8.12</td>
+<td align="center">82</td>
+<td align="center">Ap</td>
+</tr>
+<tr class="odd">
+<td align="center">20158399</td>
+<td align="center">9.0</td>
+<td align="center">9.0</td>
+<td align="center">6.8</td>
+<td align="center">4.5</td>
+<td align="center">7.33</td>
+<td align="center">93</td>
+<td align="center">Ap</td>
+</tr>
+<tr class="even">
+<td align="center">20159053</td>
+<td align="center">9.0</td>
+<td align="center">9.0</td>
+<td align="center">8.6</td>
+<td align="center">5.5</td>
+<td align="center">8.03</td>
+<td align="center">96</td>
+<td align="center">Ap</td>
+</tr>
+<tr class="odd">
+<td align="center">20159109</td>
+<td align="center">9.5</td>
+<td align="center">9.0</td>
+<td align="center">8.1</td>
+<td align="center">7.5</td>
+<td align="center">8.53</td>
+<td align="center">96</td>
+<td align="center">Ap</td>
+</tr>
+<tr class="even">
+<td align="center">20159160</td>
+<td align="center">10.0</td>
+<td align="center">10.0</td>
+<td align="center">9.0</td>
+<td align="center">9.0</td>
+<td align="center">9.50</td>
+<td align="center">96</td>
+<td align="center">Ap</td>
+</tr>
+<tr class="odd">
+<td align="center">20159633</td>
+<td align="center">9.0</td>
+<td align="center">8.1</td>
+<td align="center">8.0</td>
+<td align="center">8.0</td>
+<td align="center">8.28</td>
+<td align="center">100</td>
+<td align="center">Ap</td>
+</tr>
+<tr class="even">
+<td align="center">20159711</td>
+<td align="center">10.0</td>
+<td align="center">9.3</td>
+<td align="center">9.0</td>
+<td align="center">8.1</td>
+<td align="center">9.10</td>
+<td align="center">93</td>
+<td align="center">Ap</td>
+</tr>
+<tr class="odd">
+<td align="center">20159781</td>
+<td align="center">8.0</td>
+<td align="center">NA</td>
+<td align="center">NA</td>
+<td align="center">NA</td>
+<td align="center">2.00</td>
+<td align="center">46</td>
+<td align="center">Re</td>
+</tr>
+<tr class="even">
+<td align="center">20159917</td>
+<td align="center">9.0</td>
+<td align="center">6.6</td>
+<td align="center">6.0</td>
+<td align="center">5.4</td>
+<td align="center">7.00</td>
+<td align="center">75</td>
+<td align="center">Ap</td>
+</tr>
+</tbody>
+</table>
+<p>Número de alunos em cada situação:</p>
+<pre class="r"><code>addmargins(table(notas.fim$S))</code></pre>
+<pre><code>
+ Ap  Ex  Re Sum 
+ 34   3   3  40 </code></pre>
+<p>Gráfico de barras com os percentuais por situação:</p>
+<pre class="r"><code>barplot(prop.table(table(notas.fim$S))*100,
+        xlab = &quot;Situação&quot;, ylab = &quot;Frequência (%)&quot;)</code></pre>
+<p><img src="figures/unnamed-chunk-10-1.png" width="800" style="display: block; margin: auto;" /></p>
 </div>
 
 <center>
