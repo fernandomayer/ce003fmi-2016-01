@@ -282,6 +282,7 @@ notas.fim$E <- notas$Ex
 notas.fim$MF <- notas.fim$M
 notas.fim$MF[notas.fim$S == "Ex"] <- (notas.fim$M[notas.fim$S == "Ex"] +
     notas.fim$E[notas.fim$S == "Ex"])/2
+notas.fim$MF <- round(notas.fim$MF, 2)
 
 ## Calcula a média final arredonadada (MFA), que é a média multiplicada por
 ## 10 e arredondada para cima (é como será lançada no sistema)
